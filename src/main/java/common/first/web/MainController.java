@@ -14,13 +14,11 @@ public class MainController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String Index(Model model) throws Exception {
         logger.info("index.....");
-        System.out.println("index");
         return "main";
     }
     @RequestMapping("/main.jsp")
     public String Main(Model model) throws Exception {
         logger.info("main.....");
-        System.out.println("main");
         return "home";
     }
 }

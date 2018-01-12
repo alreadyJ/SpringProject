@@ -2,7 +2,7 @@
 <%request.setCharacterEncoding("utf-8");%>
 
 <!DOCTYPE html>
-<html lang="kor">
+<html lang="ko">
 
 <head>
     <meta charset="utf-8">
@@ -10,45 +10,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Half Slider - Start Bootstrap Template</title>
+    <title>title</title>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-    <!-- Bootstrap core CSS -->
-    <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/bootstrap/bootstrap.min.css" />" />
-    <!-- Custom styles for this template -->
-    <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/half-slider.css" />" />
+    <jsp:include page="baseResources.jsp" />
+    <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/custom-card.css"/>"/>
 </head>
 
 <body>
-
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-        <a class="navbar-brand" href="#">Start Bootstrap</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
+<jsp:include page="nav.jsp"/>
 <header>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -89,15 +59,12 @@
         </a>
     </div>
 </header>
-
-<!-- Page Content -->
-<section class="py-5">
-    <div class="container">
-        <h1>Half Slider by Start Bootstrap</h1>
-        <p>The background images for the slider are set directly in the HTML using inline CSS. The rest of the styles for this template are contained within the
-            <code>half-slider.css</code>file.</p>
-    </div>
-</section>
+<h3>Items</h3>
+<jsp:include page="cardList.jsp"/>
+<h3>Trips</h3>
+<jsp:include page="cardList.jsp"/>
+<h3>Request</h3>
+<jsp:include page="cardList.jsp"/>
 
 <!-- Footer -->
 <footer class="py-5 bg-dark">
@@ -107,8 +74,6 @@
     <!-- /.container -->
 </footer>
 
-<!-- Bootstrap core JavaScript -->
-<script src="<c:url value="/resources/js/jquery/jquery.min.js" />"></script>
-<script src="<c:url value="/resources/js/bootstrap/bootstrap.bundle.min.js" />"></script>
+
 </body>
 </html>

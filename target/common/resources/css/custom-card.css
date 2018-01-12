@@ -1,0 +1,88 @@
+.py-5 .container {
+    text-align: center;
+}
+
+@media (max-width: 547px) {
+    .py-5 .container {
+        max-width: 260px;
+    }
+    .py-5 .container #items-2 {
+        display: none;
+    }
+    .py-5 .container #items-3 {
+        display: none;
+    }
+    .py-5 .container #items-4 {
+        display: none;
+    }
+}
+
+@media (min-width: 547px) {
+    .py-5 .container {
+        max-width: 550px;
+    }
+    .py-5 .container #items-2 {
+        display: inline-table;
+    }
+}
+
+
+
+@media (min-width: 768px) {
+    .py-5 .container {
+        max-width: 550px;
+    }
+    .py-5 .container #items-3 {
+        display: inline-table;
+    }
+}
+
+@media (max-width: 992px) {
+    .py-5 .container #items-3 {
+        display: none;
+    }
+    .py-5 .container #items-4 {
+        display: none;
+    }
+}
+
+@media (min-width: 992px) {
+    .py-5 .container {
+        max-width:810px;
+    }
+    .py-5 .container #items-4 {
+        display: inline-table;
+    }
+}
+
+@media (max-width: 1200px) {
+    .py-5 .container #items-4 {
+        display: none;
+    }
+}
+
+@media (min-width: 1200px) {
+    .py-5 .container {
+        max-width: 1070px;
+    }
+}
+
+
+
+.py-5 .container .card {
+    width: 15rem; position: relative; float: left; margin: 5px 10px 5px 10px;
+    display: inline-table;
+    text-align: initial;
+}
+
+.card .card-data ul {
+    padding-left : 0;
+}
+
+.card .btn-floating {
+    float: right;
+}
+
+.py-5 .itemList {
+    min-height: 400px;
+}
