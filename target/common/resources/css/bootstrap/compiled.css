@@ -5274,7 +5274,8 @@ button.close {
 
 .modal.show .modal-dialog {
     -webkit-transform: translate(0,0);
-    transform: translate(0,0)
+    transform: translate(0,0);
+    z-index: 1050;
 }
 
 .modal-dialog-centered {
@@ -5311,7 +5312,7 @@ button.close {
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 1040;
+    z-index: 1025;
     background-color: #000
 }
 
@@ -10514,7 +10515,7 @@ a.text-dark:focus,a.text-dark:hover {
 }
 
 .bg-dark {
-    background-color: #212121!important
+    background-color: #929fba!important
 }
 
 .bg-light {
@@ -10528,6 +10529,7 @@ a.text-dark:focus,a.text-dark:hover {
 .bg-black {
     background-color: #000!important
 }
+
 
 .card.card-cascade.wider,.colorful-select .dropdown-content li.disabled a:hover,.colorful-select .dropdown-content li.disabled span:hover,.colorful-select .dropdown-content li.disabled.active span,.colorful-select .dropdown-content li.optgroup a:hover,.colorful-select .dropdown-content li.optgroup span:hover,.colorful-select .dropdown-content li.optgroup.active span,.colorful-select .dropdown-content li:disabled a:hover,.colorful-select .dropdown-content li:disabled span:hover,.colorful-select .dropdown-content li:disabled.active span,.modal-dialog.cascading-modal.modal-avatar .modal-header,.z-depth-0 {
     box-shadow: none!important
@@ -16626,7 +16628,7 @@ button:focus {
 }
 
 .btn-default {
-    background-color: #2bbbad!important;
+    background-color: #929fba!important;
     color: #fff!important
 }
 
@@ -20250,7 +20252,7 @@ table.table-sm td,table.table-sm th {
 }
 
 .btn-rounded {
-    border-radius: 10em
+    border-radius: 5px;
 }
 
 .btn.purple-gradient {
