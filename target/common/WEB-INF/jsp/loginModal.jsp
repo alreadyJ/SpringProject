@@ -82,6 +82,11 @@
                                 <label data-error="wrong" data-success="right" for="form26">Repeat password</label>
                             </div>
 
+                            <div class="md-form form-sm">
+                                <input type="text" id="form27" class="form-control validate">
+                                <label data-error="wrong" data-success="right" for="form27">Your Nickname</label>
+                            </div>
+
                             <div class="text-center form-sm mt-2">
                                 <button class="btn btn-info">Sign up <i class="fa fa-sign-in ml-1"></i></button>
                             </div>

@@ -1,0 +1,8 @@
+@media (max-width: 768px) {
+    #setting-nav {
+        display: none;
+    }
+    #setting-details {
+        min-width: 100%;
+    }
+}

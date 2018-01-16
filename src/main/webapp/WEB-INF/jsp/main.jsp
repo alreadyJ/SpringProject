@@ -14,7 +14,7 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <jsp:include page="baseResources.jsp" />
-    <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/custom-card.css"/>"/>
+    <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/custom-card.css?ver=1"/>"/>
 </head>
 
 <body>
@@ -66,13 +66,7 @@
 <h3>Request</h3>
 <jsp:include page="cardList.jsp"/>
 
-<!-- Footer -->
-<footer class="py-5 bg-dark">
-    <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
-    </div>
-    <!-- /.container -->
-</footer>
+<jsp:include page="footer.jsp"/>
 
 
 </body>

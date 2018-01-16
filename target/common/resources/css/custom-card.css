@@ -79,10 +79,30 @@
     padding-left : 0;
 }
 
+.navbar-nav .nav-custom-item i.fa{
+    display: inline-block;
+}
+
+.navbar-nav .nav-custom-item a.nav-custom-link {
+    display: inline-block;
+    color : #000;
+}
+
+.nav-custom-item {
+    margin: 0 10px;
+    line-height: 40px;
+}
+
 .card .btn-floating {
     float: right;
 }
 
 .py-5 .itemList {
     min-height: 400px;
+}
+
+.navbar-brand {
+    line-height: 40px;
+    color: #000;
+    font-weight: 800;
 }

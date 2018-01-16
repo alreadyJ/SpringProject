@@ -12,13 +12,23 @@ public class MainController {
 
     protected Logger logger = Logger.getLogger(this.getClass());
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String Index(Model model) throws Exception {
+    public String Main(Model model) throws Exception {
         logger.info("index.....");
         return "main";
     }
-    @RequestMapping("/main.jsp")
-    public String Main(Model model) throws Exception {
-        logger.info("main.....");
-        return "home";
+    @RequestMapping("/list")
+    public String List(Model model) throws Exception {
+        logger.info("list");
+        return "list";
+    }
+    @RequestMapping(value = "/item", method = RequestMethod.GET)
+    public String Item(Model model) throws Exception {
+        logger.info("item");
+        return "item";
+    }
+    @RequestMapping(value = "/setting", method = RequestMethod.GET)
+    public String Setting(Model model) throws Exception {
+        logger.info("setting");
+        return "setting/setting";
     }
 }

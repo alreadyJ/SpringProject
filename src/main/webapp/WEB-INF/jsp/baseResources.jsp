@@ -5,6 +5,7 @@
 <!-- Custom styles for this template -->
 <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/half-slider.css" />" />
 <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/bootstrap/compiled.css?ver=1"/> " />
+
 <!--login modal css-->
 <!-- Bootstrap core JavaScript -->
 <script src="<c:url value="/resources/js/jquery/jquery.min.js" />"></script>

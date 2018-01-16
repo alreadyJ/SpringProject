@@ -16628,7 +16628,7 @@ button:focus {
 }
 
 .btn-default {
-    background-color: #929fba!important;
+    background-color: #33b5e5!important;
     color: #fff!important
 }
 
@@ -21022,7 +21022,7 @@ table.table-sm td,table.table-sm th {
 }
 
 .pills-secondary .nav-item .nav-link.active {
-    background-color: #a6c
+    background-color: #404040;
 }
 
 .tabs-secondary {
