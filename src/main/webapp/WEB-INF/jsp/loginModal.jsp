@@ -63,39 +63,54 @@
                     <div class="tab-pane fade" id="panel8" role="tabpanel">
 
                         <!--Body-->
-                        <div class="modal-body">
-                            <div class="md-form form-sm">
-                                <i class="fa fa-envelope prefix"></i>
-                                <input type="email" id="form24" class="form-control validate">
-                                <label data-error="wrong" data-success="right" for="form24">Your email</label>
-                            </div>
+                        <form name="signUpForm" method="post" id="signUpForm" action="signUp">
+                            <input type="hidden" id="email_ch" name="email_ch" value="false"/>
+                            <input type="hidden" id="pass_ch" name="pass_ch" value="false"/>
+                            <input type="hidden" id="m_name_ch" name="m_name_ch" value="false"/>
 
-                            <div class="md-form form-sm">
-                                <i class="fa fa-lock prefix"></i>
-                                <input type="password" id="form25" class="form-control validate">
-                                <label data-error="wrong" data-success="right" for="form25">Your password</label>
-                            </div>
+                            <div class="modal-body">
+                                <div class="md-form form-sm">
+                                    <i class="fa fa-envelope prefix"></i>
+                                    <input type="email" id="m_email" name="m_email" class="form-control validate">
+                                    <label data-error="wrong" data-success="right" for="m_email">Your email
+                                        <p id="email_notice" style="display: none; color: red;">    Check the Your email!</p>
+                                    </label>
+                                </div>
 
-                            <div class="md-form form-sm">
-                                <i class="fa fa-lock prefix"></i>
-                                <input type="password" id="form26" class="form-control validate">
-                                <label data-error="wrong" data-success="right" for="form26">Repeat password</label>
-                            </div>
+                                <div class="md-form form-sm">
+                                    <i class="fa fa-lock prefix"></i>
+                                    <input type="password" id="m_pass" name="m_pass" class="form-control validate">
+                                    <label data-error="wrong" data-success="right" for="m_pass">Your password
+                                        <p id="info_pass1" style="display: none; color:red;">    English & number & more than 8 char</p>
+                                    </label>
 
-                            <div class="md-form form-sm">
-                                <input type="text" id="form27" class="form-control validate">
-                                <label data-error="wrong" data-success="right" for="form27">Your Nickname</label>
-                            </div>
+                                </div>
 
-                            <div class="text-center form-sm mt-2">
-                                <button class="btn btn-info">Sign up <i class="fa fa-sign-in ml-1"></i></button>
-                            </div>
+                                <div class="md-form form-sm">
+                                    <i class="fa fa-lock prefix"></i>
+                                    <input type="password" id="m_pass_ch" class="form-control validate">
+                                    <label data-error="wrong" data-success="right" for="m_pass_ch">Repeat password
+                                        <p id="pass_ch_notice" style="display: none; color:red;">    The password does not match!</p>
+                                    </label>
 
-                        </div>
+                                </div>
+
+                                <div class="md-form form-sm">
+                                    <input type="text" id="m_name" name="m_name" class="form-control validate">
+                                    <label data-error="wrong" data-success="right" for="m_name">Your Nickname</label>
+                                    <p id="name_notice" style="display: none;color:red;">    Your nickname can't contain spaces!</p>
+                                </div>
+
+                                <div class="text-center form-sm mt-2">
+                                    <button class="btn btn-info" onclick="doSubmit();">Sign up <i class="fa fa-sign-in ml-1"></i></button>
+                                </div>
+
+                            </div>
+                        </form>
                         <!--Footer-->
                         <div class="modal-footer">
                             <div class="options text-right">
-                                <p class="pt-1">Already have an account? <a href="#" class="blue-text">Log In</a></p>
+                                <p class="pt-1">Already have an account? <a href="#panel7" class="blue-text">Log In</a></p>
                             </div>
                             <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
                         </div>

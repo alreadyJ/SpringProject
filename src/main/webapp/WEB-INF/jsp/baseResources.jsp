@@ -8,6 +8,6 @@
 
 <!--login modal css-->
 <!-- Bootstrap core JavaScript -->
-<script src="<c:url value="/resources/js/jquery/jquery.min.js" />"></script>
+<script src="<c:url value="/resources/MDB/js/jquery-3.2.1.min.js" />"></script>
 <script src="<c:url value="/resources/js/bootstrap/bootstrap.bundle.min.js" />"></script>
-<!--login modal js-->
+<script src="<c:url value="/resources/js/signUp.js?ver=1" />"></script>

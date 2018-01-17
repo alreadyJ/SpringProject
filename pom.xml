@@ -11,6 +11,8 @@
     <java-version>1.9</java-version>
     <spring.version>4.3.1.RELEASE</spring.version>
     <org.slf4j-version>1.6.6</org.slf4j-version>
+    <org.aspectj-version>1.6.10</org.aspectj-version>
+    <org.springframework-version>4.3.3.RELEASE</org.springframework-version>
   </properties>
 
   <dependencies>
@@ -28,6 +30,29 @@
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>${org.springframework-version}</version>
+      <exclusions>
+        <!-- Exclude Commons Logging in favor of SLF4j -->
+        <exclusion>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <!-- Spring-test -->
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <version>${org.springframework-version}</version>
+    </dependency>
+
+
+
+    <dependency>
+      <groupId>org.springframework</groupId>
       <artifactId>spring-web</artifactId>
       <version>${spring.version}</version>
     </dependency>
@@ -36,6 +61,15 @@
       <artifactId>spring-webmvc</artifactId>
       <version>${spring.version}</version>
     </dependency>
+
+    <!-- AspectJ -->
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjrt</artifactId>
+      <version>${org.aspectj-version}</version>
+    </dependency>
+
+
     <!-- Logging -->
     <dependency>
       <groupId>org.slf4j</groupId>
@@ -57,11 +91,11 @@
       <artifactId>log4jdbc-remix</artifactId>
       <version>0.2.7</version>
     </dependency>
+
     <!-- Log4j -->
     <dependency>
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
-
       <version>1.2.15</version>
       <exclusions>
         <exclusion>
@@ -82,6 +116,35 @@
         </exclusion>
       </exclusions>
     </dependency>
+    <dependency>
+      <groupId>org.bgee.log4jdbc-log4j2</groupId>
+      <artifactId>log4jdbc-log4j2-jdbc4</artifactId>
+      <version>1.16</version>
+    </dependency>
+
+    <!-- @Inject -->
+    <dependency>
+      <groupId>javax.inject</groupId>
+      <artifactId>javax.inject</artifactId>
+      <version>1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>2.5.1</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>2.5.1</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.5.1</version>
+    </dependency>
+
 
     <!--myBatis -->
     <dependency>

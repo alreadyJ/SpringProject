@@ -23429,7 +23429,7 @@ a.pswp__share--download:hover {
 
 select {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    display: none!important
+    /*display: none!important*/
 }
 
 select.browser-default {
