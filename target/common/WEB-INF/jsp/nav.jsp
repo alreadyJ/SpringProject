@@ -1,3 +1,6 @@
+<%@ page import="common.pro.dao.User" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%User user = (User)session.getAttribute("User");%>
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-white bg-white fixed-top">
     <div class="container" >
@@ -9,7 +12,7 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item nav-custom-item">
                     <i class="fa fa-plane" aria-hidden="true"></i>
-                    <a class="nav-link nav-custom-link" href="#">Post</a>
+                    <a class="nav-link nav-custom-link" href="post">Post</a>
                 </li>
                 <li class="nav-item nav-custom-item">
                     <i class="fa fa-th-list" aria-hidden="true"></i>
@@ -21,10 +24,33 @@
                 </li>
                 <li class="nav-item nav-custom-item">
                     <i class="fa fa-user-circle" aria-hidden="true"></i>
-                    <a class="nav-link nav-custom-link" href="setting">MyPage</a>
+                    <c:choose>
+                        <c:when test="${not empty sessionScope.User}">
+                            <a class="nav-link nav-custom-link" href="setting">MyPage</a>
+                        </c:when>
+                        <c:otherwise>
+                            <a class="nav-link nav-custom-link" data-toggle="modal" data-target="#modalLRForm">MyPage</a>
+                        </c:otherwise>
+                    </c:choose>
                 </li>
                 <li class="nav-item nav-custom-item">
-                    <jsp:include page="loginModal.jsp"/>
+                    <c:choose>
+                        <c:when test="${not empty sessionScope.User}">
+                        <div class="btn-group">
+                            <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <p id="profile_nickname" style="display: inline-block;margin: 0;vertical-align: middle;" class="" >
+                                <%=user.getNickName()%></p>
+                            <img class="img img-circle" style="height: 45px;" src="<c:url value="/resources/images/user.png"/> "/>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#" onclick="doLogOut();">LogOut</a>
+                            </div>
+                        </div>
+                        </c:when>
+                        <c:otherwise>
+                            <jsp:include page="loginModal.jsp"/>
+                        </c:otherwise>
+                    </c:choose>
                 </li>
             </ul>
         </div>

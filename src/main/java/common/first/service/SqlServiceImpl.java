@@ -18,7 +18,17 @@ public class SqlServiceImpl implements SqlService {
     }
 
     @Override
+    public List<Map<String, Object>> selectUserExist(Map<String, Object> map) throws Exception {
+        return sqlDAO.selectUserExist(map);
+    }
+
+    @Override
     public Object insertUser(Map<String, Object> map) throws Exception {
         return sqlDAO.insertUser(map);
+    }
+
+    @Override
+    public List<Map<String, Object>> selectLogin(Map<String, Object> map) throws Exception {
+        return sqlDAO.selectLogin(map);
     }
 }

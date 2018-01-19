@@ -5,5 +5,8 @@ import java.util.Map;
 
 public interface SqlService {
     List<Map<String, Object>> selectMember(Map<String, Object> map) throws Exception;
+    List<Map<String, Object>> selectUserExist(Map<String, Object> map) throws Exception;
+    List<Map<String, Object>> selectLogin(Map<String, Object> map) throws Exception;
     Object insertUser(Map<String, Object> map) throws Exception;
+
 }

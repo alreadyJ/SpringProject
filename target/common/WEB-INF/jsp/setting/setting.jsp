@@ -21,8 +21,7 @@
 
         <!-- Navigation -->
         <div class="list-group" id="list-tab" role="tablist">
-            <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
-            <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
+            <a class="list-group-item list-group-item-action active" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
             <a class="list-group-item list-group-item-action" id="list-account-list" data-toggle="list" href="#list-account" role="tab" aria-controls="messages">Account</a>
             <a class="list-group-item list-group-item-action" id="list-phone-list" data-toggle="list" href="#list-phone" role="tab" aria-controls="settings">Phone</a>
             <a class="list-group-item list-group-item-action" id="list-payment-list" data-toggle="list" href="#list-payment" role="tab" aria-controls="settings">Payment</a>
@@ -37,10 +36,7 @@
 
         <!-- Content -->
         <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
-                <jsp:include page="home.jsp"/>
-            </div>
-            <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+            <div class="tab-pane fade show active" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
                 <jsp:include page="profile.jsp"/>
             </div>
             <div class="tab-pane fade" id="list-account" role="tabpanel" aria-labelledby="list-profile-list">

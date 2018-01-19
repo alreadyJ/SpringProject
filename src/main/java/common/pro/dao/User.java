@@ -1,12 +1,12 @@
 package common.pro.dao;
 
-import org.springframework.stereotype.Repository;
-
 public class User {
-    String id, password, nickName, email, profileImg;
+    String email, password, nickName, profileImg, signUpDate;
 
-    public void setId(String id) {
-        this.id = id;
+
+
+    public void setSignUpDate(String signUpDate) {
+        this.signUpDate = signUpDate;
     }
 
     public void setPassword(String password) {
@@ -25,10 +25,7 @@ public class User {
         this.profileImg = profileImg;
     }
 
-    public String getId() {
 
-        return id;
-    }
 
     public String getPassword() {
         return password;
@@ -44,5 +41,9 @@ public class User {
 
     public String getProfileImg() {
         return profileImg;
+    }
+
+    public String getSignUpDate() {
+        return signUpDate;
     }
 }

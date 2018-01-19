@@ -13,14 +13,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Item</title>
-    <jsp:include page="baseResources.jsp"/>
+    <jsp:include page="../baseResources.jsp"/>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/custom-card.css?ver=1"/>"/>
 </head>
 <body>
 
-<jsp:include page="nav.jsp"/>
+<jsp:include page="../nav.jsp"/>
 
 <!--Card-->
 <div class="card card-cascade wider reverse my-4">
@@ -58,6 +58,6 @@
 
 <p>related</p>
 <jsp:include page="cardList.jsp"/>
-<jsp:include page="footer.jsp"/>
+<jsp:include page="../footer.jsp"/>
 </body>
 </html>

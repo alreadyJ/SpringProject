@@ -12,6 +12,12 @@ public class SqlDAO extends AbstDAO {
     public List<Map<String, Object>> selectMember(Map<String, Object> map) throws Exception{
         return (List<Map<String, Object>>)selectList("user.selectMember", map);
     }
+    public List<Map<String, Object>> selectLogin(Map<String, Object> map) throws Exception{
+        return (List<Map<String, Object>>)selectList("user.selectLogin", map);
+    }
+    public List<Map<String, Object>> selectUserExist(Map<String, Object> map) throws Exception{
+        return (List<Map<String, Object>>)selectList("user.selectUserExist", map);
+    }
     public Object insertUser(Map<String, Object> map) throws Exception{
         return insert("user.insertUser", map);
     }

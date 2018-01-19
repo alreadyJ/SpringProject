@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>list</title>
-    <jsp:include page="baseResources.jsp"/>
+    <jsp:include page="../baseResources.jsp"/>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/custom-card.css?ver=1"/>"/>
@@ -15,7 +15,7 @@
 <body>
 
 
-<jsp:include page="nav.jsp"/>
+<jsp:include page="../nav.jsp"/>
 
 <ul class="nav md-pills nav-justified pills-secondary">
     <li class="nav-item">
@@ -56,7 +56,7 @@
     <!--/.Panel 3-->
 </div>
 
-<jsp:include page="footer.jsp"/>
+<jsp:include page="../footer.jsp"/>
 
 </body>
 </html>

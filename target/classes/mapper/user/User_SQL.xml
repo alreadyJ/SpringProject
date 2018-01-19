@@ -22,6 +22,37 @@
         ]]>
     </select>
 
+    <select id="selectUserExist" parameterType="hashmap" resultType="hashmap">
+        <![CDATA[
+            SELECT
+                count(*) cnt
+            FROM
+                user
+            WHERE
+                email = #{email}
+        ]]>
+    </select>
+
+    <select id="selectLogin" parameterType="hashmap" resultType="hashmap">
+        <![CDATA[
+            SELECT
+                count(*) cnt,
+                email,
+                nickName,
+                profileImg,
+                signUpDate
+            FROM
+                user
+            WHERE
+                email = #{email}
+            AND
+                password = #{password}
+        ]]>
+    </select>
+
+
+
+
     <insert id="insertUser" parameterType="hashmap">
         <![CDATA[
         INSERT INTO user
@@ -29,14 +60,16 @@
             email,
             password,
             nickName,
-            profileImg
+            profileImg,
+            signUpDate
         )
         VALUES
         (
             #{email},
             #{password},
             #{nickName},
-            ''
+            '',
+            #{signUpDate}
         )
     ]]>
     </insert>

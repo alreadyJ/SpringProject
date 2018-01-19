@@ -1,3 +1,4 @@
+<%@ page import="common.pro.dao.User" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- Bootstrap core CSS -->
@@ -10,4 +11,6 @@
 <!-- Bootstrap core JavaScript -->
 <script src="<c:url value="/resources/MDB/js/jquery-3.2.1.min.js" />"></script>
 <script src="<c:url value="/resources/js/bootstrap/bootstrap.bundle.min.js" />"></script>
-<script src="<c:url value="/resources/js/signUp.js?ver=1" />"></script>
+<script src="<c:url value="/resources/js/signUp.js?ver=2" />"></script>
+<script src="<c:url value="/resources/js/login.js?ver=2" />"></script>
+

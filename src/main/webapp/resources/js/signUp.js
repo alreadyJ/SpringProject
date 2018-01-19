@@ -23,19 +23,34 @@ function goHome() {
 function doSubmit() {
     var joinfrm = document.getElementById("signUpForm");
     console.log("doSubmit");
-    if(blankcheck(joinfrm.m_pass,'비밀번호') || joinfrm.pass_ch.value === false) {
+
+    if (joinfrm.email_ch.value === "false") {
+        alert("check the email!");
         return;
     }
 
-    if (joinfrm.m_pass.value !== joinfrm.m_pass_ch.value) {  //비밀번호 확인
+    if (joinfrm.email_dup.value === "false") {
+        alert("check duplicated email!");
         return;
     }
 
-    if(blankcheck(joinfrm.m_pass_ch,'비밀번호'))
+    if (joinfrm.pass.value === "false") {
+        alert("check the password!");
         return;
+    }
 
-    if(blankcheck(joinfrm.m_name,'이름'))
+    if(blankcheck(joinfrm.m_pass,'password')) {
         return;
+    }
+
+    if (joinfrm.pass_ch.value === "false") {
+        alert("wrong confirm password!");
+        return;
+    }
+
+    if(blankcheck(joinfrm.m_pass_ch,'password')) return;
+
+    if(blankcheck(joinfrm.m_name,'nickname')) return;
 
 
     if (joinfrm.m_email.value.length !== atrim(joinfrm.m_email.value).length){
@@ -48,7 +63,71 @@ function doSubmit() {
         return;
     } //공백이 포함된경우
 
-    joinfrm.submit();
+    $.ajax({
+        type : 'POST',
+        data : {m_email: joinfrm.m_email.value,
+            m_pass: joinfrm.m_pass.value,
+            m_name: joinfrm.m_name.value},
+        dataType : 'text',
+        url : 'signUp',
+        success : function(rData, textStatus, xhr) {
+            var chkRst = rData;
+            if(chkRst === "1") alert("가입 성공!");
+            else alert("가입 실패!");
+            location.reload();
+        },
+        error : function(xhr, status, e) {
+            alert(e);
+        }
+    });
+}
+
+function checkDuplicate() {
+    var joinfrm = document.getElementById("signUpForm");
+    var check_email = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+    if (!joinfrm.m_email.value.match(check_email)){
+        $("#email_notice").css("display","inline-block");
+        joinfrm.m_email.focus();
+        return;
+    }
+
+    if (joinfrm.m_email.value.length !== atrim(joinfrm.m_email.value).length){
+        alert("Your email contains spaces");
+        return;
+    }
+
+    $("#email_notice").css("display","none");
+    console.log(joinfrm.m_email.value);
+    $.ajax({
+        type : 'POST',
+        data:"email="+ joinfrm.m_email.value,
+        dataType : 'text',
+        url : 'checkDuplicate',
+        success : function(rData, textStatus, xhr) {
+            var chkRst = rData;
+            if(chkRst === "0"){
+                alert("You can register.");
+
+                $("#email_dup").val('true');
+                joinfrm.m_email.disabled = true;
+                $("#dup-btn").css("display", "none");
+                $("#mod-btn").css("display", "inline-block");
+            }else{
+                alert("Duplicate!");
+                $("#email_dup").val('false');
+            }
+        },
+        error : function(xhr, status, e) {
+            alert(e);
+        }
+    });
+}
+function modifyEmail() {
+    var joinfrm = document.getElementById("signUpForm");
+    $("#email_dup").val('true');
+    joinfrm.m_email.disabled = false;
+    $("#dup-btn").css("display", "inline-block");
+    $("#mod-btn").css("display", "none");
 }
 
 $(document).ready(function() {
@@ -86,16 +165,22 @@ $(document).ready(function() {
 
     $("#m_pass").change(function(){
         joinfrm.pass_ch.value = false;
+        joinfrm.pass.value = false;
         joinfrm.m_pass_ch.value = ""; //비밀번호 변경시 비밀번호 확인 칸 초기화
         var pass = joinfrm.m_pass.value;
         // alert("포커스 아웃  " + pass);
-        if(pass.match(check_Num_Eng) && pass.length < 8){
+        if(!pass.match(check_Num_Eng) || pass.length < 8){
             $("#info_pass1").css("display","inline-block");
+            joinfrm.pass.value = false;
             joinfrm.m_pass.focus();
             return;
         }
+        if (joinfrm.m_pass.value.length !== atrim(joinfrm.m_pass.value).length){
+            alert("Your password contains spaces!");
+            return;
+        }
         $("#info_pass1").css("display","none");
-        joinfrm.pass_ch.value = true;
+        joinfrm.pass.value = true;
         console.log(pass);
 
     });
@@ -119,6 +204,13 @@ $(document).ready(function() {
             joinfrm.m_email.focus();
             return;
         }
+
+        if (joinfrm.m_email.value.length !== atrim(joinfrm.m_email.value).length){
+            alert("Your email contains spaces!");
+            return;
+        }
+
+
         $("#email_notice").css("display","none");
         joinfrm.email_ch.value = true;
     });

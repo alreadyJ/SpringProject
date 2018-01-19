@@ -60,11 +60,11 @@
     </div>
 </header>
 <h3>Items</h3>
-<jsp:include page="cardList.jsp"/>
+<jsp:include page="list/cardList.jsp"/>
 <h3>Trips</h3>
-<jsp:include page="cardList.jsp"/>
+<jsp:include page="list/cardList.jsp"/>
 <h3>Request</h3>
-<jsp:include page="cardList.jsp"/>
+<jsp:include page="list/cardList.jsp"/>
 
 <jsp:include page="footer.jsp"/>
 
