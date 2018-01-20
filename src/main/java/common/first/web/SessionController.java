@@ -1,11 +1,12 @@
 package common.first.web;
 
-import common.first.service.SqlService;
+import common.first.service.UserService;
 import common.pro.dao.User;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,11 +17,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+
+
 @Controller
 public class SessionController {
     protected Logger logger = Logger.getLogger(this.getClass());
-    @Resource(name="SqlService")
-    private SqlService sqlService;
+    @Resource(name="UserService")
+    private UserService userService;
 
 
     @RequestMapping(value = "/signUp", method = RequestMethod.POST)
@@ -40,7 +43,7 @@ public class SessionController {
         commandMap.put("nickName", nickName);
         commandMap.put("signUpDate", df.format(d));
 
-        int t = (int)sqlService.insertUser(commandMap);
+        int t = (int)userService.insertUser(commandMap);
         out.print(t);
 
     }
@@ -55,9 +58,11 @@ public class SessionController {
 
         commandMap.put("email", email);
         commandMap.put("password", password);
-
-        List<Map<String,Object>> list = sqlService.selectLogin(commandMap);
+        logger.info("sss");
+        List<Map<String,Object>> list = userService.selectLogin(commandMap);
+        logger.info(list.get(0).get("nickName") + " sssss");
         System.out.println(list.get(0).get("nickName") + " sssss");
+
         User user = new User();
         if (list.get(0).get("cnt").toString().equals("1")) {
             user.setEmail(list.get(0).get("email").toString());
@@ -79,7 +84,7 @@ public class SessionController {
         String email = (req.getParameter("email") == null) ? "" : String
                 .valueOf(req.getParameter("email"));
         commandMap.put("email", email);
-        List<Map<String,Object>> list = sqlService.selectUserExist(commandMap);
+        List<Map<String,Object>> list = userService.selectUserExist(commandMap);
         System.out.println((list.get(0).get("cnt").toString().equals("1")));
         out.print((list.get(0).get("cnt").toString().equals("1")) ? 1 : 0);
         out.flush();out.close();

@@ -1,7 +1,7 @@
 package common.pro.dao;
 
 public class User {
-    String email, password, nickName, profileImg, signUpDate;
+    private String email, password, nickName, profileImg, signUpDate;
 
 
 

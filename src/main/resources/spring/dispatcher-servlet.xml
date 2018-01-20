@@ -16,7 +16,7 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
-            <beans:bean id="loggerInterceptor" class="common.first.logger.LoggerInterceptor"></beans:bean>
+            <beans:bean id="loggerInterceptor" class="common.first.logger.LoggerInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 

@@ -1,6 +1,6 @@
 package common.first.web;
 
-import common.first.service.SqlService;
+import common.first.service.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,8 +14,8 @@ import javax.annotation.Resource;
 public class MainController {
 
     protected Logger logger = Logger.getLogger(this.getClass());
-    @Resource(name="SqlService")
-    private SqlService sqlService;
+    @Resource(name="UserService")
+    private UserService userService;
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String Main(Model model) throws Exception {
         return "main";
