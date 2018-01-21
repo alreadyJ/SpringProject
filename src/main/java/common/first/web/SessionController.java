@@ -59,7 +59,13 @@ public class SessionController {
         commandMap.put("email", email);
         commandMap.put("password", password);
         logger.info("sss");
-        List<Map<String,Object>> list = userService.selectLogin(commandMap);
+        List<Map<String,Object>> list = null;
+        try {
+             list = userService.selectLogin(commandMap);
+        }catch (Exception e) {
+            logger.info(e);
+        }
+
         logger.info(list.get(0).get("nickName") + " sssss");
         System.out.println(list.get(0).get("nickName") + " sssss");
 

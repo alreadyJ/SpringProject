@@ -10,7 +10,7 @@
     <jsp:include page="../baseResources.jsp"/>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-    <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/custom-card.css?ver=1"/>"/>
+    <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/custom-card.css?ver=2"/>"/>
 </head>
 <body>
 
@@ -33,22 +33,21 @@
 <div class="tab-content">
 
     <!--Panel 1-->
-    <div class="tab-pane fade in show active" id="panel11" role="tabpanel">
+    <div class="tab-pane fade in show active" id="panel4" role="tabpanel">
         <br>
-        <jsp:include page="cardList.jsp"/>
-        <jsp:include page="pagination.jsp"/>
+        <jsp:include page="sales.jsp"/>
     </div>
     <!--/.Panel 1-->
 
     <!--Panel 2-->
-    <div class="tab-pane fade" id="panel12" role="tabpanel">
+    <div class="tab-pane fade" id="panel11" role="tabpanel">
         <br>
         <jsp:include page="cardList.jsp"/>
         <jsp:include page="pagination.jsp"/>
     </div>
     <!--/.Panel 2-->
     <!--Panel 3-->
-    <div class="tab-pane fade" id="panel13" role="tabpanel">
+    <div class="tab-pane fade" id="panel12" role="tabpanel">
         <br>
         <jsp:include page="cardList.jsp"/>
         <jsp:include page="pagination.jsp"/>

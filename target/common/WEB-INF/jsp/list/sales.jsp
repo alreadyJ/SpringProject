@@ -1,16 +1,20 @@
 <%@ page import="common.pro.dao.SalesList" %>
+<%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- Page Content -->
+<%List<SalesList> sales = (List<SalesList>) request.getAttribute("sales");%>
 <section class="py-5">
-    <div class="container itemList">
+    <div class="container itemList" style="overflow: auto;">
         <!--Card-->
-        <c:forEach var="a" begin="0" end="${sales.size()}" step="1">
+
+        <% for (int i = 0; i < sales.size(); i++) {%>
             <!--Card Light-->
-            <div class="card" id="items-${a}">
+            <div class="card" id="items-<%=i%>">
                 <!--Card image-->
                 <div class="view overlay hm-white-slight">
-                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%28131%29.jpg" class="img-fluid" alt="">
+                    <%request.setAttribute("image", sales.get(i).getImage(0));%>
+                    <img class="card-image" src="<c:url value="/resources/images/${image}"/>" class="img-fluid" alt="">
                     <a>
                         <div class="mask"></div>
                     </a>
@@ -18,20 +22,23 @@
                 <!--/.Card image-->
                 <!--Card content-->
                 <div class="card-body">
-                    <!--Social shares button-->
-                    <a class="activator"><i class="fa fa-share-alt"></i></a>
                     <!--Title-->
-                    <h4 class="card-title">Card title</h4>
+                    <h5 class="card-title" style="overflow-x: hidden;
+                     overflow-y: hidden; width: 200px; height: 19px;"><%=sales.get(i).getTitle()%></h5>
                     <hr>
+                    <p><i class="fa fa-comment-o" aria-hidden="true"></i>&nbsp;5
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;0</p>
                     <a href="#" class="black-text d-flex flex-row-reverse">
-                        <h5 class="waves-effect p-2">Read more <i class="fa fa-chevron-right"></i></h5>
+                        <h5 class="waves-effect p-2"><i class="fa fa-dollar" aria-hidden="true"></i>
+                            <%=sales.get(i).getPrice()%></h5>
                     </a>
                 </div>
                 <!--/.Card content-->
             </div>
             <!--/.Card Light-->
-        </c:forEach>
+        <%}%>
         <!--/.Card-->
     </div>
 
 </section>
+<jsp:include page="pagination.jsp"/>

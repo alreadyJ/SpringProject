@@ -1,4 +1,10 @@
+<%@ page import="common.pro.dao.SalesList" %>
+<%@ page import="javafx.scene.control.Pagination" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%List<SalesList> sales = (List<SalesList>) request.getAttribute("sales");%>
+<%!int pageCount = 0; %>
+<%pageCount = (sales.size() % 12 == 0) ? (sales.size() / 12) : (sales.size() / 12) + 1;%>
 <!--Pagination -->
 <nav class="my-4">
     <ul class="pagination pagination-circle pg-blue mb-0">
@@ -16,10 +22,9 @@
 
         <!--Numbers-->
         <li class="page-item active"><a class="page-link">1</a></li>
-        <li class="page-item"><a class="page-link">2</a></li>
-        <li class="page-item"><a class="page-link">3</a></li>
-        <li class="page-item"><a class="page-link">4</a></li>
-        <li class="page-item"><a class="page-link">5</a></li>
+        <%for (int i = 2; i <= pageCount; i++) {%>
+        <li class="page-item active"><a class="page-link"><%=i%></a></li>
+        <%}%>
 
         <!--Arrow right-->
         <li class="page-item">

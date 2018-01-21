@@ -33,10 +33,12 @@ public class ItemController {
         for (int i = 0; i < list.size(); i++) {
             SalesList sl = new SalesList();
             sl.setSerial((int)list.get(i).get("serial"));
-            commandMap.put("serial", sl.getUser());
+            commandMap.put("serial", sl.getSerial());
+
             List<Map<String,Object>> images = listService.selectSalesImages(commandMap);
             for (int j = 0; j < images.size(); j++) {
-                sl.addImage(images.get(i).get("salesImg").toString());
+                sl.addImage(images.get(j).get("salesImg").toString());
+                logger.info(images.get(j).get("salesImg").toString());
             }
             sl.setUser((int)list.get(i).get("user"));
             sl.setTitle(list.get(i).get("title").toString());
