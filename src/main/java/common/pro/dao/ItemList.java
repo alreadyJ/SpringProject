@@ -4,12 +4,22 @@ import java.util.ArrayList;
 
 abstract public class ItemList {
     private int serial, user;
+    private User userInfo;
     private String detail, location;
     private String registerDate, expiration;
     private int price, status;
     private ArrayList<String> images;
     ItemList() {
         images = new ArrayList<>();
+        userInfo = new User();
+    }
+
+    public User getUserInfo() {
+        return userInfo;
+    }
+
+    public void setUserInfo(User userInfo) {
+        this.userInfo = userInfo;
     }
 
     public void addImage(String img) {

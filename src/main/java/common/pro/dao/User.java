@@ -3,7 +3,7 @@ package common.pro.dao;
 public class User {
     private String email, password, nickName, profileImg, signUpDate;
 
-
+    public User() { this.email = this.password = this.nickName = this.profileImg = signUpDate = null; }
 
     public void setSignUpDate(String signUpDate) {
         this.signUpDate = signUpDate;

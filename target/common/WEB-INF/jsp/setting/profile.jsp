@@ -41,7 +41,7 @@
                 <div class="form-group">
                     <label class="col-lg-3 control-label">Country</label>
                     <div class="col-lg-8">
-                    <jsp:include page="countryOption.jsp"/>
+                        <jsp:include page="countryModal.jsp"/>
                     </div>
                 </div>
                 <div class="form-group">

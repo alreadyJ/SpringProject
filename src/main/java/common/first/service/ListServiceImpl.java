@@ -12,11 +12,26 @@ public class ListServiceImpl implements ListService {
     @Resource(name="ListDAO")
     private ListDAO listDAO;
     @Override
-    public List<Map<String, Object>> selectSales() throws Exception{
-        return listDAO.selectSales();
+    public List<Map<String, Object>> selectSale() throws Exception{
+        return listDAO.selectSale();
     }
     @Override
-    public List<Map<String, Object>> selectSalesImages(Map<String, Object> map) throws Exception {
-        return listDAO.selectSalesImages(map);
+    public List<Map<String, Object>> selectSaleImage(Map<String, Object> map) throws Exception {
+        return listDAO.selectSaleImage(map);
+    }
+
+    @Override
+    public List<Map<String, Object>> selectTrip() throws Exception {
+        return listDAO.selectTrip();
+    }
+
+    @Override
+    public List<Map<String, Object>> selectRequest() throws Exception {
+        return listDAO.selectRequest();
+    }
+
+    @Override
+    public List<Map<String, Object>> selectRequestImage(Map<String, Object> map) throws Exception {
+        return listDAO.selectRequestImage(map);
     }
 }

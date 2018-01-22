@@ -13,8 +13,8 @@ public class UserServiceImpl implements UserService {
     private UserDAO userDAO;
 
     @Override
-    public List<Map<String, Object>> selectMember(Map<String, Object> map) throws Exception {
-        return userDAO.selectMember(map);
+    public List<Map<String, Object>> selectUserWithSerial(Map<String, Object> map) throws Exception {
+        return userDAO.selectUserWithSerial(map);
     }
 
     @Override
@@ -31,5 +31,4 @@ public class UserServiceImpl implements UserService {
     public List<Map<String, Object>> selectLogin(Map<String, Object> map) throws Exception {
         return userDAO.selectLogin(map);
     }
-
 }

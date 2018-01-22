@@ -26,4 +26,10 @@ public class MainController {
         logger.info("setting");
         return "setting/setting";
     }
+
+    @RequestMapping(value = "/googleMap", method = RequestMethod.GET)
+    public String googleMap(Model model) throws Exception {
+        return "googleMap";
+    }
+
 }

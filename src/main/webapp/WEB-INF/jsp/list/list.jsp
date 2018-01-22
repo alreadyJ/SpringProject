@@ -11,6 +11,7 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/custom-card.css?ver=2"/>"/>
+    <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/googleMap.css?ver=2"/>"/>
 </head>
 <body>
 
@@ -42,15 +43,13 @@
     <!--Panel 2-->
     <div class="tab-pane fade" id="panel11" role="tabpanel">
         <br>
-        <jsp:include page="cardList.jsp"/>
-        <jsp:include page="pagination.jsp"/>
+        <jsp:include page="trips.jsp"/>
     </div>
     <!--/.Panel 2-->
     <!--Panel 3-->
     <div class="tab-pane fade" id="panel12" role="tabpanel">
         <br>
-        <jsp:include page="cardList.jsp"/>
-        <jsp:include page="pagination.jsp"/>
+        <jsp:include page="requests.jsp"/>
     </div>
     <!--/.Panel 3-->
 </div>

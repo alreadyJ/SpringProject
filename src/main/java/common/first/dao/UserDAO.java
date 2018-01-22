@@ -9,8 +9,8 @@ import java.util.Map;
  */
 @Repository("UserDAO")
 public class UserDAO extends AbstDAO {
-    public List<Map<String, Object>> selectMember(Map<String, Object> map) throws Exception{
-        return (List<Map<String, Object>>)selectList("selectMember", map);
+    public List<Map<String, Object>> selectUserWithSerial(Map<String, Object> map) throws Exception{
+        return (List<Map<String, Object>>)selectList("selectUserWithSerial", map);
     }
     public List<Map<String, Object>> selectLogin(Map<String, Object> map) throws Exception{
         return (List<Map<String, Object>>)selectList("selectLogin", map);

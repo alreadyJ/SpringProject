@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="common.first.dao.ListDAO">
-    <select id="selectSales" parameterType="java.util.HashMap" resultType="hashmap">
+    <select id="selectSale" parameterType="java.util.HashMap" resultType="hashmap">
         <![CDATA[
             SELECT
                 *
@@ -16,12 +16,57 @@
         ]]>
     </select>
 
-    <select id="selectSalesImages" parameterType="java.util.HashMap" resultType="hashmap">
+    <select id="selectSaleImage" parameterType="java.util.HashMap" resultType="hashmap">
         <![CDATA[
             SELECT
-                salesImg
+                saleImg
             FROM
-                salesImage
+                saleImage
+            WHERE
+                serial = #{serial}
+            ORDER BY
+                serial
+            desc
+        ]]>
+    </select>
+
+
+    <select id="selectTrip" parameterType="java.util.HashMap" resultType="hashmap">
+        <![CDATA[
+            SELECT
+                *
+            FROM
+                trip
+            WHERE
+                status = '0'
+            ORDER BY
+                serial
+            desc
+        ]]>
+    </select>
+
+
+
+    <select id="selectRequest" parameterType="java.util.HashMap" resultType="hashmap">
+        <![CDATA[
+            SELECT
+                *
+            FROM
+                request
+            WHERE
+                status = '0'
+            ORDER BY
+                serial
+            desc
+        ]]>
+    </select>
+
+    <select id="selectRequestImage" parameterType="java.util.HashMap" resultType="hashmap">
+        <![CDATA[
+            SELECT
+                requestImg
+            FROM
+                requestImage
             WHERE
                 serial = #{serial}
             ORDER BY

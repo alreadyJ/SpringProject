@@ -1,8 +1,8 @@
-<%@ page import="common.pro.dao.SalesList" %>
+<%@ page import="common.pro.dao.SaleList" %>
 <%@ page import="javafx.scene.control.Pagination" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%List<SalesList> sales = (List<SalesList>) request.getAttribute("sales");%>
+<%List<SaleList> sales = (List<SaleList>) request.getAttribute("sales");%>
 <%!int pageCount = 0; %>
 <%pageCount = (sales.size() % 12 == 0) ? (sales.size() / 12) : (sales.size() / 12) + 1;%>
 <!--Pagination -->

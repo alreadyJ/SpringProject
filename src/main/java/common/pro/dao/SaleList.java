@@ -1,11 +1,21 @@
 package common.pro.dao;
 
-public class SalesList extends ItemList {
+public class SaleList extends ItemList {
     private String title, category;
     private int quantity, remainQuantity;
     private int maxPurchase, price;
 
-    public SalesList() {
+    @Override
+    public User getUserInfo() {
+        return super.getUserInfo();
+    }
+
+    @Override
+    public void setUserInfo(User userInfo) {
+        super.setUserInfo(userInfo);
+    }
+
+    public SaleList() {
         super();
     }
 

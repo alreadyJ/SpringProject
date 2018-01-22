@@ -1,9 +1,9 @@
-<%@ page import="common.pro.dao.SalesList" %>
+<%@ page import="common.pro.dao.SaleList" %>
 <%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- Page Content -->
-<%List<SalesList> sales = (List<SalesList>) request.getAttribute("sales");%>
+<%List<SaleList> sales = (List<SaleList>) request.getAttribute("sales");%>
 <section class="py-5">
     <div class="container itemList" style="overflow: auto;">
         <!--Card-->
