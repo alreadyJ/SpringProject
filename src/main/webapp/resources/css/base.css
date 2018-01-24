@@ -1,4 +1,47 @@
 .card-image {
-    width: 240px;
-    height: 160px;
+
+}
+
+@media (min-width: 576px) {
+    .row .col-sm-6 {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    .form-group .col-lg-8 {
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    .row .col-sm-6 {
+        max-width: 100%;
+        margin: 0 auto;
+        flex: 0 0 100%;
+    }
+}
+
+@media (min-width: 992px) {
+    .row .col-sm-6 {
+        max-width: 80%;
+        margin: 0 auto;
+        flex: 0 0 100%;
+    }
+}
+
+body {
+    font-family: Circe,Helvetica Neue,Arial,sans-serif;
+}
+
+#category-selector {
+    width: 200px;
+}
+
+.avatar-pic {
+    width: 150px;
+}
+
+.file-field {
+    width: 32.9%;
+    display: inline-block;
+    margin: auto 0;
 }

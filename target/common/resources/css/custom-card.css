@@ -100,3 +100,24 @@
     display: table-cell;
 }
 
+.black-text.d-flex.flex-row-reverse {
+    display: inline-block;
+    position: relative;
+    float: right;
+    margin-bottom: 0;
+    color: #33b5e5!important;
+}
+
+.card .card-body p {
+    display: inline-block;
+    position: relative;
+    color: #404040!important;
+    float: left;
+    line-height: 35px;
+}
+
+.view {
+    width: 240px;
+    height: 240px;
+    overflow: hidden;
+}

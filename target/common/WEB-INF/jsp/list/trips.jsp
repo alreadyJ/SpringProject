@@ -26,13 +26,15 @@ String key = (String)request.getAttribute("key");%>
             <div class="card-body">
                 <!--Title-->
                 <h5 class="card-title" style="overflow-x: hidden;
-                     overflow-y: hidden; width: 200px; height: 19px;"><%=trips.get(i).getUserInfo().getNickName()%></h5>
+                     overflow-y: hidden; width: 200px; height: 19px;">
+                    <%=trips.get(i).getSource()%>&nbsp;
+                    <i class="fa fa-plane" aria-hidden="true"></i>&nbsp;<%=trips.get(i).getDestination()%>
+                </h5>
                 <hr>
                 <p><i class="fa fa-comment-o" aria-hidden="true"></i>&nbsp;5
                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;0</p>
                 <a href="#" class="black-text d-flex flex-row-reverse">
-                    <h5 class="waves-effect p-2"><%=trips.get(i).getSource()%>&nbsp;
-                        <i class="fa fa-plane" aria-hidden="true"></i>&nbsp;<%=trips.get(i).getDestination()%></h5>
+                    <h5 class="waves-effect p-2"><%=trips.get(i).getUserInfo().getNickName()%></h5>
                 </a>
             </div>
             <!--/.Card content-->
