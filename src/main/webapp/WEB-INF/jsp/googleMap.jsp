@@ -148,8 +148,12 @@
                 ].join(' ');
             }
 
+            var lv = parent.document.getElementById('locationValue');
+            var sl = parent.document.getElementById('selectedLocation');
+            lv.value = sl.value = place.name;
             infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
             infowindow.open(map, marker);
+
         });
 
         // Sets a listener on a radio button to change the filter type on Places

@@ -14,19 +14,30 @@
     <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/googleMap.css?ver=2"/>"/>
 </head>
 <body>
-
-
+<%String type = (String) request.getAttribute("type");%>
 <jsp:include page="../nav.jsp"/>
 
 <ul class="nav md-pills nav-justified pills-secondary">
     <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#panel4" role="tab">Sale</a>
+        <%if (type.equals("sale")) {%>
+        <a class="nav-link active"  href="/list/sale"  >Sale</a>
+        <%} else {%>
+        <a class="nav-link" href="/list/sale"  >Sale</a>
+        <%}%>
     </li>
     <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#panel11" role="tab">Trip</a>
+        <%if (type.equals("trip")) {%>
+        <a class="nav-link active" href="/list/trip"  >Trip</a>
+        <%} else {%>
+        <a class="nav-link" href="/list/trip" >Trip</a>
+        <%}%>
     </li>
     <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#panel12" role="tab">Request</a>
+        <%if (type.equals("request")) {%>
+        <a class="nav-link active" href="/list/request" >Request</a>
+        <%} else {%>
+        <a class="nav-link" href="/list/request" >Request</a>
+        <%}%>
     </li>
 </ul>
 
@@ -34,27 +45,20 @@
 <div class="tab-content">
 
     <!--Panel 1-->
-    <div class="tab-pane fade in show active" id="panel4" role="tabpanel">
+    <div class="tab-pane fade in show active" id="listing">
         <br>
-        <jsp:include page="sales.jsp"/>
+        <%switch (type) {
+            case "sale":%><jsp:include page="sales.jsp"/><% break;
+        case "trip":%><jsp:include page="trips.jsp"/><%  break;
+        case "request":%><jsp:include page="requests.jsp"/><%  break;
+        default: break;
+    }%>
     </div>
-    <!--/.Panel 1-->
 
-    <!--Panel 2-->
-    <div class="tab-pane fade" id="panel11" role="tabpanel">
-        <br>
-        <jsp:include page="trips.jsp"/>
-    </div>
-    <!--/.Panel 2-->
-    <!--Panel 3-->
-    <div class="tab-pane fade" id="panel12" role="tabpanel">
-        <br>
-        <jsp:include page="requests.jsp"/>
-    </div>
-    <!--/.Panel 3-->
 </div>
 
 <jsp:include page="../footer.jsp"/>
+
 <script src="<c:url value="/resources/js/custom-card.js" />"></script>
 </body>
 </html>

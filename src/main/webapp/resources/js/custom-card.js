@@ -1,6 +1,7 @@
 $(window).on("load", function() {
    var cardImage = document.getElementsByClassName("card-image");
-    var min = 0, diff = 0;
+   var progress = document.getElementsByClassName("progress-custom");
+   var min = 0, diff = 0;
    for (var i = 0; i < cardImage.length; i++) {
        if (cardImage[i].width < cardImage[i].height) {
            cardImage[i].height *= (240 / cardImage[i].width);
@@ -15,5 +16,8 @@ $(window).on("load", function() {
            cardImage[i].style.position = "absolute";
            cardImage[i].style.left = -diff;
        }
+       progress[i].style.display = "none";
+       cardImage[i].style.display = "block";
    }
+
 });

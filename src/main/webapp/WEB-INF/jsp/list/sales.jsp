@@ -13,8 +13,26 @@
             <div class="card" id="items-<%=i%>">
                 <!--Card image-->
                 <div class="view overlay hm-white-slight">
+
+                    <div class="preloader-wrapper big active progress-custom" style="position: absolute; top:88px; left:88px;">
+                        <div class="preloader-wrapper big active">
+                            <div class="preloader-wrapper big active">
+                                <div class="preloader-wrapper big active">
+                                    <div class="spinner-layer spinner-blue-only">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div><div class="gap-patch">
+                                        <div class="circle"></div>
+                                    </div><div class="circle-clipper right">
+                                        <div class="circle"></div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <%request.setAttribute("image", sales.get(i).getImage(0));%>
-                    <img class="card-image" src="<c:url value="/resources/images/${image}"/>" class="img-fluid" alt="">
+                    <img class="card-image" style="display: none;" src="<c:url value="/resources/images/${image}"/>" class="img-fluid" alt="">
                     <a>
                         <div class="mask"></div>
                     </a>

@@ -1,3 +1,4 @@
+<%@ page import="java.awt.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%request.setCharacterEncoding("utf-8");%>
 <html lang="ko">
@@ -16,21 +17,37 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.0.1/jquery-migrate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="<c:url value="/resources/js/pickadate-3.5.6/lib/legacy.js"/> "></script>
+    <script src="<c:url value="/resources/js/pickadate-3.5.6/lib/picker.js"/> "></script>
+    <script src="<c:url value="/resources/js/pickadate-3.5.6/lib/picker.date.js"/> "></script>
+    <script src="<c:url value="/resources/js/pickadate-3.5.6/lib/picker.time.js"/> "></script>
 </head>
 <body>
-
+<%String type = (String) request.getAttribute("type");%>
 
 <jsp:include page="../nav.jsp"/>
 
 <ul class="nav md-pills nav-justified pills-secondary">
     <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#panel4" role="tab">Sale</a>
+        <%if (type.equals("sale")) {%>
+            <a class="nav-link active"  href="/post/sale"  >Sale</a>
+        <%} else {%>
+            <a class="nav-link" href="/post/sale"  >Sale</a>
+        <%}%>
     </li>
     <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#panel11" role="tab">Trip</a>
+        <%if (type.equals("trip")) {%>
+        <a class="nav-link active" href="/post/trip"  >Trip</a>
+        <%} else {%>
+        <a class="nav-link" href="/post/trip" >Trip</a>
+        <%}%>
     </li>
     <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#panel12" role="tab">Request</a>
+        <%if (type.equals("request")) {%>
+        <a class="nav-link active" href="/post/request" >Request</a>
+        <%} else {%>
+        <a class="nav-link" href="/post/request" >Request</a>
+        <%}%>
     </li>
 </ul>
 
@@ -38,26 +55,16 @@
 <div class="tab-content">
 
     <!--Panel 1-->
-    <div class="tab-pane fade in show active" id="panel11" role="tabpanel">
+    <div class="tab-pane fade in show active" id="posting">
         <br>
-        <jsp:include page="sale.jsp"/>
+        <%switch (type) {
+            case "sale":%><jsp:include page="sale.jsp"/><% break;
+            case "trip":%><jsp:include page="trip.jsp"/><%  break;
+            case "request":%><jsp:include page="request.jsp"/><%  break;
+            default: break;
+        }%>
     </div>
-    <!--/.Panel 1-->
 
-    <!--Panel 2-->
-    <div class="tab-pane fade" id="panel12" role="tabpanel">
-        <br>
-        <jsp:include page="trip.jsp"/>
-
-    </div>
-    <!--/.Panel 2-->
-    <!--Panel 3-->
-    <div class="tab-pane fade" id="panel13" role="tabpanel">
-        <br>
-        <jsp:include page="request.jsp"/>
-
-    </div>
-    <!--/.Panel 3-->
 </div>
 
 <jsp:include page="../footer.jsp"/>

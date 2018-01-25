@@ -12,11 +12,11 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item nav-custom-item">
                     <i class="fa fa-plane" aria-hidden="true"></i>
-                    <a class="nav-link nav-custom-link" href="post">Post</a>
+                    <a class="nav-link nav-custom-link" href="/post/sale">Post</a>
                 </li>
                 <li class="nav-item nav-custom-item">
                     <i class="fa fa-th-list" aria-hidden="true"></i>
-                    <a class="nav-link nav-custom-link" href="list">List</a>
+                    <a class="nav-link nav-custom-link" href="/list/sale">List</a>
                 </li>
                 <li class="nav-item  nav-custom-item">
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
@@ -26,7 +26,7 @@
                     <i class="fa fa-user-circle" aria-hidden="true"></i>
                     <c:choose>
                         <c:when test="${not empty sessionScope.User}">
-                            <a class="nav-link nav-custom-link" href="setting">MyPage</a>
+                            <a class="nav-link nav-custom-link" href="/setting">MyPage</a>
                         </c:when>
                         <c:otherwise>
                             <a class="nav-link nav-custom-link" data-toggle="modal" data-target="#modalLRForm">MyPage</a>

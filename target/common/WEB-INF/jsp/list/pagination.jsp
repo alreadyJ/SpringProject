@@ -2,9 +2,9 @@
 <%@ page import="javafx.scene.control.Pagination" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%List<SaleList> sales = (List<SaleList>) request.getAttribute("sales");%>
+
 <%!int pageCount = 0; %>
-<%pageCount = (sales.size() % 12 == 0) ? (sales.size() / 12) : (sales.size() / 12) + 1;%>
+<%pageCount = 1;%>
 <!--Pagination -->
 <nav class="my-4">
     <ul class="pagination pagination-circle pg-blue mb-0">

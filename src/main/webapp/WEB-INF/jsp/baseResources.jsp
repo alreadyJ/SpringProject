@@ -6,7 +6,7 @@
 <!-- Custom styles for this template -->
 <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/half-slider.css" />" />
 <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/bootstrap/compiled.css?ver=1.1"/> " />
-<link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/base.css?ver=1.0"/> " />
+<link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/base.css?ver=1.2"/> " />
 <!--login modal css-->
 <!-- Bootstrap core JavaScript -->
 <script src="<c:url value="/resources/MDB/js/jquery-3.2.1.min.js" />"></script>

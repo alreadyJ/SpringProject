@@ -6,6 +6,8 @@ public class TripList extends ItemList {
     private String departureDate, arrivalDate;
     private int isRound;
 
+    public TripList() {super();}
+
     @Override
     public User getUserInfo() {
         return super.getUserInfo();
@@ -20,8 +22,7 @@ public class TripList extends ItemList {
         return departureDate;
     }
 
-    public void setDepartureDate(String departureDate) {
-        this.departureDate = departureDate;
+    public void setDepartureDate(String departureDate) { this.departureDate = departureDate;
     }
 
     public String getArrivalDate() {
