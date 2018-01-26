@@ -10,16 +10,16 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>title</title>
+    <title>SPLIT</title>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <jsp:include page="baseResources.jsp" />
-    <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/custom-card.css?ver=1"/>"/>
+    <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/custom-card.css?ver=2.2"/>"/>
 </head>
 
 <body>
 <jsp:include page="nav.jsp"/>
-<header>
+<header style="margin-bottom: 80px;">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -59,15 +59,15 @@
         </a>
     </div>
 </header>
-<h3>Items</h3>
-<jsp:include page="list/cardList.jsp"/>
-<h3>Trips</h3>
-<jsp:include page="list/cardList.jsp"/>
-<h3>Request</h3>
-<jsp:include page="list/cardList.jsp"/>
+<h3 style="font-family: 'Jeju Gothic'; margin-left: 60px;">Items</h3>
+<jsp:include page="list/sales.jsp"/>
+<h3 style="font-family: 'Jeju Gothic'; margin-left: 60px;">Trips</h3>
+<jsp:include page="list/trips.jsp"/>
+<h3 style="font-family: 'Jeju Gothic'; margin-left: 60px;">Request</h3>
+<jsp:include page="list/requests.jsp"/>
 
 <jsp:include page="footer.jsp"/>
 
-
+<script src="<c:url value="/resources/js/custom-card.js?ver=2.3" />"></script>
 </body>
 </html>

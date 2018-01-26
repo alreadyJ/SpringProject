@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>list</title>
+    <title>SPLIT::List</title>
     <jsp:include page="../baseResources.jsp"/>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-    <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/custom-card.css?ver=2.1"/>"/>
+    <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/custom-card.css?ver=2.2"/>"/>
     <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/googleMap.css?ver=2"/>"/>
 </head>
 <body>

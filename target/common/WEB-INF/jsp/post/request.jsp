@@ -97,7 +97,7 @@
 
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Service fee</label>
-                        <div class="col-lg-8">
+                        <div class="col-lg-8" style="padding: 0;">
                             <input class="form-control" value="" type="number" min="1" max="1000000" placeholder="write service fee" style="width: 200px; display: inline-block">
                             <i class="fa fa-dollar" aria-hidden="true"  style="display: inline-block;"></i>
                         </div>
@@ -106,7 +106,7 @@
 
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Price</label>
-                        <div class="col-lg-8">
+                        <div class="col-lg-8" style="padding: 0;">
                             <input class="form-control" value="" type="number" min="1" max="1000000" placeholder="write dollar" style="width: 200px; display: inline-block">
                             <i class="fa fa-dollar" aria-hidden="true"  style="display: inline-block;"></i>
                         </div>

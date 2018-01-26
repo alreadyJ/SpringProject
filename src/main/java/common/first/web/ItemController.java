@@ -112,9 +112,33 @@ public class ItemController {
 
     }
 
-    @RequestMapping(value = "/item", method = RequestMethod.GET)
-    public String Item(Model model) throws Exception {
-        logger.info("item");
+    @RequestMapping(value = "/item/sale/{serial}", method = RequestMethod.GET)
+    public String ItemSale(Model model, HttpSession session,
+                       Map<String,Object> commandMap,
+                       @PathVariable String serial) throws Exception {
+        ModelAndView mv = new ModelAndView("list/item");
+
+
+        return "list/item";
+    }
+
+    @RequestMapping(value = "/item/trip/{serial}", method = RequestMethod.GET)
+    public String ItemTrip(Model model, HttpSession session,
+                       Map<String,Object> commandMap,
+                       @PathVariable String serial) throws Exception {
+        ModelAndView mv = new ModelAndView("list/item");
+
+
+        return "list/item";
+    }
+
+    @RequestMapping(value = "/item/request/{serial}", method = RequestMethod.GET)
+    public String ItemRequest(Model model, HttpSession session,
+                           Map<String,Object> commandMap,
+                           @PathVariable String serial) throws Exception {
+        ModelAndView mv = new ModelAndView("list/item");
+
+
         return "list/item";
     }
 

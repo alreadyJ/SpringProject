@@ -6,60 +6,35 @@
 <!-- Page Content -->
 <%List<TripList> trips = (List<TripList>) request.getAttribute("trips");
 String key = (String)request.getAttribute("key");%>
-<script src="<c:url value="/resources/js/loadLocationImage.js?ver=1" />"></script>
 <section class="py-5">
     <div class="container itemList" style="overflow: auto;">
         <!--Card-->
 
         <% for (int i = 0; i < trips.size(); i++) {%>
-        <!--Card Light-->
-        <div class="card" id="items-<%=i%>">
-            <!--Card image-->
-            <div class="view overlay hm-white-slight">
-                <div class="preloader-wrapper big active progress-custom" style="position: absolute; top:88px; left:88px;">
-                    <div class="preloader-wrapper big active">
-                        <div class="preloader-wrapper big active">
-                            <div class="preloader-wrapper big active">
-                                <div class="spinner-layer spinner-blue-only">
-                                    <div class="circle-clipper left">
-                                        <div class="circle"></div>
-                                    </div><div class="gap-patch">
-                                    <div class="circle"></div>
-                                </div><div class="circle-clipper right">
-                                    <div class="circle"></div>
-                                </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <img class="card-image" src="<%=trips.get(i).getLocation()%>" class="img-fluid" alt="">
-                <a>
-                    <div class="mask"></div>
-                </a>
+        <!--Card-->
+        <div class="card testimonial-card">
+
+            <!--Bacground color-->
+            <div class="card-up aqua-gradient">
             </div>
-            <!--/.Card image-->
-            <!--Card content-->
+
+            <!--Avatar-->
+            <div class="avatar"><img src="<c:url value="/resources/images/user.png"/> " class="rounded-circle">
+            </div>
+
             <div class="card-body">
-                <!--Title-->
-                <h5 class="card-title" style="overflow-x: hidden;
-                     overflow-y: hidden; width: 200px; height: 19px;">
-                    <%=trips.get(i).getSource()%>&nbsp;
-                    <i class="fa fa-plane" aria-hidden="true"></i>&nbsp;<%=trips.get(i).getDestination()%>
-                </h5>
+                <!--Name-->
+                <h4 class="card-title"><%=trips.get(i).getUserInfo().getNickName()%></h4>
                 <hr>
-                <p><i class="fa fa-comment-o" aria-hidden="true"></i>&nbsp;5
-                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;0</p>
-                <a href="#" class="black-text d-flex flex-row-reverse">
-                    <h5 class="waves-effect p-2"><%=trips.get(i).getUserInfo().getNickName()%></h5>
-                </a>
+                <!--Quotation-->
+                <p style="text-align: center"><i class="fa fa-quote-left"></i>&nbsp;<%=trips.get(i).getSource()%>&nbsp;
+                    <i class="fa fa-plane" aria-hidden="true"></i>&nbsp;<%=trips.get(i).getDestination()%>
+                    <i class="fa fa-quote-right" aria-hidden="true"></i>&nbsp;</p>
             </div>
-            <!--/.Card content-->
+
         </div>
-        <!--/.Card Light-->
-        <%}%>
         <!--/.Card-->
+        <%}%>
     </div>
 
 </section>
-<jsp:include page="pagination.jsp"/>
