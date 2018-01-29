@@ -1,3 +1,5 @@
+<%@ page import="common.pro.dao.SaleList" %>
+<%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%request.setCharacterEncoding("utf-8");%>
 
@@ -14,10 +16,138 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <jsp:include page="baseResources.jsp" />
-    <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/custom-card.css?ver=2.2"/>"/>
+    <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/custom-card.css?ver=2.3"/>"/>
 </head>
 
+<style>
+    .py-5 {
+        padding-bottom: 0!important;
+        padding-top: 0!important;
+    }
+    .carousel-multi-item .controls-top {
+        margin-bottom: 0;
+        margin-top: -55px;
+    }
+    .carousel-multi-item .carousel-indicators {
+        position: static;
+        height: 70px;
+    }
+
+    @media (max-width: 582px) {
+        .py-5 .container {
+            max-width: 250px;
+            margin: 0 auto;
+            padding: 0;
+        }
+        .py-5 .carousel-item-next,.py-5 .carousel-item-prev {
+            max-width: 250px;
+            margin-left: calc(calc(100% - 250px)/2);
+            margin-right: calc(calc(100% - 250px)/2);
+        }
+
+        .tab-content {
+            padding: 0;
+            padding-top: 2rem;
+
+        }
+        .tab-pane .py-5 .container .card {
+            width: 100%;
+            margin: 0 0 20px 0;
+            padding-top: 10px;
+            border: 1px solid rgba(0,0,0,.125);
+            border-radius: 0;
+            border-left: 0;
+            border-right: 0;
+            border-bottom: 0;
+            box-shadow: none;
+        }
+        #items-1, #item-5, #item-9 {
+            display: none;
+        }
+        #items-2, #item-6, #item-10 {
+            display: none;
+        }
+        #items-3, #item-7, #item-11 {
+            display: none;
+        }
+    }
+
+    @media (min-width: 582px) {
+        .py-5 .container {
+            max-width: 550px;
+        }
+        .py-5 .carousel-item-next,.py-5 .carousel-item-prev {
+            max-width: 550px;
+            margin-left: calc(calc(100% - 550px)/2);
+            margin-right: calc(calc(100% - 550px)/2);
+        }
+        #items-1, #item-5, #item-9 {
+            display: block;
+        }
+        #items-2, #item-6, #item-10 {
+            display: none;
+        }
+        #items-3, #item-7, #item-11 {
+            display: none;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .py-5 .container {
+            max-width: 550px;
+        }
+        .py-5 .carousel-item-next,.py-5 .carousel-item-prev {
+            max-width: 550px;
+            margin-left: calc(calc(100% - 550px)/2);
+            margin-right: calc(calc(100% - 550px)/2);
+        }
+        #items-1, #item-5, #item-9 {
+            display: block;
+        }
+        #items-2, #item-6, #item-10 {
+            display: none;
+        }
+        #items-3, #item-7, #item-11 {
+            display: none;
+        }
+    }
+
+    @media (min-width: 840px) {
+        .py-5 .container {
+            max-width:810px;
+        }
+        .py-5 .carousel-item-next,.py-5 .carousel-item-prev {
+            max-width: 810px;
+            margin-left: calc(calc(100% - 810px)/2);
+            margin-right: calc(calc(100% - 810px)/2);
+        }
+        #items-3, #item-7, #item-11 {
+            display: none;
+        }
+        #items-2, #item-6, #item-10 {
+            display: block;
+        }
+    }
+
+    @media (min-width: 1100px) {
+        .py-5 .container {
+            max-width: 1070px;
+        }
+        .py-5 .carousel-item-next,.py-5 .carousel-item-prev {
+            max-width: 1070px;
+            margin-left: calc(calc(100% - 1070px)/2);
+            margin-right: calc(calc(100% - 1070px)/2);
+        }
+        #items-3, #item-7, #item-11 {
+            display: block;
+        }
+    }
+
+</style>
+
+
 <body>
+
 <jsp:include page="nav.jsp"/>
 <header style="margin-bottom: 80px;">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -60,13 +190,21 @@
     </div>
 </header>
 <h3 style="font-family: 'Jeju Gothic'; margin-left: 60px;">Items</h3>
-<jsp:include page="list/sales.jsp"/>
+<jsp:include page="saleCard.jsp"/>
 <h3 style="font-family: 'Jeju Gothic'; margin-left: 60px;">Trips</h3>
-<jsp:include page="list/trips.jsp"/>
+<jsp:include page="tripCard.jsp"/>
 <h3 style="font-family: 'Jeju Gothic'; margin-left: 60px;">Request</h3>
-<jsp:include page="list/requests.jsp"/>
+<jsp:include page="requestCard.jsp"/>
+
 
 <jsp:include page="footer.jsp"/>
+
+
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        })
+    </script>
 
 <script src="<c:url value="/resources/js/custom-card.js?ver=2.3" />"></script>
 </body>

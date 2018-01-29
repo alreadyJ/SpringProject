@@ -48,6 +48,11 @@
     .py-5 .container {
         max-width: 1070px;
     }
+    .py-5 .carousel-item-next,.py-5 .carousel-item-prev {
+        max-width: 1070px;
+        margin-left: calc(calc(100% - 1070px)/2);
+        margin-right: calc(calc(100% - 1070px)/2);
+    }
 }
 
 

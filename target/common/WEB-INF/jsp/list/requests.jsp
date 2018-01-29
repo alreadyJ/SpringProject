@@ -62,3 +62,4 @@
         })
     </script>
 </section>
+<jsp:include page="pagination.jsp"/>

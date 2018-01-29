@@ -5,7 +5,7 @@
 <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/bootstrap/bootstrap.min.css" />" />
 <!-- Custom styles for this template -->
 <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/half-slider.css" />" />
-<link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/bootstrap/compiled.css?ver=1.1"/> " />
+<link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/bootstrap/compiled.css?ver=1.2"/> " />
 <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/base.css?ver=1.3"/> " />
 <!--login modal css-->
 <!-- Bootstrap core JavaScript -->

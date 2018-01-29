@@ -5722,7 +5722,7 @@ button.close {
 
 .carousel-item-next,.carousel-item-prev {
     position: absolute;
-    top: 0
+    top: 0;
 }
 
 .carousel-item-next.carousel-item-left,.carousel-item-prev.carousel-item-right {

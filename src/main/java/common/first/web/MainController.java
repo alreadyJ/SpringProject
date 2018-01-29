@@ -38,7 +38,7 @@ public class MainController {
 
         logger.info("requesting: sale");
         list = listService.selectSale();
-        int limit = Math.min(list.size(), 4);
+        int limit = Math.min(list.size(), 12);
         for (int i = 0; i < limit; i++) {
             SaleList sl = new SaleList();
             sl.setSerial((int)list.get(i).get("serial"));
@@ -57,7 +57,7 @@ public class MainController {
 
 
         list = listService.selectTrip();
-        limit = Math.min(list.size(), 4);
+        limit = Math.min(list.size(), 12);
         for (int i = 0; i < limit; i++) {
             TripList tl = new TripList();
             tl.setSerial((int)list.get(i).get("serial"));
@@ -83,7 +83,7 @@ public class MainController {
         mv.addObject("trips", trips);
 
         list = listService.selectRequest();
-        limit = Math.min(list.size(), 4);
+        limit = Math.min(list.size(), 12);
         for (int i = 0; i < limit; i++) {
             RequestList rl = new RequestList();
             rl.setSerial((int)list.get(i).get("serial"));

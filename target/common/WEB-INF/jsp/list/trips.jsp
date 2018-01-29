@@ -38,3 +38,4 @@ String key = (String)request.getAttribute("key");%>
     </div>
 
 </section>
+<jsp:include page="pagination.jsp"/>
