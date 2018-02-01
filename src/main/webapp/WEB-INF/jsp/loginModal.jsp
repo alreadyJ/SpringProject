@@ -139,5 +139,5 @@
 <!--Modal: Login / Register Form-->
 
 <div class="text-center">
-    <a href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#modalLRForm" style="padding :10px 25px;">LogIn</a>
+    <a href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#modalLRForm" style="padding :10px 25px; background: #040404!important;">LogIn</a>
 </div>

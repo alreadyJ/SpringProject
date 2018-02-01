@@ -33,7 +33,7 @@
                 </div>
                 <%request.setAttribute("image", requests.get(i).getImage(0));%>
                 <img class="card-image" src="<c:url value="/resources/images/${image}"/>" class="img-fluid" alt="">
-                <a>
+                <a href="/item/sale/<%=requests.get(i).getSerial()%>" style="color:#040404;">
                     <div class="mask"></div>
                 </a>
             </div>
@@ -41,9 +41,10 @@
             <!--Card content-->
             <div class="card-body">
                 <!--Title-->
-                <h5 class="card-title" style="overflow-x: hidden;
+                <a href="/item/sale/<%=requests.get(i).getSerial()%>" style="color:#040404;">
+                    <h5 class="card-title" style="overflow-x: hidden;
                      overflow-y: hidden; width: 200px;
-                      height: 15px; font-family: 'Jeju Gothic'; font-size: small;"><%=requests.get(i).getTitle()%></h5>
+                      height: 15px; font-family: 'Jeju Gothic'; font-size: small;"><%=requests.get(i).getTitle()%></h5></a>
                 <p style="color: rgb(143, 143, 149); font-size: small;"><i class="fa fa-comment-o" aria-hidden="true"></i>&nbsp;5
                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;0</p>
                 <a type="button" class="btn-floating btn-small" style="text-align: center; background-color: #404040!important; margin: 0; color: #fff3cd;"

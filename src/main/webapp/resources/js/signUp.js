@@ -69,7 +69,7 @@ function doSubmit() {
             m_pass: joinfrm.m_pass.value,
             m_name: joinfrm.m_name.value},
         dataType : 'text',
-        url : 'signUp',
+        url : '/signUp',
         success : function(rData, textStatus, xhr) {
             var chkRst = rData;
             if(chkRst === "1") alert("가입 성공!");

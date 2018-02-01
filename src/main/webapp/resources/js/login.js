@@ -30,7 +30,7 @@ function doLogin() {
             pass: loginfrm.login_pass.value
         },
         dataType: 'text',
-        url: 'login',
+        url: '/login',
         success: function (rData, textStatus, xhr) {
             var chkRst = rData;
             if (chkRst !== "1") alert("이메일 또는 비밀 번호를 확인해주세요.");

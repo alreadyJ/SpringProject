@@ -1,5 +1,4 @@
 <%@ page import="common.pro.dao.TripList" %>
-<%@ page import="javax.smartcardio.Card" %>
 <%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -24,7 +23,7 @@ String key = (String)request.getAttribute("key");%>
 
             <div class="card-body">
                 <!--Name-->
-                <h4 class="card-title"><%=trips.get(i).getUserInfo().getNickName()%></h4>
+                <a href="/item/sale/<%=trips.get(i).getSerial()%>" style="color:#040404;"><h4 class="card-title"><%=trips.get(i).getUserInfo().getNickName()%></h4></a>
                 <hr>
                 <!--Quotation-->
                 <p style="text-align: center"><i class="fa fa-quote-left"></i>&nbsp;<%=trips.get(i).getSource()%>&nbsp;

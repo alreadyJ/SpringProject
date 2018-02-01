@@ -17,6 +17,7 @@
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <jsp:include page="baseResources.jsp" />
     <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/custom-card.css?ver=2.3"/>"/>
+    <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/half-slider.css" />" />
 </head>
 
 <style>
@@ -24,13 +25,15 @@
         padding-bottom: 0!important;
         padding-top: 0!important;
     }
-    .carousel-multi-item .controls-top {
-        margin-bottom: 0;
-        margin-top: -55px;
+    @media (min-width: 400px) {
+        .carousel-multi-item .controls-top {
+            margin-bottom: 0;
+        }
     }
     .carousel-multi-item .carousel-indicators {
         position: static;
         height: 70px;
+        margin-top: -35px;
     }
 
     @media (max-width: 582px) {
@@ -142,6 +145,12 @@
             display: block;
         }
     }
+    .carousel-multi-item .carousel-indicators li {
+        background: #404040;
+    }
+    .carousel-multi-item .carousel-indicators .active {
+        background: #404040;
+    }
 
 </style>
 
@@ -189,11 +198,11 @@
         </a>
     </div>
 </header>
-<h3 style="font-family: 'Jeju Gothic'; margin-left: 60px;">Items</h3>
+<h3 style="font-family: 'Jeju Gothic'; margin-left: 60px;">Sales</h3>
 <jsp:include page="saleCard.jsp"/>
 <h3 style="font-family: 'Jeju Gothic'; margin-left: 60px;">Trips</h3>
 <jsp:include page="tripCard.jsp"/>
-<h3 style="font-family: 'Jeju Gothic'; margin-left: 60px;">Request</h3>
+<h3 style="font-family: 'Jeju Gothic'; margin-left: 60px;">Requests</h3>
 <jsp:include page="requestCard.jsp"/>
 
 

@@ -4,21 +4,11 @@
 <%List<RequestList> requests = (List<RequestList>) request.getAttribute("requests");%>
 <!--Carousel Wrapper-->
 <div id="multi-item-example3" class="carousel slide carousel-multi-item" data-ride="carousel">
-
-    <!--Indicators-->
-    <ol class="carousel-indicators">
-        <li data-target="#multi-item-example3" data-slide-to="0" class="active"></li>
-        <%if (requests.size() > 4) {%>
-        <li data-target="#multi-item-example3" data-slide-to="1"></li>
-        <%}%>
-        <%if (requests.size() > 7) {%>
-        <li data-target="#multi-item-example3" data-slide-to="2"></li>
-        <%}%>
-    </ol>
-    <!--/.Indicators-->
-
     <!--Slides-->
     <div class="carousel-inner py-5" role="listbox">
+
+        <a class="btn-floating" href="#multi-item-example3" style="position: absolute;top: 150px;left: 2%; background: transparent; box-shadow: none;" data-slide="prev"><i class="fa fa-chevron-left" style="color:#040404;"></i></a>
+        <a class="btn-floating" href="#multi-item-example3" style="position: absolute;top: 150px;right: 2%; background: transparent; box-shadow: none;" data-slide="next"><i class="fa fa-chevron-right" style="color:#040404;"></i></a>
         <!--First slide-->
         <div class="carousel-item active container">
             <!--Card-->
@@ -47,7 +37,7 @@
                     </div>
                     <%request.setAttribute("image", requests.get(i).getImage(0));%>
                     <img class="card-image" src="<c:url value="/resources/images/${image}"/>" class="img-fluid" alt="">
-                    <a>
+                    <a href="/item/request/<%=requests.get(i).getSerial()%>" style="color: #040404;">
                         <div class="mask"></div>
                     </a>
                 </div>
@@ -55,9 +45,9 @@
                 <!--Card content-->
                 <div class="card-body">
                     <!--Title-->
-                    <h5 class="card-title" style="overflow-x: hidden;
+                    <a href="/item/request/<%=requests.get(i).getSerial()%>" style="color: #040404;"><h5 class="card-title" style="overflow-x: hidden;
                      overflow-y: hidden; width: 200px;
-                      height: 15px; font-family: 'Jeju Gothic'; font-size: small;"><%=requests.get(i).getTitle()%></h5>
+                      height: 15px; font-family: 'Jeju Gothic'; font-size: small;"><%=requests.get(i).getTitle()%></h5></a>
                     <p style="color: rgb(143, 143, 149); font-size: small;"><i class="fa fa-comment-o" aria-hidden="true"></i>&nbsp;5
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;0</p>
                     <a type="button" class="btn-floating btn-small" style="text-align: center; background-color: #404040!important; margin: 0; color: #fff3cd;"
@@ -101,7 +91,7 @@
                     </div>
                     <%request.setAttribute("image", requests.get(i).getImage(0));%>
                     <img class="card-image" src="<c:url value="/resources/images/${image}"/>" class="img-fluid" alt="">
-                    <a>
+                    <a href="/item/request/<%=requests.get(i).getSerial()%>" style="color: #040404;">
                         <div class="mask"></div>
                     </a>
                 </div>
@@ -109,9 +99,10 @@
                 <!--Card content-->
                 <div class="card-body">
                     <!--Title-->
-                    <h5 class="card-title" style="overflow-x: hidden;
+                    <a href="/item/request/<%=requests.get(i).getSerial()%>" style="color: #040404;"><h5 class="card-title" style="overflow-x: hidden;
                      overflow-y: hidden; width: 200px;
-                      height: 15px; font-family: 'Jeju Gothic'; font-size: small;"><%=requests.get(i).getTitle()%></h5>
+                      height: 15px; font-family: 'Jeju Gothic'; font-size: small;">
+                        <%=requests.get(i).getTitle()%></h5></a>
                     <p style="color: rgb(143, 143, 149); font-size: small;"><i class="fa fa-comment-o" aria-hidden="true"></i>&nbsp;5
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;0</p>
                     <a type="button" class="btn-floating btn-small" style="text-align: center; background-color: #404040!important; margin: 0; color: #fff3cd;"
@@ -156,7 +147,7 @@
                     </div>
                     <%request.setAttribute("image", requests.get(i).getImage(0));%>
                     <img class="card-image" src="<c:url value="/resources/images/${image}"/>" class="img-fluid" alt="">
-                    <a>
+                    <a href="/item/request/<%=requests.get(i).getSerial()%>" style="color: #040404;">
                         <div class="mask"></div>
                     </a>
                 </div>
@@ -164,9 +155,10 @@
                 <!--Card content-->
                 <div class="card-body">
                     <!--Title-->
-                    <h5 class="card-title" style="overflow-x: hidden;
+                    <a href="/item/request/<%=requests.get(i).getSerial()%>" style="color: #040404;"><h5 class="card-title" style="overflow-x: hidden;
                      overflow-y: hidden; width: 200px;
-                      height: 15px; font-family: 'Jeju Gothic'; font-size: small;"><%=requests.get(i).getTitle()%></h5>
+                      height: 15px; font-family: 'Jeju Gothic'; font-size: small;">
+                        <%=requests.get(i).getTitle()%></h5></a>
                     <p style="color: rgb(143, 143, 149); font-size: small;"><i class="fa fa-comment-o" aria-hidden="true"></i>&nbsp;5
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;0</p>
                     <a type="button" class="btn-floating btn-small" style="text-align: center; background-color: #404040!important; margin: 0; color: #fff3cd;"
@@ -183,8 +175,16 @@
     </div>
     <!--/.Slides-->
 
-    <div class="controls-top">
-        <a class="btn-floating" href="#multi-item-example3" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
-        <a class="btn-floating" href="#multi-item-example3" data-slide="next"><i class="fa fa-chevron-right"></i></a>
-    </div>
+    <!--Indicators-->
+    <ol class="carousel-indicators">
+        <li data-target="#multi-item-example3" data-slide-to="0" class="active"></li>
+        <%if (requests.size() > 4) {%>
+        <li data-target="#multi-item-example3" data-slide-to="1"></li>
+        <%}%>
+        <%if (requests.size() > 7) {%>
+        <li data-target="#multi-item-example3" data-slide-to="2"></li>
+        <%}%>
+    </ol>
+    <!--/.Indicators-->
+
 </div>

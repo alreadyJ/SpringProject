@@ -6,20 +6,10 @@
 <!--Carousel Wrapper-->
 <div id="multi-item-example2" class="carousel slide carousel-multi-item" data-ride="carousel">
 
-    <!--Indicators-->
-    <ol class="carousel-indicators">
-        <li data-target="#multi-item-example2" data-slide-to="0" class="active"></li>
-        <%if (trips.size() > 4) {%>
-        <li data-target="#multi-item-example2" data-slide-to="1"></li>
-        <%}%>
-        <%if (trips.size() > 7) {%>
-        <li data-target="#multi-item-example2" data-slide-to="2"></li>
-        <%}%>
-    </ol>
-    <!--/.Indicators-->
-
     <!--Slides-->
     <div class="carousel-inner py-5" role="listbox">
+        <a class="btn-floating" href="#multi-item-example2" style="position: absolute;top: 150px;left: 2%; background: transparent; box-shadow: none;" data-slide="prev"><i class="fa fa-chevron-left" style="color:#040404;"></i></a>
+        <a class="btn-floating" href="#multi-item-example2" style="position: absolute;top: 150px;right: 2%; background: transparent; box-shadow: none;" data-slide="next"><i class="fa fa-chevron-right" style="color:#040404;"></i></a>
         <!--First slide-->
         <div class="carousel-item active container">
             <!--Card-->
@@ -38,7 +28,7 @@
 
                 <div class="card-body">
                     <!--Name-->
-                    <h4 class="card-title"><%=trips.get(i).getUserInfo().getNickName()%></h4>
+                    <a href="/item/trip/<%=trips.get(i).getSerial()%>" style="color: #040404;"><h4 class="card-title"><%=trips.get(i).getUserInfo().getNickName()%></h4> </a>
                     <hr>
                     <!--Quotation-->
                     <p style="text-align: center"><i class="fa fa-quote-left"></i>&nbsp;<%=trips.get(i).getSource()%>&nbsp;
@@ -71,7 +61,7 @@
 
                 <div class="card-body">
                     <!--Name-->
-                    <h4 class="card-title"><%=trips.get(i).getUserInfo().getNickName()%></h4>
+                    <a href="/item/trip/<%=trips.get(i).getSerial()%>" style="color: #040404;"><h4 class="card-title"><%=trips.get(i).getUserInfo().getNickName()%></h4></a>
                     <hr>
                     <!--Quotation-->
                     <p style="text-align: center"><i class="fa fa-quote-left"></i>&nbsp;<%=trips.get(i).getSource()%>&nbsp;
@@ -105,7 +95,7 @@
 
                 <div class="card-body">
                     <!--Name-->
-                    <h4 class="card-title"><%=trips.get(i).getUserInfo().getNickName()%></h4>
+                    <a href="/item/trip/<%=trips.get(i).getSerial()%>" style="color: #040404;"><h4 class="card-title"><%=trips.get(i).getUserInfo().getNickName()%></h4></a>
                     <hr>
                     <!--Quotation-->
                     <p style="text-align: center"><i class="fa fa-quote-left"></i>&nbsp;<%=trips.get(i).getSource()%>&nbsp;
@@ -121,8 +111,15 @@
     </div>
     <!--/.Slides-->
 
-    <div class="controls-top">
-        <a class="btn-floating" href="#multi-item-example2" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
-        <a class="btn-floating" href="#multi-item-example2" data-slide="next"><i class="fa fa-chevron-right"></i></a>
-    </div>
+    <!--Indicators-->
+    <ol class="carousel-indicators">
+        <li data-target="#multi-item-example2" data-slide-to="0" class="active"></li>
+        <%if (trips.size() > 4) {%>
+        <li data-target="#multi-item-example2" data-slide-to="1"></li>
+        <%}%>
+        <%if (trips.size() > 7) {%>
+        <li data-target="#multi-item-example2" data-slide-to="2"></li>
+        <%}%>
+    </ol>
+    <!--/.Indicators-->
 </div>
