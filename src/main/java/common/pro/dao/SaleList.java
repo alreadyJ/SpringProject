@@ -29,6 +29,10 @@ public class SaleList extends ItemList {
         return super.getImage(index);
     }
 
+    public int imageSize() {
+        return super.imageSize();
+    }
+
     public int getSerial() {
         return super.getSerial();
     }

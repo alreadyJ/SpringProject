@@ -24,6 +24,8 @@ public class RequestList extends ItemList {
         super.addImage(img);
     }
 
+    public int imageSize() { return super.imageSize(); }
+
     @Override
     public String getImage(int index) {
         return super.getImage(index);

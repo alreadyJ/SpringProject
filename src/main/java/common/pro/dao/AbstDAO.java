@@ -3,7 +3,9 @@ package common.pro.dao;
 import org.apache.log4j.Logger;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
+import java.util.Map;
 
 
 public class AbstDAO {
@@ -38,7 +40,7 @@ public class AbstDAO {
         return sqlSession.selectOne(queryId);
     }
 
-    public Object selectOne(String queryId, Object params){
+    public Map<String, Object> selectOne(String queryId, Object params){
         printQueryId(queryId);
         return sqlSession.selectOne(queryId, params);
     }

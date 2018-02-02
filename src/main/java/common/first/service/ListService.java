@@ -9,4 +9,7 @@ public interface ListService {
     List<Map<String, Object>> selectTrip() throws Exception;
     List<Map<String, Object>> selectRequest() throws Exception;
     List<Map<String, Object>> selectRequestImage(Map<String, Object> map) throws Exception;
+    Map<String, Object> selectOneSale(Map<String, Object> map) throws Exception;
+    Map<String, Object> selectOneRequest(Map<String, Object> map) throws Exception;
+    Map<String, Object> selectOneTrip(Map<String, Object> map) throws Exception;
 }

@@ -42,7 +42,6 @@ public class ItemController {
 
         switch (type) {
             case "sale":
-                logger.info("requesting: sale");
                 list = listService.selectSale();
                 for (int i = 0; i < list.size(); i++) {
                     SaleList sl = new SaleList();
@@ -113,33 +112,95 @@ public class ItemController {
     }
 
     @RequestMapping(value = "/item/sale/{serial}", method = RequestMethod.GET)
-    public String ItemSale(Model model, HttpSession session,
+    public ModelAndView ItemSale(Model model, HttpSession session,
                        Map<String,Object> commandMap,
                        @PathVariable String serial) throws Exception {
-        ModelAndView mv = new ModelAndView("list/item");
+        ModelAndView mv = new ModelAndView("list/itemSale");
+        Map<String,Object> list;
 
-
-        return "list/item";
+        commandMap.put("serial", serial);
+        list = listService.selectOneSale(commandMap);
+        SaleList sl = new SaleList();
+        sl.setSerial((int)list.get("serial"));
+        List<Map<String,Object>> images = listService.selectSaleImage(commandMap);
+        for (int i = 0; i < images.size(); i++) {
+            sl.addImage(images.get(i).get("saleImg").toString());
+        }
+        sl.setUser((int)list.get("user"));
+        sl.setTitle(list.get("title").toString());
+        sl.setCategory(list.get("category").toString());
+        sl.setLocation(list.get("location").toString());
+        sl.setDetail(list.get("detail").toString());
+        sl.setExpiration(list.get("expiration").toString());
+        sl.setQuantity((int)list.get("quantity"));
+        sl.setRemainQuantity((int)list.get("remainQuantity"));
+        sl.setMaxPurchase((int)list.get("maxPurchase"));
+        sl.setPrice((int)list.get("price"));
+        mv.addObject("sale", sl);
+        return mv;
     }
 
     @RequestMapping(value = "/item/trip/{serial}", method = RequestMethod.GET)
-    public String ItemTrip(Model model, HttpSession session,
+    public ModelAndView ItemTrip(Model model, HttpSession session,
                        Map<String,Object> commandMap,
                        @PathVariable String serial) throws Exception {
-        ModelAndView mv = new ModelAndView("list/item");
 
+        ModelAndView mv = new ModelAndView("list/itemTrip");
 
-        return "list/item";
+        Map<String,Object> list;
+        commandMap.put("serial", serial);
+        list = listService.selectOneTrip(commandMap);
+        TripList tl = new TripList();
+        tl.setSerial((int)list.get("serial"));
+        tl.setUser((int)list.get("user"));
+        User user = new User();
+        commandMap.put("serial", tl.getUser());
+        List<Map<String,Object>> userList = userService.selectUserWithSerial(commandMap);
+        user.setNickName(userList.get(0).get("nickName").toString());
+        user.setProfileImg(userList.get(0).get("profileImg").toString());
+        logger.info(user.getNickName() + " " + user.getProfileImg());
+        tl.setUserInfo(user);
+        tl.setSource(list.get("source").toString());
+        tl.setDestination(list.get("destination").toString());
+        tl.setIsRound((int)list.get("isRound"));
+        tl.setDepartureDate(list.get("departureDate").toString());
+        tl.setArrivalDate(list.get("arrivalDate").toString());
+        String url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=240&photoreference=" +
+                list.get("location").toString() + "&key=AIzaSyAz80kYOAljI22ua7Bjsxre3CCzTrsMxrg";
+        tl.setLocation(url);
+        tl.setStatus((int)list.get("status"));
+        mv.addObject("trip", tl);
+        return mv;
     }
 
     @RequestMapping(value = "/item/request/{serial}", method = RequestMethod.GET)
-    public String ItemRequest(Model model, HttpSession session,
+    public ModelAndView ItemRequest(Model model, HttpSession session,
                            Map<String,Object> commandMap,
                            @PathVariable String serial) throws Exception {
-        ModelAndView mv = new ModelAndView("list/item");
+        ModelAndView mv = new ModelAndView("list/itemRequest");
+        Map<String,Object> list;
 
+        commandMap.put("serial", serial);
+        list = listService.selectOneRequest(commandMap);
+        RequestList rl = new RequestList();
+        rl.setSerial((int)list.get("serial"));
+        rl.setUser((int)list.get("user"));
+        List<Map<String,Object>> images = listService.selectRequestImage(commandMap);
+        for (int i = 0; i < images.size(); i++) {
+            rl.addImage(images.get(i).get("requestImg").toString());
+        }
+        rl.setTitle(list.get("title").toString());
+        rl.setCategory(list.get("category").toString());
+        rl.setDetail(list.get("detail").toString());
+        rl.setLocation(list.get("location").toString());
+        rl.setRegisterDate(list.get("registerDate").toString());
+        rl.setQuantity((int)list.get("quantity"));
+        rl.setExpiration(list.get("expiration").toString());
+        rl.setServiceFee((int)list.get("serviceFee"));
+        rl.setPrice((int)list.get("price"));
 
-        return "list/item";
+        mv.addObject("request", rl);
+        return mv;
     }
 
     @RequestMapping(value = "/post/{type}", method = RequestMethod.GET)

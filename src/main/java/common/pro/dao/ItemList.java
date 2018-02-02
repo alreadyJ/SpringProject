@@ -30,6 +30,10 @@ abstract public class ItemList {
         return images.get(index);
     }
 
+    public int imageSize() {
+        return this.images.size();
+    }
+
     public int getSerial() {
         return serial;
     }

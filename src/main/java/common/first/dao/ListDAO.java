@@ -23,4 +23,14 @@ public class ListDAO extends AbstDAO {
     public List<Map<String, Object>> selectRequestImage(Map<String, Object> map) throws Exception{
         return (List<Map<String, Object>>)selectList("selectRequestImage", map);
     }
+    public Map<String, Object> selectOneSale(Map<String, Object> map) throws Exception {
+        return (Map<String, Object>) selectOne("selectOneSale", map);
+    }
+    public Map<String, Object> selectOneRequest(Map<String, Object> map) throws Exception {
+        return (Map<String, Object>) selectOne("selectOneRequest", map);
+    }
+
+    public Map<String, Object> selectOneTrip(Map<String, Object> map) throws Exception {
+        return (Map<String, Object>) selectOne("selectOneTrip", map);
+    }
 }

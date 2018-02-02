@@ -16,6 +16,19 @@
         ]]>
     </select>
 
+    <select id="selectOneSale" parameterType="java.util.HashMap" resultType="hashmap">
+        <![CDATA[
+            SELECT
+                *
+            FROM
+                sale
+            WHERE
+                status = '0'
+            AND
+                serial = #{serial}
+        ]]>
+    </select>
+
     <select id="selectSaleImage" parameterType="java.util.HashMap" resultType="hashmap">
         <![CDATA[
             SELECT
@@ -45,6 +58,19 @@
         ]]>
     </select>
 
+    <select id="selectOneTrip" parameterType="java.util.HashMap" resultType="hashmap">
+        <![CDATA[
+            SELECT
+                *
+            FROM
+                trip
+            WHERE
+                status = '0'
+            AND
+                serial = #{serial}
+        ]]>
+    </select>
+
 
 
     <select id="selectRequest" parameterType="java.util.HashMap" resultType="hashmap">
@@ -60,6 +86,20 @@
             desc
         ]]>
     </select>
+
+    <select id="selectOneRequest" parameterType="java.util.HashMap" resultType="hashmap">
+        <![CDATA[
+            SELECT
+                *
+            FROM
+                request
+            WHERE
+                status = '0'
+            AND
+                serial = #{serial}
+        ]]>
+    </select>
+
 
     <select id="selectRequestImage" parameterType="java.util.HashMap" resultType="hashmap">
         <![CDATA[

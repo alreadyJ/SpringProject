@@ -22,6 +22,18 @@
     <script src="<c:url value="/resources/js/pickadate-3.5.6/lib/picker.date.js"/> "></script>
     <script src="<c:url value="/resources/js/pickadate-3.5.6/lib/picker.time.js"/> "></script>
 </head>
+
+<style>
+    .jumbotron {
+        text-align: center;
+    }
+    .jumbotron .container {
+        text-align: left;
+    }
+
+
+</style>
+
 <body>
 <%String type = (String) request.getAttribute("type");%>
 

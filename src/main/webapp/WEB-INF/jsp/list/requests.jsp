@@ -1,4 +1,4 @@
-<%@ page import="common.pro.dao.SaleList" %>
+
 <%@ page import="java.util.List" %>
 <%@ page import="common.pro.dao.RequestList" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -33,7 +33,7 @@
                 </div>
                 <%request.setAttribute("image", requests.get(i).getImage(0));%>
                 <img class="card-image" src="<c:url value="/resources/images/${image}"/>" class="img-fluid" alt="">
-                <a href="/item/sale/<%=requests.get(i).getSerial()%>" style="color:#040404;">
+                <a href="/item/request/<%=requests.get(i).getSerial()%>" style="color:#040404;">
                     <div class="mask"></div>
                 </a>
             </div>
@@ -41,7 +41,7 @@
             <!--Card content-->
             <div class="card-body">
                 <!--Title-->
-                <a href="/item/sale/<%=requests.get(i).getSerial()%>" style="color:#040404;">
+                <a href="/item/request/<%=requests.get(i).getSerial()%>" style="color:#040404;">
                     <h5 class="card-title" style="overflow-x: hidden;
                      overflow-y: hidden; width: 200px;
                       height: 15px; font-family: 'Jeju Gothic'; font-size: small;"><%=requests.get(i).getTitle()%></h5></a>

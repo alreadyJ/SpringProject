@@ -198,11 +198,11 @@
         </a>
     </div>
 </header>
-<h3 style="font-family: 'Jeju Gothic'; margin-left: 60px;">Items</h3>
+<h3 style="font-family: 'Jeju Gothic'; margin-left: 60px;">Sales</h3>
 <jsp:include page="saleCard.jsp"/>
 <h3 style="font-family: 'Jeju Gothic'; margin-left: 60px;">Trips</h3>
 <jsp:include page="tripCard.jsp"/>
-<h3 style="font-family: 'Jeju Gothic'; margin-left: 60px;">Request</h3>
+<h3 style="font-family: 'Jeju Gothic'; margin-left: 60px;">Requests</h3>
 <jsp:include page="requestCard.jsp"/>
 
 

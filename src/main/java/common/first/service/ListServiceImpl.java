@@ -34,4 +34,19 @@ public class ListServiceImpl implements ListService {
     public List<Map<String, Object>> selectRequestImage(Map<String, Object> map) throws Exception {
         return listDAO.selectRequestImage(map);
     }
+
+    @Override
+    public Map<String, Object> selectOneRequest(Map<String, Object> map) throws Exception {
+        return listDAO.selectOneRequest(map);
+    }
+
+    @Override
+    public Map<String, Object> selectOneTrip(Map<String, Object> map) throws Exception {
+        return listDAO.selectOneTrip(map);
+    }
+
+    @Override
+    public Map<String, Object> selectOneSale(Map<String, Object> map) throws Exception {
+        return listDAO.selectOneSale(map);
+    }
 }
