@@ -30,6 +30,7 @@
         <![CDATA[
             SELECT
                 count(*) cnt,
+                serial,
                 email,
                 nickName,
                 profileImg,

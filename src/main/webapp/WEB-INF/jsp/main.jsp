@@ -38,14 +38,14 @@
 
     @media (max-width: 582px) {
         .py-5 .container {
-            max-width: 250px;
+            max-width: 240px;
             margin: 0 auto;
             padding: 0;
         }
         .py-5 .carousel-item-next,.py-5 .carousel-item-prev {
-            max-width: 250px;
-            margin-left: calc(calc(100% - 250px)/2);
-            margin-right: calc(calc(100% - 250px)/2);
+            max-width: 240px;
+            margin-left: calc(calc(100% - 240px)/2);
+            margin-right: calc(calc(100% - 240px)/2);
         }
 
         .tab-content {
@@ -53,16 +53,16 @@
             padding-top: 2rem;
 
         }
-        .tab-pane .py-5 .container .card {
-            width: 100%;
+
+        .carousel-multi-item .carousel-indicators {
+            position: static;
+            height: 70px;
+            margin-top: -15px;
+        }
+
+
+        .carousel-multi-item .py-5 .container .card {
             margin: 0 0 20px 0;
-            padding-top: 10px;
-            border: 1px solid rgba(0,0,0,.125);
-            border-radius: 0;
-            border-left: 0;
-            border-right: 0;
-            border-bottom: 0;
-            box-shadow: none;
         }
         #items-1, #item-5, #item-9 {
             display: none;
@@ -152,6 +152,11 @@
         background: #404040;
     }
 
+    .divider-new {
+        padding: 0 15%;
+    }
+
+
 </style>
 
 
@@ -198,11 +203,17 @@
         </a>
     </div>
 </header>
-<h3 style="font-family: 'Jeju Gothic'; margin-left: 60px;">Sales</h3>
+<div class="divider-new">
+    <h3 class="h3-responsive font-bold black-text mx-3">Sales</h3>
+</div>
 <jsp:include page="saleCard.jsp"/>
-<h3 style="font-family: 'Jeju Gothic'; margin-left: 60px;">Trips</h3>
+<div class="divider-new">
+    <h3 class="h3-responsive font-bold black-text mx-3">Trips</h3>
+</div>
 <jsp:include page="tripCard.jsp"/>
-<h3 style="font-family: 'Jeju Gothic'; margin-left: 60px;">Requests</h3>
+<div class="divider-new">
+    <h3 class="h3-responsive font-bold black-text mx-3">Requests</h3>
+</div>
 <jsp:include page="requestCard.jsp"/>
 
 

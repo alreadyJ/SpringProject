@@ -2,8 +2,17 @@ package common.pro.dao;
 
 public class User {
     private String email, password, nickName, profileImg, signUpDate;
+    private int serial;
 
-    public User() { this.email = this.password = this.nickName = this.profileImg = signUpDate = null; }
+    public User() { this.email = this.password = this.nickName = this.profileImg = signUpDate = null; serial = -1;}
+
+    public int getSerial() {
+        return serial;
+    }
+
+    public void setSerial(int serial) {
+        this.serial = serial;
+    }
 
     public void setSignUpDate(String signUpDate) {
         this.signUpDate = signUpDate;

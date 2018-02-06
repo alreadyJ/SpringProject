@@ -11,14 +11,23 @@ public class ListDAO extends AbstDAO {
     public List<Map<String, Object>> selectSale() throws Exception{
         return (List<Map<String, Object>>)selectList("selectSale");
     }
+    public List<Map<String, Object>> selectSaleCategory() throws Exception{
+        return (List<Map<String, Object>>)selectList("selectSaleCategory");
+    }
     public List<Map<String, Object>> selectSaleImage(Map<String, Object> map) throws Exception{
         return (List<Map<String, Object>>)selectList("selectSaleImage", map);
     }
     public List<Map<String, Object>> selectTrip() throws Exception{
         return (List<Map<String, Object>>)selectList("selectTrip");
     }
+    public List<Map<String, Object>> selectTripCategory() throws Exception{
+        return (List<Map<String, Object>>)selectList("selectTripCategory");
+    }
     public List<Map<String, Object>> selectRequest() throws Exception{
         return (List<Map<String, Object>>)selectList("selectRequest");
+    }
+    public List<Map<String, Object>> selectRequestCategory() throws Exception{
+        return (List<Map<String, Object>>)selectList("selectRequestCategory");
     }
     public List<Map<String, Object>> selectRequestImage(Map<String, Object> map) throws Exception{
         return (List<Map<String, Object>>)selectList("selectRequestImage", map);
@@ -29,8 +38,14 @@ public class ListDAO extends AbstDAO {
     public Map<String, Object> selectOneRequest(Map<String, Object> map) throws Exception {
         return (Map<String, Object>) selectOne("selectOneRequest", map);
     }
-
     public Map<String, Object> selectOneTrip(Map<String, Object> map) throws Exception {
         return (Map<String, Object>) selectOne("selectOneTrip", map);
     }
+    public Object insertComment(Map<String, Object> map) throws Exception{
+        return insert("insertComment", map);
+    }
+    public List<Map<String, Object>> selectComment(Map<String, Object> map) throws Exception{
+        return (List<Map<String, Object>>)selectList("selectComment" ,map);
+    }
+
 }

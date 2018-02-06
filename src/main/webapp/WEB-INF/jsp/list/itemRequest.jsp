@@ -177,10 +177,10 @@
     <!-- /.Section: Product detail -->
 
     <div class="divider-new">
-        <h3 class="h3-responsive font-bold blue-text mx-3">Product Reviews</h3>
+        <h3 class="h3-responsive font-bold blue-text mx-3">Comments</h3>
     </div>
 
-    <!-- Product Reviews -->
+    <!-- Comments -->
     <section id="reviews" class="pb-5">
 
         <!--Main wrapper-->
@@ -323,7 +323,7 @@
         <!--/.Main wrapper-->
 
     </section>
-    <!-- /.Product Reviews -->
+    <!-- /.Comments -->
 
     <div class="divider-new">
         <h3 class="h3-responsive font-bold blue-text mx-3">Related Products</h3>

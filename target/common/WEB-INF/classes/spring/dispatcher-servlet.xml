@@ -33,6 +33,5 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
         <beans:property name="prefix" value="/WEB-INF/jsp/" />
         <beans:property name="suffix" value=".jsp" />
     </beans:bean>
-
     <mvc:resources mapping="/resources/**" location="/resources/" />
 </beans:beans>

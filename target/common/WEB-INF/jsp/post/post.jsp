@@ -30,6 +30,13 @@
     .jumbotron .container {
         text-align: left;
     }
+    .btn-default, .btn-primary, .btn-mdb-color {
+        background-color: #040404!important;
+    }
+    .btn-number {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
 
 
 </style>

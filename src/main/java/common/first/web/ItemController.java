@@ -2,10 +2,7 @@ package common.first.web;
 
 import common.first.service.ListService;
 import common.first.service.UserService;
-import common.pro.dao.RequestList;
-import common.pro.dao.SaleList;
-import common.pro.dao.TripList;
-import common.pro.dao.User;
+import common.pro.dao.*;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +12,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -137,6 +139,23 @@ public class ItemController {
         sl.setMaxPurchase((int)list.get("maxPurchase"));
         sl.setPrice((int)list.get("price"));
         mv.addObject("sale", sl);
+        commandMap.put("type", "0");
+        commandMap.put("itemSerial", sl.getSerial());
+        List<Map<String, Object>> cList = listService.selectComment(commandMap);
+        List<Comment> commentList = new LinkedList<>();
+
+        for (int i = 0; i < cList.size(); i++) {
+            User user = new User();
+            commandMap.put("serial", (int)cList.get(i).get("userSerial"));
+            List<Map<String,Object>> userList = userService.selectUserWithSerial(commandMap);
+            user.setNickName(userList.get(0).get("nickName").toString());
+            user.setProfileImg(userList.get(0).get("profileImg").toString());
+            Comment comment = new Comment((int)cList.get(i).get("serial"),
+                    cList.get(i).get("text").toString(),
+                    cList.get(i).get("registerDate").toString(), user);
+            commentList.add(comment);
+        }
+        mv.addObject("comments", commentList);
         return mv;
     }
 
@@ -163,9 +182,11 @@ public class ItemController {
         tl.setSource(list.get("source").toString());
         tl.setDestination(list.get("destination").toString());
         tl.setIsRound((int)list.get("isRound"));
+        tl.setPurpose(list.get("purpose").toString());
         tl.setDepartureDate(list.get("departureDate").toString());
         tl.setArrivalDate(list.get("arrivalDate").toString());
-        String url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=240&photoreference=" +
+        tl.setSchedule(list.get("schedule").toString());
+        String url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=560&photoreference=" +
                 list.get("location").toString() + "&key=AIzaSyAz80kYOAljI22ua7Bjsxre3CCzTrsMxrg";
         tl.setLocation(url);
         tl.setStatus((int)list.get("status"));
@@ -209,4 +230,35 @@ public class ItemController {
         mv.addObject("type", type);
         return mv;
     }
+
+
+
+    @RequestMapping(value = "/comment", produces = "application/text; charset=utf8", method = RequestMethod.POST)
+    public void CheckDuplicate(HttpServletRequest req, HttpServletResponse res,
+                               Map<String,Object> commandMap, HttpSession session)  throws Exception {
+        PrintWriter out = res.getWriter();
+        req.setCharacterEncoding("utf-8");
+        String userSerial = (req.getParameter("userSerial") == null) ? "" : String
+                .valueOf(req.getParameter("userSerial"));
+        String itemSerial = (req.getParameter("itemSerial") == null) ? "" : String
+                .valueOf(req.getParameter("itemSerial"));
+        String type = (req.getParameter("type") == null) ? "" : String
+                .valueOf(req.getParameter("type"));
+        String text = (req.getParameter("text") == null) ? "" : String
+                .valueOf(req.getParameter("text"));
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        System.out.println(text);
+        logger.info(text + "   nnnn");
+        Date d = new Date();
+        commandMap.put("userSerial", userSerial);
+        commandMap.put("itemSerial", itemSerial);
+        commandMap.put("type", type);
+        commandMap.put("text", text);
+        commandMap.put("registerDate", df.format(d));
+
+        int t = (int)listService.insertComment(commandMap);
+        logger.info(t + "tttt");
+        out.write(t);out.flush();out.close();
+    }
 }
+

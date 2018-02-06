@@ -31,6 +31,31 @@ public class ListServiceImpl implements ListService {
     }
 
     @Override
+    public List<Map<String, Object>> selectSaleCategory() throws Exception {
+        return listDAO.selectSaleCategory();
+    }
+
+    @Override
+    public List<Map<String, Object>> selectComment(Map<String, Object> map) throws Exception {
+        return listDAO.selectComment(map);
+    }
+
+    @Override
+    public List<Map<String, Object>> selectTripCategory() throws Exception {
+        return listDAO.selectTripCategory();
+    }
+
+    @Override
+    public Object insertComment(Map<String, Object> map) throws Exception {
+        return listDAO.insertComment(map);
+    }
+
+    @Override
+    public List<Map<String, Object>> selectRequestCategory() throws Exception {
+        return listDAO.selectRequestCategory();
+    }
+
+    @Override
     public List<Map<String, Object>> selectRequestImage(Map<String, Object> map) throws Exception {
         return listDAO.selectRequestImage(map);
     }

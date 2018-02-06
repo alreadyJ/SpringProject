@@ -16,6 +16,23 @@
         ]]>
     </select>
 
+    <select id="selectSaleCategory" parameterType="java.util.HashMap" resultType="hashmap">
+        <![CDATA[
+            SELECT
+                *
+            FROM
+                sale
+            WHERE
+                status = '0'
+            AND
+                category = #{category}
+            ORDER BY
+                serial
+            desc
+        ]]>
+    </select>
+
+
     <select id="selectOneSale" parameterType="java.util.HashMap" resultType="hashmap">
         <![CDATA[
             SELECT
@@ -58,6 +75,23 @@
         ]]>
     </select>
 
+
+    <select id="selectTripCategory" parameterType="java.util.HashMap" resultType="hashmap">
+        <![CDATA[
+            SELECT
+                *
+            FROM
+                trip
+            WHERE
+                status = '0'
+            AND
+                category = #{category}
+            ORDER BY
+                serial
+            desc
+        ]]>
+    </select>
+
     <select id="selectOneTrip" parameterType="java.util.HashMap" resultType="hashmap">
         <![CDATA[
             SELECT
@@ -81,6 +115,22 @@
                 request
             WHERE
                 status = '0'
+            ORDER BY
+                serial
+            desc
+        ]]>
+    </select>
+
+    <select id="selectRequestCategory" parameterType="java.util.HashMap" resultType="hashmap">
+        <![CDATA[
+            SELECT
+                *
+            FROM
+                request
+            WHERE
+                status = '0'
+            AND
+                category = #{category}
             ORDER BY
                 serial
             desc
@@ -113,6 +163,41 @@
                 serial
             desc
         ]]>
+    </select>
+
+
+    <insert id="insertComment" parameterType="java.util.HashMap">
+        <![CDATA[
+        INSERT INTO comments
+        (
+            userSerial,
+            itemSerial,
+            text,
+            registerDate,
+            type
+        )
+        VALUES
+        (
+            #{userSerial},
+            #{itemSerial},
+            #{text},
+            #{registerDate},
+            #{type}
+        )
+    ]]>
+    </insert>
+
+    <select id="selectComment" parameterType="java.util.HashMap" resultType="hashmap">
+        SELECT
+            *
+        FROM
+            comments
+        WHERE
+            type = #{type}
+        AND
+            itemSerial = #{itemSerial}
+        ORDER BY
+            serial
     </select>
 
 </mapper>

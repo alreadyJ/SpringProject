@@ -44,8 +44,7 @@ public class SessionController {
         commandMap.put("signUpDate", df.format(d));
 
         int t = (int)userService.insertUser(commandMap);
-        out.print(t);
-
+        out.print(t);out.flush();out.close();
     }
 
 
@@ -67,10 +66,10 @@ public class SessionController {
         }
 
         logger.info(list.get(0).get("nickName") + " sssss");
-        System.out.println(list.get(0).get("nickName") + " sssss");
 
         User user = new User();
         if (list.get(0).get("cnt").toString().equals("1")) {
+            user.setSerial((int)list.get(0).get("serial"));
             user.setEmail(list.get(0).get("email").toString());
             user.setNickName(list.get(0).get("nickName").toString());
             user.setProfileImg(list.get(0).get("profileImg").toString());
@@ -78,6 +77,7 @@ public class SessionController {
             session.setAttribute("User", user);
         }
 
+        logger.info(list.get(0).get("nickName") + " tttt");
 
         out.print(list.get(0).get("cnt").toString().equals("1") ? 1 : 0);
         out.flush();out.close();

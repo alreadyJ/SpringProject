@@ -19,7 +19,7 @@
 
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Destination</label>
-                        <jsp:include page="../setting/countryModal.jsp"/>
+                        <jsp:include page="../setting/countryModal2.jsp"/>
                     </div>
 
 

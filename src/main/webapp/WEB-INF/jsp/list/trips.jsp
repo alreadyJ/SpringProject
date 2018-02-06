@@ -23,7 +23,7 @@ String key = (String)request.getAttribute("key");%>
 
             <div class="card-body">
                 <!--Name-->
-                <a href="/item/sale/<%=trips.get(i).getSerial()%>" style="color:#040404;"><h4 class="card-title"><%=trips.get(i).getUserInfo().getNickName()%></h4></a>
+                <a href="/item/trip/<%=trips.get(i).getSerial()%>" style="color:#040404;"><h4 class="card-title"><%=trips.get(i).getUserInfo().getNickName()%></h4></a>
                 <hr>
                 <!--Quotation-->
                 <p style="text-align: center"><i class="fa fa-quote-left"></i>&nbsp;<%=trips.get(i).getSource()%>&nbsp;

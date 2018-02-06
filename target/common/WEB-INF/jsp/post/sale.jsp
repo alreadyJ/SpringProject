@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div class="jumbotron">
@@ -132,7 +133,7 @@
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Price</label>
                         <div class="col-lg-8">
-                            <input class="form-control" value="" type="number" min="1" max="1000000" placeholder="write dollar" style="width: 200px; display: inline-block">
+                            <input class="form-control" value="" type="number" min="1" max="1000000" placeholder="write dollar" style="width: 180px; display: inline-block">
                             <i class="fa fa-dollar" aria-hidden="true"  style="display: inline-block;"></i>
                         </div>
                     </div>
