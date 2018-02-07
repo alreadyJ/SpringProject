@@ -191,6 +191,25 @@ public class ItemController {
         tl.setLocation(url);
         tl.setStatus((int)list.get("status"));
         mv.addObject("trip", tl);
+
+        commandMap.put("type", "1");
+        commandMap.put("itemSerial", tl.getSerial());
+        List<Map<String, Object>> cList = listService.selectComment(commandMap);
+        List<Comment> commentList = new LinkedList<>();
+
+        for (int i = 0; i < cList.size(); i++) {
+            user = new User();
+            commandMap.put("serial", (int)cList.get(i).get("userSerial"));
+            userList = userService.selectUserWithSerial(commandMap);
+            user.setNickName(userList.get(0).get("nickName").toString());
+            user.setProfileImg(userList.get(0).get("profileImg").toString());
+            Comment comment = new Comment((int)cList.get(i).get("serial"),
+                    cList.get(i).get("text").toString(),
+                    cList.get(i).get("registerDate").toString(), user);
+            commentList.add(comment);
+        }
+        mv.addObject("comments", commentList);
+
         return mv;
     }
 
@@ -221,6 +240,25 @@ public class ItemController {
         rl.setPrice((int)list.get("price"));
 
         mv.addObject("request", rl);
+
+
+        commandMap.put("type", "2");
+        commandMap.put("itemSerial", rl.getSerial());
+        List<Map<String, Object>> cList = listService.selectComment(commandMap);
+        List<Comment> commentList = new LinkedList<>();
+
+        for (int i = 0; i < cList.size(); i++) {
+            User user = new User();
+            commandMap.put("serial", (int)cList.get(i).get("userSerial"));
+            List<Map<String, Object>> userList = userService.selectUserWithSerial(commandMap);
+            user.setNickName(userList.get(0).get("nickName").toString());
+            user.setProfileImg(userList.get(0).get("profileImg").toString());
+            Comment comment = new Comment((int)cList.get(i).get("serial"),
+                    cList.get(i).get("text").toString(),
+                    cList.get(i).get("registerDate").toString(), user);
+            commentList.add(comment);
+        }
+        mv.addObject("comments", commentList);
         return mv;
     }
 
@@ -233,8 +271,8 @@ public class ItemController {
 
 
 
-    @RequestMapping(value = "/comment", produces = "application/text; charset=utf8", method = RequestMethod.POST)
-    public void CheckDuplicate(HttpServletRequest req, HttpServletResponse res,
+    @RequestMapping(value = "/comment", produces = "text/plain; charset=UTF-8", method = RequestMethod.POST)
+    public void Comment(HttpServletRequest req, HttpServletResponse res,
                                Map<String,Object> commandMap, HttpSession session)  throws Exception {
         PrintWriter out = res.getWriter();
         req.setCharacterEncoding("utf-8");
@@ -246,9 +284,8 @@ public class ItemController {
                 .valueOf(req.getParameter("type"));
         String text = (req.getParameter("text") == null) ? "" : String
                 .valueOf(req.getParameter("text"));
+
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        System.out.println(text);
-        logger.info(text + "   nnnn");
         Date d = new Date();
         commandMap.put("userSerial", userSerial);
         commandMap.put("itemSerial", itemSerial);
