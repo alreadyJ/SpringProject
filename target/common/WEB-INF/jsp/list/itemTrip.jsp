@@ -171,9 +171,6 @@
     </section>
     <!-- /.Section: Product detail -->
 
-    <div class="divider-new">
-        <h3 class="h3-responsive font-bold blue-text mx-3">Comments</h3>
-    </div>
 
     <!-- Comments -->
     <div class="divider-new">

@@ -1,5 +1,7 @@
 package common.first.web;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import common.first.service.ListService;
 import common.first.service.UserService;
 import common.pro.dao.*;
@@ -21,6 +23,8 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+
+
 
 @Controller
 public class ItemController {
@@ -297,5 +301,26 @@ public class ItemController {
         logger.info(t + "tttt");
         out.write(t);out.flush();out.close();
     }
+
+
+    @RequestMapping(value = "/postSale", method = RequestMethod.POST)
+    public void postSale(HttpServletRequest req, HttpServletResponse res,
+                        Map<String,Object> commandMap, HttpSession session)  throws Exception {
+
+    }
+
+    @RequestMapping(value = "/upLoad", method = RequestMethod.POST)
+    public void upLoad(HttpServletRequest req, HttpServletResponse res,
+                         Map<String,Object> commandMap, HttpSession session)  throws Exception {
+        MultipartRequest multi = null;
+        String savePath = "";
+        int fileMaxSize = 10 * (1 << 20);
+        try {
+            multi = new MultipartRequest(req, savePath, fileMaxSize, "UTF-8", new DefaultFileRenamePolicy());
+        }catch (Exception e) {
+            if (e.getMessage().indexOf("exceeds limit") > -1) {}
+        }
+    }
+
 }
 

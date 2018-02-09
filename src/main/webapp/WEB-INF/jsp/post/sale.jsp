@@ -11,7 +11,7 @@
             <!-- edit form column -->
             <div class="col-sm-6 col-xs-12">
 
-                <form class="form-horizontal" role="form">
+                <form class="form-horizontal" role="form" id="sale-form">
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Category</label>
                         <div class="col-lg-8">
@@ -22,14 +22,14 @@
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Title</label>
                         <div class="col-lg-8">
-                            <input class="form-control" value="" type="text">
+                            <input class="form-control" value="" type="text" id="sale-title">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Sales details</label>
                         <div class="col-lg-8">
-                            <textarea class="form-control" required wrap="hard" cols="30" rows="10" maxlength="1000" placeholder="내용을 자세하게 적어주세요.(상품 사이즈, 색상, 포장, 구입 방법 등, 1000자 이하)"></textarea>
+                            <textarea class="form-control" id="sale-detail" required wrap="hard" cols="30" rows="10" maxlength="1000" placeholder="내용을 자세하게 적어주세요.(상품 사이즈, 색상, 포장, 구입 방법 등, 1000자 이하)"></textarea>
                         </div>
                     </div>
 
@@ -39,36 +39,39 @@
                         <form>
                             <div class="file-field">
                                 <div class="z-depth-1-half mb-4">
-                                    <img src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg" class="img-fluid">
+                                    <img src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg" id="sale-img1" class="img-fluid">
                                 </div>
                                 <div class="d-flex justify-content-center">
                                     <div class="btn btn-mdb-color btn-rounded">
                                         <span>Choose file</span>
-                                        <input type="file">
+                                        <input type="file" accept="image/*" id="sale-file1" onchange="previewFile('sale-img1', 'sale-file1', 'image-file1');">
+                                        <input type="hidden" id="image-file1" value="0">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="file-field">
                                 <div class="z-depth-1-half mb-4">
-                                    <img src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg" class="img-fluid">
+                                    <img src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg" id="sale-img2" class="img-fluid">
                                 </div>
                                 <div class="d-flex justify-content-center">
                                     <div class="btn btn-mdb-color btn-rounded">
                                         <span>Choose file</span>
-                                        <input type="file">
+                                        <input type="file" accept="image/*"  id="sale-file2" onchange="previewFile('sale-img2', 'sale-file2', 'image-file2');">
+                                        <input type="hidden" id="image-file2" value="0">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="file-field">
                                 <div class="z-depth-1-half mb-4">
-                                    <img src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg" class="img-fluid">
+                                    <img src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg" id="sale-img3" class="img-fluid">
                                 </div>
                                 <div class="d-flex justify-content-center">
                                     <div class="btn btn-mdb-color btn-rounded">
                                         <span>Choose file</span>
-                                        <input type="file">
+                                        <input type="file" accept="image/*"  id="sale-file3" onchange="previewFile('sale-img3', 'sale-file3', 'image-file3');">
+                                        <input type="hidden" id="image-file3" value="0">
                                     </div>
                                 </div>
                             </div>
@@ -104,7 +107,7 @@
                                   <i class="fa fa-minus" aria-hidden="true"></i>
                               </button>
                           </span>
-                                    <input type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="500" style="width:100px; flex: 0;">
+                                    <input type="number" name="quant[1]" id="sale-quantity" class="form-control input-number" value="1" min="1" max="500" style="width:100px; flex: 0;">
                                     <span class="input-group-btn">
                               <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]">
                                   <i class="fa fa-plus" aria-hidden="true"></i>
@@ -120,7 +123,7 @@
                                   <i class="fa fa-minus" aria-hidden="true"></i>
                               </button>
                           </span>
-                            <input type="text" name="quant[2]" class="form-control input-number" value="1" min="1" max="500" style="width:100px; flex: 0;">
+                            <input type="number" name="quant[2]" id="sale-max-purchase" class="form-control input-number" value="1" min="1" max="500" style="width:100px; flex: 0;">
                             <span class="input-group-btn">
                               <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[2]">
                                   <i class="fa fa-plus" aria-hidden="true"></i>
@@ -133,7 +136,7 @@
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Price</label>
                         <div class="col-lg-8">
-                            <input class="form-control" value="" type="number" min="1" max="1000000" placeholder="write dollar" style="width: 180px; display: inline-block">
+                            <input class="form-control" id="sale-price" value="" type="number" min="1" max="1000000" placeholder="write dollar" style="width: 180px; display: inline-block">
                             <i class="fa fa-dollar" aria-hidden="true"  style="display: inline-block;"></i>
                         </div>
                     </div>
@@ -144,3 +147,4 @@
 
     <a class="btn btn-primary btn-lg" role="button">Complete post</a>
 </div>
+<script src="<c:url value="/resources/js/postSale.js?ver=1.1" />"></script>

@@ -20,6 +20,6 @@
 </div>
 
 <div>
-    <input type="text" id="selectedLocation2" disabled value="select location" name="location2" style="width: 100px; display: inline-block;">
+    <input type="text" id="selectedLocation2" disabled value="location" name="location2" style="width: 100px; display: inline-block;">
     <a href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#modalCountry2" style="display: inline-block;padding :10px 10px;">Select</a>
 </div>

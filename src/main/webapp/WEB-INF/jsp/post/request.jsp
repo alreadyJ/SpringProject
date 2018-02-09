@@ -10,7 +10,7 @@
             <!-- edit form column -->
             <div class="col-sm-6 col-xs-12">
 
-                <form class="form-horizontal" role="form">
+                <form class="form-horizontal" role="form" action="/postSale">
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Category</label>
                         <div class="col-lg-8">
@@ -44,6 +44,7 @@
                                     <div class="btn btn-mdb-color btn-rounded">
                                         <span>Choose file</span>
                                         <input type="file">
+                                        <input type="hidden" id="image-file1" value="0">
                                     </div>
                                 </div>
                             </div>
@@ -56,6 +57,7 @@
                                     <div class="btn btn-mdb-color btn-rounded">
                                         <span>Choose file</span>
                                         <input type="file">
+                                        <input type="hidden" id="image-file2" value="0">
                                     </div>
                                 </div>
                             </div>
@@ -68,6 +70,7 @@
                                     <div class="btn btn-mdb-color btn-rounded">
                                         <span>Choose file</span>
                                         <input type="file">
+                                        <input type="hidden" id="image-file3" value="0">
                                     </div>
                                 </div>
                             </div>
