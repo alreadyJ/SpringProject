@@ -47,5 +47,20 @@ public class ListDAO extends AbstDAO {
     public List<Map<String, Object>> selectComment(Map<String, Object> map) throws Exception{
         return (List<Map<String, Object>>)selectList("selectComment" ,map);
     }
+    public Object insertSale(Map<String, Object> map) throws Exception{
+        return insert("insertSale", map);
+    }
+    public Object insertSaleImage(Map<String, Object> map) throws Exception{
+        return insert("insertSaleImage", map);
+    }
+    public Object insertRequest(Map<String, Object> map) throws Exception{
+        return insert("insertRequest", map);
+    }
+    public Object insertRequestImage(Map<String, Object> map) throws Exception{
+        return insert("insertRequestImage", map);
+    }
+    public Object insertTrip(Map<String, Object> map) throws Exception{
+        return insert("insertTrip", map);
+    }
 
 }

@@ -1,7 +1,6 @@
 package common.first.web;
 
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 import common.first.service.ListService;
 import common.first.service.UserService;
 import common.pro.dao.*;
@@ -11,6 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.support.DefaultMultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
@@ -19,11 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-
+import java.util.*;
 
 
 @Controller
@@ -190,9 +189,7 @@ public class ItemController {
         tl.setDepartureDate(list.get("departureDate").toString());
         tl.setArrivalDate(list.get("arrivalDate").toString());
         tl.setSchedule(list.get("schedule").toString());
-        String url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=560&photoreference=" +
-                list.get("location").toString() + "&key=AIzaSyAz80kYOAljI22ua7Bjsxre3CCzTrsMxrg";
-        tl.setLocation(url);
+        tl.setLocation(list.get("location").toString());
         tl.setStatus((int)list.get("status"));
         mv.addObject("trip", tl);
 
@@ -303,23 +300,134 @@ public class ItemController {
     }
 
 
-    @RequestMapping(value = "/postSale", method = RequestMethod.POST)
-    public void postSale(HttpServletRequest req, HttpServletResponse res,
+    @RequestMapping(value = "/postSale", produces = "text/plain; charset=UTF-8",  method = RequestMethod.POST)
+    public String postSale(@RequestParam("image-file1") MultipartFile uploadFile1,
+                           @RequestParam("image-file2") MultipartFile uploadFile2,
+                           @RequestParam("image-file3") MultipartFile uploadFile3
+                         ,MultipartHttpServletRequest req, HttpServletResponse res,
                         Map<String,Object> commandMap, HttpSession session)  throws Exception {
+        req.setCharacterEncoding("utf-8");
+        UtilFile utilFile = new UtilFile();
+        String uploadPath1, uploadPath2, uploadPath3;
+        uploadPath1 = uploadPath2 = uploadPath3 = null;
+        if (req.getParameter("image-flag1").equals("1"))uploadPath1 = utilFile.fileUpload(req, uploadFile1);
+        if (req.getParameter("image-flag2").equals("1"))uploadPath2 = utilFile.fileUpload(req, uploadFile2);
+        if (req.getParameter("image-flag3").equals("1"))uploadPath3 = utilFile.fileUpload(req, uploadFile3);
 
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date d = new Date();
+        commandMap.put("user", req.getParameter("userSerial"));
+        commandMap.put("category", req.getParameter("selected-category"));
+        commandMap.put("title", req.getParameter("title"));
+        commandMap.put("detail", req.getParameter("sale-detail"));
+        commandMap.put("location", req.getParameter("selected-location"));
+        commandMap.put("registerDate", df.format(d).toString());
+        commandMap.put("expiration", req.getParameter("selected-date"));
+        commandMap.put("quantity", req.getParameter("quant[1]"));
+        commandMap.put("remainQuantity", req.getParameter("quant[1]"));
+        commandMap.put("maxPurchase", req.getParameter("quant[2]"));
+        commandMap.put("price", req.getParameter("sale-price"));
+
+        int t = (int)listService.insertSale(commandMap);
+
+        commandMap.clear();
+        commandMap.put("registerDate", df.format(d));
+        commandMap.put("title", req.getParameter("title"));
+        if (t == 1) {
+            if (req.getParameter("image-flag1").equals("1")) {
+                String path = uploadPath1.split("/resources/images/")[1];
+                commandMap.put("imagePath", path);
+                int file1 = (int)listService.insertSaleImage(commandMap);
+            }
+            if (req.getParameter("image-flag2").equals("1")) {
+                String path = uploadPath2.split("/resources/images/")[1];
+                commandMap.put("imagePath", path);
+                int file2 = (int)listService.insertSaleImage(commandMap);
+            }
+            if (req.getParameter("image-flag3").equals("1")) {
+                String path = uploadPath3.split("/resources/images/")[1];
+                commandMap.put("imagePath", path);
+                int file3 = (int)listService.insertSaleImage(commandMap);
+            }
+        }
+        return "redirect:list/sale";
     }
 
-    @RequestMapping(value = "/upLoad", method = RequestMethod.POST)
-    public void upLoad(HttpServletRequest req, HttpServletResponse res,
-                         Map<String,Object> commandMap, HttpSession session)  throws Exception {
-        MultipartRequest multi = null;
-        String savePath = "";
-        int fileMaxSize = 10 * (1 << 20);
-        try {
-            multi = new MultipartRequest(req, savePath, fileMaxSize, "UTF-8", new DefaultFileRenamePolicy());
-        }catch (Exception e) {
-            if (e.getMessage().indexOf("exceeds limit") > -1) {}
+    @RequestMapping(value = "/postRequest", produces = "text/plain; charset=UTF-8",  method = RequestMethod.POST)
+    public String postRequest(@RequestParam("image-file1") MultipartFile uploadFile1,
+                           @RequestParam("image-file2") MultipartFile uploadFile2,
+                           @RequestParam("image-file3") MultipartFile uploadFile3
+            ,MultipartHttpServletRequest req, HttpServletResponse res,
+                           Map<String,Object> commandMap, HttpSession session)  throws Exception {
+        req.setCharacterEncoding("utf-8");
+        UtilFile utilFile = new UtilFile();
+        String uploadPath1, uploadPath2, uploadPath3;
+        uploadPath1 = uploadPath2 = uploadPath3 = null;
+        if (req.getParameter("image-flag1").equals("1"))uploadPath1 = utilFile.fileUpload(req, uploadFile1);
+        if (req.getParameter("image-flag2").equals("1"))uploadPath2 = utilFile.fileUpload(req, uploadFile2);
+        if (req.getParameter("image-flag3").equals("1"))uploadPath3 = utilFile.fileUpload(req, uploadFile3);
+
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date d = new Date();
+        commandMap.put("user", req.getParameter("userSerial"));
+        commandMap.put("category", req.getParameter("selected-category"));
+        commandMap.put("title", req.getParameter("title"));
+        commandMap.put("detail", req.getParameter("request-detail"));
+        commandMap.put("location", req.getParameter("selected-location"));
+        commandMap.put("registerDate", df.format(d).toString());
+        commandMap.put("expiration", req.getParameter("selected-date"));
+        commandMap.put("quantity", req.getParameter("quant[1]"));
+        commandMap.put("serviceFee", req.getParameter("service-fee"));
+        commandMap.put("price", req.getParameter("request-price"));
+
+        int t = (int)listService.insertRequest(commandMap);
+
+        commandMap.clear();
+        commandMap.put("registerDate", df.format(d));
+        commandMap.put("title", req.getParameter("title"));
+        if (t == 1) {
+            if (req.getParameter("image-flag1").equals("1")) {
+                String path = uploadPath1.split("/resources/images/")[1];
+                commandMap.put("imagePath", path);
+                int file1 = (int)listService.insertRequestImage(commandMap);
+            }
+            if (req.getParameter("image-flag2").equals("1")) {
+                String path = uploadPath2.split("/resources/images/")[1];
+                commandMap.put("imagePath", path);
+                int file2 = (int)listService.insertRequestImage(commandMap);
+            }
+            if (req.getParameter("image-flag3").equals("1")) {
+                String path = uploadPath3.split("/resources/images/")[1];
+                commandMap.put("imagePath", path);
+                int file3 = (int)listService.insertRequestImage(commandMap);
+            }
         }
+        return "redirect:list/request";
+    }
+
+    @RequestMapping(value = "/postTrip", produces = "text/plain; charset=UTF-8", method = RequestMethod.POST)
+    public String PostTrip(HttpServletRequest req, HttpServletResponse res,
+                        Map<String,Object> commandMap, HttpSession session)  throws Exception {
+        req.setCharacterEncoding("utf-8");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date d = new Date();
+        commandMap.put("user", req.getParameter("userSerial"));
+        commandMap.put("source", req.getParameter("selected-location"));
+        commandMap.put("destination", req.getParameter("selected-location2"));
+        commandMap.put("isRound", req.getParameter("round"));
+        commandMap.put("purpose", req.getParameter("purpose"));
+        commandMap.put("departureDate", req.getParameter("departureDate"));
+        commandMap.put("arrivalDate", req.getParameter("arrivalDate"));
+        commandMap.put("registerDate", df.format(d));
+        String pur = "";
+        if (req.getParameter("round2").toString().equals("0")) pur = "여행";
+        else if (req.getParameter("round2").toString().equals("1")) pur = "출장";
+        else pur = "기타";
+        commandMap.put("purpose", pur);
+        commandMap.put("schedule", req.getParameter("trip-detail"));
+        commandMap.put("location", req.getParameter("arrivalImage"));
+        int t = (int)listService.insertTrip(commandMap);
+        return "redirect:list/trip";
     }
 
 }

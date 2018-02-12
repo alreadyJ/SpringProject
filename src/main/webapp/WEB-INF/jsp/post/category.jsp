@@ -1,4 +1,4 @@
-<select class="form-control" id="category-selector" style="display: block;">
+<select name="selected-category" class="form-control" id="category-selector" style="display: block;">
     <option value="" disabled selected>choose category</option>
     <option value="AF">Fashion</option>
     <option value="AX">Luxury/Grocery</option>

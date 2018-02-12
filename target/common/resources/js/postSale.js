@@ -1,44 +1,3 @@
-var Upload = function (file) {
-    this.file = file;
-};
-
-Upload.prototype.getType = function() {
-    return this.file.type;
-};
-Upload.prototype.getSize = function() {
-    return this.file.size;
-};
-Upload.prototype.getName = function() {
-    return this.file.name;
-};
-Upload.prototype.doUpload = function () {
-    var that = this;
-    var formData = new FormData();
-
-    // add assoc key values, this will be posts values
-    formData.append("file", this.file, this.getName());
-    formData.append("upload_file", true);
-
-    $.ajax({
-        type: "POST",
-        url: "/upload",
-        success: function (data) {
-            // your callback here
-        },
-        error: function (error) {
-            alert("이미지 업로드 실패!");
-        },
-        async: true,
-        data: formData,
-        cache: false,
-        contentType: false,
-        processData: false,
-        timeout: 60000
-    });
-};
-
-
-
 function atrim(str){
     return str.replace(/\s/g,'');
 }
@@ -94,21 +53,11 @@ function postSale() {
     if (quantity.value < maxPurchase.value) {
         alert("최대 구입 수량이 판매 수량보다 클 수 없습니다.");return;
     }
-    if (imageFile1 === "1")imageUpload("sale-file1");
-    if (imageFile2 === "1")imageUpload("sale-file2");
-    if (imageFile3 === "1")imageUpload("sale-file3");
+    if (price.value === "") {
+        alert("가격을 입력해주세요.");return;
+    }
 
     saleForm.submit();
-}
-
-
-
-
-
-function imageUpload(image) {
-    var imageFile = document.getElementById("image").files[0];
-    var upload = new Upload(imageFile);
-    upload.doUpload();
 }
 
 

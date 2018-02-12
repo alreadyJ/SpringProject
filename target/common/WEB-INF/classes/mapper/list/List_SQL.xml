@@ -200,4 +200,147 @@
             serial
     </select>
 
+
+
+    <!--게시글 업로드 관련-->
+    <insert id="insertSale" parameterType="java.util.HashMap">
+        <![CDATA[
+        INSERT INTO sale
+        (
+            user,
+            title,
+            category,
+            detail,
+            location,
+            registerDate,
+            expiration,
+            quantity,
+            remainQuantity,
+            maxPurchase,
+            price,
+            status
+        )
+        VALUES
+        (
+            #{user},
+            #{title},
+            #{category},
+            #{detail},
+            #{location},
+            #{registerDate},
+            #{expiration},
+            #{quantity},
+            #{remainQuantity},
+            #{maxPurchase},
+            #{price},
+            '0'
+        )
+    ]]>
+    </insert>
+
+    <insert id="insertSaleImage" parameterType="java.util.HashMap">
+        <![CDATA[
+        INSERT INTO saleImage
+        (
+            serial,
+            saleImg
+        )
+        VALUES
+        (
+            (SELECT serial
+            FROM sale
+            WHERE registerDate = #{registerDate}
+            AND title = #{title}
+            LIMIT 1),
+            #{imagePath}
+        )
+    ]]>
+    </insert>
+
+
+
+    <insert id="insertRequest" parameterType="java.util.HashMap">
+        <![CDATA[
+        INSERT INTO request
+        (
+            user,
+            title,
+            category,
+            detail,
+            location,
+            registerDate,
+            expiration,
+            quantity,
+            price,
+            serviceFee,
+            status
+        )
+        VALUES
+        (
+            #{user},
+            #{title},
+            #{category},
+            #{detail},
+            #{location},
+            #{registerDate},
+            #{expiration},
+            #{quantity},
+            #{price},
+            #{serviceFee},
+            '0'
+        )
+    ]]>
+    </insert>
+
+    <insert id="insertRequestImage" parameterType="java.util.HashMap">
+        <![CDATA[
+        INSERT INTO requestImage
+        (
+            serial,
+            requestImg
+        )
+        VALUES
+        (
+            (SELECT serial
+            FROM request
+            WHERE registerDate = #{registerDate}
+            AND title = #{title}
+            LIMIT 1),
+            #{imagePath}
+        )
+    ]]>
+    </insert>
+
+    <insert id="insertTrip" parameterType="java.util.HashMap">
+        <![CDATA[
+        INSERT INTO trip
+        (
+            user,
+            source,
+            destination,
+            isRound,
+            purpose,
+            departureDate,
+            arrivalDate,
+            registerDate,
+            schedule,
+            location,
+            status
+        )
+        VALUES
+        (
+            #{user},
+            #{source},
+            #{destination},
+            #{isRound},
+            #{purpose},
+            #{departureDate},
+            #{arrivalDate},
+            #{registerDate},
+            #{schedule},
+            #{location},
+            '0'
+        )
+    ]]>
+    </insert>
 </mapper>

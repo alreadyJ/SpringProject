@@ -46,6 +46,31 @@ public class ListServiceImpl implements ListService {
     }
 
     @Override
+    public Object insertRequest(Map<String, Object> map) throws Exception {
+        return listDAO.insertRequest(map);
+    }
+
+    @Override
+    public Object insertRequestImage(Map<String, Object> map) throws Exception {
+        return listDAO.insertRequestImage(map);
+    }
+
+    @Override
+    public Object insertTrip(Map<String, Object> map) throws Exception {
+        return listDAO.insertTrip(map);
+    }
+
+    @Override
+    public Object insertSale(Map<String, Object> map) throws Exception {
+        return listDAO.insertSale(map);
+    }
+
+    @Override
+    public Object insertSaleImage(Map<String, Object> map) throws Exception {
+        return listDAO.insertSaleImage(map);
+    }
+
+    @Override
     public Object insertComment(Map<String, Object> map) throws Exception {
         return listDAO.insertComment(map);
     }

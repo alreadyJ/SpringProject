@@ -64,13 +64,13 @@
         .carousel-multi-item .py-5 .container .card {
             margin: 0 0 20px 0;
         }
-        #items-1, #item-5, #item-9 {
+        #items-1, #items-5, #items-9 {
             display: none;
         }
-        #items-2, #item-6, #item-10 {
+        #items-2, #items-6, #items-10 {
             display: none;
         }
-        #items-3, #item-7, #item-11 {
+        #items-3, #items-7, #items-11 {
             display: none;
         }
     }
@@ -84,13 +84,13 @@
             margin-left: calc(calc(100% - 550px)/2);
             margin-right: calc(calc(100% - 550px)/2);
         }
-        #items-1, #item-5, #item-9 {
+        #items-1, #items-5, #items-9 {
             display: block;
         }
-        #items-2, #item-6, #item-10 {
+        #itemss-2, #items-6, #items-10 {
             display: none;
         }
-        #items-3, #item-7, #item-11 {
+        #items-3, #items-7, #items-11 {
             display: none;
         }
     }
@@ -104,13 +104,13 @@
             margin-left: calc(calc(100% - 550px)/2);
             margin-right: calc(calc(100% - 550px)/2);
         }
-        #items-1, #item-5, #item-9 {
+        #items-1, #items-5, #items-9 {
             display: block;
         }
-        #items-2, #item-6, #item-10 {
+        #items-2, #items-6, #items-10 {
             display: none;
         }
-        #items-3, #item-7, #item-11 {
+        #items-3, #items-7, #items-11 {
             display: none;
         }
     }
@@ -124,10 +124,10 @@
             margin-left: calc(calc(100% - 810px)/2);
             margin-right: calc(calc(100% - 810px)/2);
         }
-        #items-3, #item-7, #item-11 {
+        #items-3, #items-7, #items-11 {
             display: none;
         }
-        #items-2, #item-6, #item-10 {
+        #items-2, #items-6, #items-10 {
             display: block;
         }
     }
@@ -141,7 +141,7 @@
             margin-left: calc(calc(100% - 1070px)/2);
             margin-right: calc(calc(100% - 1070px)/2);
         }
-        #items-3, #item-7, #item-11 {
+        #items-3, #items-7, #items-11 {
             display: block;
         }
     }

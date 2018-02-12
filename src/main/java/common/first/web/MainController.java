@@ -74,9 +74,7 @@ public class MainController {
             tl.setIsRound((int)list.get(i).get("isRound"));
             tl.setDepartureDate(list.get(i).get("departureDate").toString());
             tl.setArrivalDate(list.get(i).get("arrivalDate").toString());
-            String url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=240&photoreference=" +
-                    list.get(i).get("location").toString() + "&key=AIzaSyAz80kYOAljI22ua7Bjsxre3CCzTrsMxrg";
-            tl.setLocation(url);
+            tl.setLocation(list.get(i).get("location").toString());
             tl.setStatus((int)list.get(i).get("status"));
             trips.add(tl);
         }
@@ -111,6 +109,11 @@ public class MainController {
     @RequestMapping(value = "/googleMap", method = RequestMethod.GET)
     public String googleMap(Model model) throws Exception {
         return "googleMap";
+    }
+
+    @RequestMapping(value = "/googleMap2", method = RequestMethod.GET)
+    public String googleMap2(Model model) throws Exception {
+        return "googleMap2";
     }
 
 }
