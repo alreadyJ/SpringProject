@@ -187,6 +187,22 @@
     ]]>
     </insert>
 
+
+    <delete id="deleteComment" parameterType="java.util.HashMap">
+        <![CDATA[
+        DELETE FROM comments
+        WHERE
+            type = #{type}
+        AND
+            itemSerial = #{itemSerial}
+        AND
+            userSerial = #{userSerial}
+        AND
+            serial = #{serial}
+    ]]>
+    </delete>
+
+
     <select id="selectComment" parameterType="java.util.HashMap" resultType="hashmap">
         SELECT
             *

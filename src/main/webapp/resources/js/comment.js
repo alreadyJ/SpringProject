@@ -24,8 +24,9 @@ function doComment() {
         contentType: "application/x-www-form-urlencoded; charset=UTF-8",
         dataType : 'text',
         url : '/comment',
+        async: false,
         success : function(rData, textStatus, xhr) {
-            addComment(commentText.value, commentUserNickName.value);
+            addComment(commentText.value, commentUserNickName.value, rData);
             commentText.value = "";
         },
         error : function(xhr, status, e) {
@@ -36,13 +37,14 @@ function doComment() {
 
 }
 
-function addComment(text, user) {
+function addComment(text, user, serial) {
     var commentContainer = document.getElementById("comment-container");
     var frameWork = document.getElementById("comment-framework");
     var clonedFrameWork = frameWork.cloneNode(true);
 
     clonedFrameWork.id = "";
     clonedFrameWork.lastElementChild.firstElementChild.firstElementChild.innerText = user;
+    clonedFrameWork.lastElementChild.firstElementChild.firstElementChild.nextElementSibling.value = serial;
     //clonedFrameWork.lastChild.firstChild.nextSibling.nextSibling.firstChild.firstChild
     clonedFrameWork.lastElementChild.lastElementChild.innerText = text;
     clonedFrameWork.style.display = "flex";
@@ -52,4 +54,50 @@ function addComment(text, user) {
 
 function modifyComment() {
 
+}
+
+function deleteComment(obj) {
+    if (confirm("댓글을 삭제하시겠습니까?")) {
+        var commentArea = obj.parentNode.parentNode.parentNode;
+        var commentUserSerial = commentArea.lastElementChild.firstElementChild.lastElementChild;
+        var commentSerial = commentArea.lastElementChild.firstElementChild.firstElementChild.nextElementSibling;
+        var commentItemSerial = document.getElementById("comment-item-serial");
+        var commentType = document.getElementById("comment-type");
+
+        $.ajax({
+            type : 'POST',
+            data : {userSerial: commentUserSerial.value,
+                itemSerial: commentItemSerial.value,
+                type: commentType.value,
+                commentSerial: commentSerial.value},
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+            dataType : 'text',
+            url : '/deleteComment',
+            success : function(rData, textStatus, xhr) {
+                commentArea.parentNode.removeChild(commentArea);
+            },
+            error : function(xhr, status, e) {
+                alert(e + ", " + xhr + ", " + status);
+            }
+        });
+    }
+}
+
+
+function getIndexOfChildNode(obj) {
+    var parent = obj.parentNode;
+    var children = parent.children;
+    var i = children.length - 1;
+    for (;i >= 0; i--) {
+        if (children[i] === obj) break;
+    }
+    return i;
+}
+
+function mouseOver(obj) {
+    obj.class = "fa fa-pencil blue-text";
+}
+
+function mouseOut(obj) {
+    obj.class = "fa fa-pencil black-text";
 }

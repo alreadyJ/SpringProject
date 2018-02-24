@@ -44,6 +44,10 @@ public class ListDAO extends AbstDAO {
     public Object insertComment(Map<String, Object> map) throws Exception{
         return insert("insertComment", map);
     }
+    public Object deleteComment(Map<String, Object> map) throws Exception{
+        return delete("deleteComment", map);
+    }
+
     public List<Map<String, Object>> selectComment(Map<String, Object> map) throws Exception{
         return (List<Map<String, Object>>)selectList("selectComment" ,map);
     }

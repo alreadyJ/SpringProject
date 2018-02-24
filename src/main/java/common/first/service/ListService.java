@@ -16,6 +16,7 @@ public interface ListService {
     Map<String, Object> selectOneRequest(Map<String, Object> map) throws Exception;
     Map<String, Object> selectOneTrip(Map<String, Object> map) throws Exception;
     Object insertComment(Map<String, Object> map) throws Exception;
+    Object deleteComment(Map<String, Object> map) throws Exception;
     List<Map<String, Object>> selectComment(Map<String, Object> map) throws Exception;
     Object insertSale(Map<String, Object> map) throws Exception;
     Object insertSaleImage(Map<String, Object> map) throws Exception;

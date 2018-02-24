@@ -218,6 +218,13 @@
     </dependency>
 
 
+    <dependency>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-websocket-api</artifactId>
+      <version>8.0.49</version>
+    </dependency>
+
+
   </dependencies>
   <build>
     <finalName>common</finalName>

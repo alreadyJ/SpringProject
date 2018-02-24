@@ -151,6 +151,7 @@ public class ItemController {
             User user = new User();
             commandMap.put("serial", (int)cList.get(i).get("userSerial"));
             List<Map<String,Object>> userList = userService.selectUserWithSerial(commandMap);
+            user.setSerial((int)cList.get(i).get("userSerial"));
             user.setNickName(userList.get(0).get("nickName").toString());
             user.setProfileImg(userList.get(0).get("profileImg").toString());
             Comment comment = new Comment((int)cList.get(i).get("serial"),
@@ -202,6 +203,7 @@ public class ItemController {
             user = new User();
             commandMap.put("serial", (int)cList.get(i).get("userSerial"));
             userList = userService.selectUserWithSerial(commandMap);
+            user.setSerial((int)cList.get(i).get("userSerial"));
             user.setNickName(userList.get(0).get("nickName").toString());
             user.setProfileImg(userList.get(0).get("profileImg").toString());
             Comment comment = new Comment((int)cList.get(i).get("serial"),
@@ -252,6 +254,7 @@ public class ItemController {
             User user = new User();
             commandMap.put("serial", (int)cList.get(i).get("userSerial"));
             List<Map<String, Object>> userList = userService.selectUserWithSerial(commandMap);
+            user.setSerial((int)cList.get(i).get("userSerial"));
             user.setNickName(userList.get(0).get("nickName").toString());
             user.setProfileImg(userList.get(0).get("profileImg").toString());
             Comment comment = new Comment((int)cList.get(i).get("serial"),
@@ -295,6 +298,33 @@ public class ItemController {
         commandMap.put("registerDate", df.format(d));
 
         int t = (int)listService.insertComment(commandMap);
+        int serial = (int)listService.selectComment(commandMap).get(0).get("serial");
+        logger.info(t + "tttt");
+        out.write(serial);out.flush();out.close();
+    }
+
+    @RequestMapping(value = "/deleteComment", produces = "text/plain; charset=UTF-8", method = RequestMethod.POST)
+    public void deleteComment(HttpServletRequest req, HttpServletResponse res,
+                        Map<String,Object> commandMap, HttpSession session)  throws Exception {
+        PrintWriter out = res.getWriter();
+        req.setCharacterEncoding("utf-8");
+        String userSerial = (req.getParameter("userSerial") == null) ? "" : String
+                .valueOf(req.getParameter("userSerial"));
+        String itemSerial = (req.getParameter("itemSerial") == null) ? "" : String
+                .valueOf(req.getParameter("itemSerial"));
+        String type = (req.getParameter("type") == null) ? "" : String
+                .valueOf(req.getParameter("type"));
+        String commentSerial = (req.getParameter("commentSerial") == null) ? "" : String
+                .valueOf(req.getParameter("commentSerial"));
+
+        Date d = new Date();
+        commandMap.put("userSerial", userSerial);
+        commandMap.put("itemSerial", itemSerial);
+        commandMap.put("type", type);
+        commandMap.put("serial", commentSerial);
+
+
+        int t = (int)listService.deleteComment(commandMap);
         logger.info(t + "tttt");
         out.write(t);out.flush();out.close();
     }

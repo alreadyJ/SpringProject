@@ -205,6 +205,15 @@
                 <div class="col-sm-10 col-12">
                     <a>
                         <h5 class="user-name font-bold">John Doe</h5>
+                        <input type="hidden" name="commentSerial" value="">
+                        <c:choose>
+                            <c:when test="${not empty sessionScope.User}">
+                                <input type="hidden" name="serialOfUserComment" value="<%=user.getSerial()%>"/>
+                            </c:when>
+                            <c:otherwise>
+                                <input type="hidden" name="serialOfUserComment" value="-1"/>
+                            </c:otherwise>
+                        </c:choose>
                     </a>
                     <!-- Rating -->
                     <ul class="rating">
@@ -222,6 +231,12 @@
                         </li>
                         <li>
                             <i class="fa fa-star blue-text"></i>
+                        </li>
+                        <li style="cursor: pointer;" onmouseover="mouseOver(this.children[0]);" onmouseout="mouseOut(this.children[0]);" onclick="">
+                            <i class="fa fa-pencil black-text"></i>
+                        </li>
+                        <li style="cursor: pointer;" onmouseover="mouseOver(this.children[0]);" onmouseout="mouseOut(this.children[0]);" onclick="deleteComment(this);">
+                            <i class="fa fa-close black-text"></i>
                         </li>
                     </ul>
                     <div class="card-data">
@@ -238,7 +253,14 @@
             </div>
             <!--/.First row-->
 
-
+            <c:choose>
+                <c:when test="${not empty sessionScope.User}">
+                    <c:set var="sessionSerial" value="<%=user.getSerial()%>"/>
+                </c:when>
+                <c:otherwise>
+                    <c:set var="sessionSerial" value="-1"/>
+                </c:otherwise>
+            </c:choose>
 
             <%for(int i = 0; i < cl.size(); i++) {%>
             <div class="row">
@@ -252,6 +274,15 @@
                 <div class="col-sm-10 col-12">
                     <a>
                         <h5 class="user-name font-bold"><%=cl.get(i).getUser().getNickName()%></h5>
+                        <input type="hidden" name="commentSerial" value="<%=cl.get(i).getSerial()%>">
+                        <c:choose>
+                            <c:when test="${not empty sessionScope.User}">
+                                <input type="hidden" name="serialOfUserComment" value="<%=cl.get(i).getUser().getSerial()%>"/>
+                            </c:when>
+                            <c:otherwise>
+                                <input type="hidden" name="serialOfUserComment" value="-2"/>
+                            </c:otherwise>
+                        </c:choose>
                     </a>
                     <!-- Rating -->
                     <ul class="rating">
@@ -270,6 +301,15 @@
                         <li>
                             <i class="fa fa-star blue-text"></i>
                         </li>
+                        <c:set var="clSerial" value="<%=cl.get(i).getUser().getSerial()%>"/>
+                        <c:if test="${clSerial eq sessionSerial}">
+                            <li style="cursor: pointer;" onmouseover="mouseOver(this.children[0]);" onmouseout="mouseOut(this.children[0]);">
+                                <i class="fa fa-pencil black-text"></i>
+                            </li>
+                            <li style="cursor: pointer;" onmouseover="mouseOver(this.children[0]);" onmouseout="mouseOut(this.children[0]);" onclick="deleteComment(this);">
+                                <i class="fa fa-close black-text"></i>
+                            </li>
+                        </c:if>
                     </ul>
                     <div class="card-data">
                         <ul class="list-unstyled mb-1">
@@ -304,7 +344,7 @@
                            style="position:relative; float:right; background-color: #040404!important; margin-top: 13px">
                 </c:when>
                 <c:otherwise>
-                    <textarea type ="text" rows="3" name="comment" placeholder="Need login"
+                    <textarea type ="text" rows="3" name="comment" placeholder="Need login" disabled
                               style="position:relative; float: left; width: calc(100% - 130px);"></textarea>
                     <input class="btn btn-default comment-btn" type="button" value="Done" disabled
                            style="position:relative; float:right; background-color: #040404!important; margin-top: 13px">
@@ -325,6 +365,6 @@
 
 
 <jsp:include page="../footer.jsp"/>
-<script src="<c:url value="/resources/js/comment.js?ver=1.1"/>"></script>
+<script src="<c:url value="/resources/js/comment.js?ver=1.3"/>"></script>
 </body>
 </html>

@@ -61,6 +61,11 @@ public class ListServiceImpl implements ListService {
     }
 
     @Override
+    public Object deleteComment(Map<String, Object> map) throws Exception {
+        return listDAO.deleteComment(map);
+    }
+
+    @Override
     public Object insertSale(Map<String, Object> map) throws Exception {
         return listDAO.insertSale(map);
     }
