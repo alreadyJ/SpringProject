@@ -13,6 +13,11 @@ public class UserServiceImpl implements UserService {
     private UserDAO userDAO;
 
     @Override
+    public Object updateUser(Map<String, Object> map) throws Exception {
+        return userDAO.updateUser(map);
+    }
+
+    @Override
     public List<Map<String, Object>> selectUserWithSerial(Map<String, Object> map) throws Exception {
         return userDAO.selectUserWithSerial(map);
     }

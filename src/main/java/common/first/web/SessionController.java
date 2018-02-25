@@ -6,6 +6,9 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -74,6 +77,9 @@ public class SessionController {
             user.setNickName(list.get(0).get("nickName").toString());
             user.setProfileImg(list.get(0).get("profileImg").toString());
             user.setSignUpDate(list.get(0).get("signUpDate").toString());
+            user.setCountry((list.get(0).get("country") == null ? null : list.get(0).get("country").toString()));
+            user.setAddress((list.get(0).get("address") == null ? null : list.get(0).get("address").toString()));
+            user.setDescription((list.get(0).get("description") == null ? null : list.get(0).get("description").toString()));
             session.setAttribute("User", user);
         }
 
@@ -104,6 +110,42 @@ public class SessionController {
         session.invalidate();
         out.print(1);
         out.flush();out.close();
+    }
+
+
+
+    @RequestMapping(value = "/saveProfile", produces = "text/plain; charset=UTF-8",  method = RequestMethod.POST)
+    public String postSale(@RequestParam("image-file") MultipartFile uploadFile1
+            , MultipartHttpServletRequest req, HttpServletResponse res,
+                           Map<String,Object> commandMap, HttpSession session)  throws Exception {
+        req.setCharacterEncoding("utf-8");
+        UtilFile utilFile = new UtilFile();
+        String uploadPath;
+        uploadPath = null;
+        if (req.getParameter("image-flag").equals("1")) uploadPath = utilFile.fileUpload(req, uploadFile1);
+
+        commandMap.put("serial", req.getParameter("userSerial"));
+        commandMap.put("country", req.getParameter("selected-location"));
+        commandMap.put("address", req.getParameter("address"));
+        commandMap.put("description", req.getParameter("description"));
+        commandMap.put("profileImg", "");
+        if (req.getParameter("image-flag").equals("1")) {
+            String path = uploadPath.split("/resources/images/")[1];
+            commandMap.put("profileImg", path);
+        }
+
+        int t = (int)userService.updateUser(commandMap);
+
+        if (t == 1) {
+            User user = (User)session.getAttribute("User");
+            user.setCountry(commandMap.get("country").toString());
+            user.setAddress(commandMap.get("address").toString());
+            user.setDescription(commandMap.get("description").toString());
+            user.setProfileImg(commandMap.get("profileImg").toString());
+            session.removeAttribute("User");
+            session.setAttribute("User", user);
+        }
+        return "redirect:setting";
     }
 
 }

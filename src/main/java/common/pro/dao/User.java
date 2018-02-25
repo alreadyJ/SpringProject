@@ -1,10 +1,34 @@
 package common.pro.dao;
 
 public class User {
-    private String email, password, nickName, profileImg, signUpDate;
+    private String email, password, nickName, profileImg, signUpDate, country, address ,description;
     private int serial;
 
-    public User() { this.email = this.password = this.nickName = this.profileImg = signUpDate = null; serial = -1;}
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public User() { this.email = this.password = this.nickName = this.profileImg = signUpDate = country = address = description = null; serial = -1;}
 
     public int getSerial() {
         return serial;

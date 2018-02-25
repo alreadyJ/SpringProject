@@ -34,7 +34,10 @@
                 email,
                 nickName,
                 profileImg,
-                signUpDate
+                signUpDate,
+                country,
+                address,
+                description
             FROM
                 user
             WHERE
@@ -67,6 +70,19 @@
         )
     ]]>
     </insert>
+
+    <update id="updateUser" parameterType="java.util.HashMap">
+        <![CDATA[
+        UPDATE user
+        SET
+            profileImg = #{profileImg},
+            country = #{country},
+            address = #{address},
+            description = #{description}
+        WHERE
+            serial = #{serial}
+    ]]>
+    </update>
 
 </mapper>
 

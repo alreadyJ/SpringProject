@@ -40,7 +40,8 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <p id="profile_nickname" style="display: inline-block;margin: 0;vertical-align: middle;" class="" >
                                 <%=user.getNickName()%></p>
-                            <img class="img img-circle" style="height: 45px;" src="<c:url value="/resources/images/user.png"/> "/>
+                                <%request.setAttribute("image", (user.getProfileImg().equals("") ? "user.png" : user.getProfileImg()));%>
+                            <img class="img img-circle" style="height: 45px;" src="<c:url value="/resources/images/${image}"/> "/>
                             </a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="#" onclick="doLogOut();">LogOut</a>

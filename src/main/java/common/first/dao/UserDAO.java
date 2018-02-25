@@ -21,5 +21,8 @@ public class UserDAO extends AbstDAO {
     public Object insertUser(Map<String, Object> map) throws Exception{
         return insert("insertUser", map);
     }
+    public Object updateUser(Map<String, Object> map) throws Exception {
+        return update("updateUser", map);
+    }
 }
 
