@@ -37,24 +37,34 @@ function doComment() {
 
 }
 
+Date.prototype.yyyymmdd = function() {
+    var mm = this.getMonth() + 1; // getMonth() is zero-based
+    var dd = this.getDate();
+
+    return [this.getFullYear(),
+        (mm>9 ? '' : '0') + mm,
+        (dd>9 ? '' : '0') + dd
+    ].join('-');
+};
+
+
 function addComment(text, user, serial) {
     var commentContainer = document.getElementById("comment-container");
     var frameWork = document.getElementById("comment-framework");
     var clonedFrameWork = frameWork.cloneNode(true);
-
+    var date = new Date();
     clonedFrameWork.id = "";
     clonedFrameWork.lastElementChild.firstElementChild.firstElementChild.innerText = user;
     clonedFrameWork.lastElementChild.firstElementChild.firstElementChild.nextElementSibling.value = serial;
-    //clonedFrameWork.lastChild.firstChild.nextSibling.nextSibling.firstChild.firstChild
+    clonedFrameWork.lastElementChild.lastElementChild.previousElementSibling.firstElementChild.firstElementChild.innerHTML = "<i class=\"fa fa-clock-o\"></i> " + date.yyyymmdd();
     clonedFrameWork.lastElementChild.lastElementChild.innerText = text;
     clonedFrameWork.style.display = "flex";
     commentContainer.appendChild(clonedFrameWork);
 }
 
 
-function modifyComment() {
 
-}
+
 
 function deleteComment(obj) {
     if (confirm("댓글을 삭제하시겠습니까?")) {

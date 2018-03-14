@@ -180,7 +180,7 @@
         <%if (sales.size() > 4) {%>
         <li data-target="#multi-item-example" data-slide-to="1"></li>
         <%}%>
-        <%if (sales.size() > 7) {%>
+        <%if (sales.size() > 8) {%>
         <li data-target="#multi-item-example" data-slide-to="2"></li>
         <%}%>
     </ol>

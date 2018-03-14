@@ -119,7 +119,7 @@
                         </div>
                         <p></p>
                     </div>
-
+                    <script src="<c:url value="/resources/js/minusPlus.js"/> "></script>
 
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Service fee</label>

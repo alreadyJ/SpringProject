@@ -33,14 +33,18 @@
 
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Round</label>
-                        왕복<input type="radio" name="round" checked value="1"/>
-                        편도<input type="radio" name="round" value="0"/>
+                        <div>
+                            왕복&nbsp;&nbsp;<input type="radio" name="round" checked value="1"/>&nbsp;
+                            편도&nbsp;&nbsp;<input type="radio" name="round" value="0"/>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Purpose</label>
-                        여행<input type="radio" name="round2" checked value="0"/>
-                        출장<input type="radio" name="round2" value="1"/>
-                        기타<input type="radio" name="round2" value="2"/>
+                        <div>
+                            여행&nbsp;&nbsp;<input type="radio" name="round2" checked value="0"/>&nbsp;
+                            출장&nbsp;&nbsp;<input type="radio" name="round2" value="1"/>&nbsp;
+                            기타&nbsp;&nbsp;<input type="radio" name="round2" value="2"/>
+                        </div>
                     </div>
 
                     <div class="form-group">

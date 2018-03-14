@@ -276,7 +276,7 @@ public class ItemController {
 
 
     @RequestMapping(value = "/comment", produces = "text/plain; charset=UTF-8", method = RequestMethod.POST)
-    public void Comment(HttpServletRequest req, HttpServletResponse res,
+    public void comment(HttpServletRequest req, HttpServletResponse res,
                                Map<String,Object> commandMap, HttpSession session)  throws Exception {
         PrintWriter out = res.getWriter();
         req.setCharacterEncoding("utf-8");

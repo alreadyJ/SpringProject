@@ -117,7 +117,7 @@
         <%if (trips.size() > 4) {%>
         <li data-target="#multi-item-example2" data-slide-to="1"></li>
         <%}%>
-        <%if (trips.size() > 7) {%>
+        <%if (trips.size() > 8) {%>
         <li data-target="#multi-item-example2" data-slide-to="2"></li>
         <%}%>
     </ol>

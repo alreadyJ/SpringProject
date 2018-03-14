@@ -232,9 +232,6 @@
                         <li>
                             <i class="fa fa-star blue-text"></i>
                         </li>
-                        <li style="cursor: pointer;" onmouseover="mouseOver(this.children[0]);" onmouseout="mouseOut(this.children[0]);" onclick="">
-                            <i class="fa fa-pencil black-text"></i>
-                        </li>
                         <li style="cursor: pointer;" onmouseover="mouseOver(this.children[0]);" onmouseout="mouseOut(this.children[0]);" onclick="deleteComment(this);">
                             <i class="fa fa-close black-text"></i>
                         </li>
@@ -303,9 +300,7 @@
                         </li>
                         <c:set var="clSerial" value="<%=cl.get(i).getUser().getSerial()%>"/>
                         <c:if test="${clSerial eq sessionSerial}">
-                            <li style="cursor: pointer;" onmouseover="mouseOver(this.children[0]);" onmouseout="mouseOut(this.children[0]);">
-                                <i class="fa fa-pencil black-text"></i>
-                            </li>
+
                             <li style="cursor: pointer;" onmouseover="mouseOver(this.children[0]);" onmouseout="mouseOut(this.children[0]);" onclick="deleteComment(this);">
                                 <i class="fa fa-close black-text"></i>
                             </li>

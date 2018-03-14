@@ -181,7 +181,7 @@
         <%if (requests.size() > 4) {%>
         <li data-target="#multi-item-example3" data-slide-to="1"></li>
         <%}%>
-        <%if (requests.size() > 7) {%>
+        <%if (requests.size() > 8) {%>
         <li data-target="#multi-item-example3" data-slide-to="2"></li>
         <%}%>
     </ol>
