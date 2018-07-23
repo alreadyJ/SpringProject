@@ -1,20 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="common.first.dao.ListDAO">
-    <select id="selectSale" parameterType="java.util.HashMap" resultType="hashmap">
-        <![CDATA[
-            SELECT
-                *
-            FROM
-                sale
-            WHERE
-                status = '0'
-            ORDER BY
-                serial
-            desc
-        ]]>
+<mapper namespace="com.split.first.repository.ListRepository">
+
+
+    <resultMap id="saleResultMap" type="java.util.HashMap">
+        <id property="serial" column="serial" />
+        <result property="user" column="user"/>
+        <result property="title" column="title"/>
+        <result property="category" column="category"/>
+        <result property="detail" column="detail"/>
+        <result property="registeredDate" column="registered_date"/>
+        <result property="expiration" column="expiration"/>
+        <result property="quantity" column="quantity"/>
+        <result property="remainQuantity" column="remain_quantity"/>
+        <result property="maxPurchase" column="max_purchase"/>
+        <collection property="saleImageList" javaType="java.util.ArrayList" resultMap="saleImageResultMap"/>
+    </resultMap>
+
+    <resultMap id="saleImageResultMap" type="java.util.HashMap">
+        <id property="serial" column="serial"/>
+        <result property="uri" column="uri"/>
+    </resultMap>
+
+    <select id="selectSales" resultMap="saleResultMap">
+            SELECT S.serial, S.user, S.title, S.category, S.detail, S.detail, S.location,
+            S.registered_date, S.expiration, S.quantity, S.remain_quantity, S.max_purchase,
+            S.price, S.status, sale_image.serial FROM (select * from sale limit 12) S
+            LEFT JOIN sale_image ON S.serial = sale_image.serial and S.status = '0' ORDER BY S.serial desc;
     </select>
+    
+
 
     <select id="selectSaleCategory" parameterType="java.util.HashMap" resultType="hashmap">
         <![CDATA[
@@ -61,7 +77,7 @@
     </select>
 
 
-    <select id="selectTrip" parameterType="java.util.HashMap" resultType="hashmap">
+    <select id="selectTrips" parameterType="java.util.HashMap" resultType="hashmap">
         <![CDATA[
             SELECT
                 *
@@ -106,8 +122,27 @@
     </select>
 
 
+    <resultMap id="requestResultMap" type="java.util.HashMap">
+        <id property="serial" column="serial" />
+        <result property="user" column="user"/>
+        <result property="title" column="title"/>
+        <result property="category" column="category"/>
+        <result property="detail" column="detail"/>
+        <result property="registeredDate" column="registered_date"/>
+        <result property="expiration" column="expiration"/>
+        <result property="quantity" column="quantity"/>
+        <result property="remainQuantity" column="remain_quantity"/>
+        <result property="maxPurchase" column="max_purchase"/>
+        <collection property="saleImageList" javaType="java.util.ArrayList" resultMap="requestImageResultMap"/>
+    </resultMap>
 
-    <select id="selectRequest" parameterType="java.util.HashMap" resultType="hashmap">
+    <resultMap id="requestImageResultMap" type="java.util.HashMap">
+        <id property="serial" column="serial"/>
+        <result property="uri" column="uri"/>
+    </resultMap>
+
+
+    <select id="selectRequests" parameterType="java.util.HashMap" resultMap="requestResultMap">
         <![CDATA[
             SELECT
                 *

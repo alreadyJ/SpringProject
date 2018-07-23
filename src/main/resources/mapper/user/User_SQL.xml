@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="common.first.dao.UserDAO">
+<mapper namespace="com.split.first.repository.UserRepository">
     <select id="selectUserWithSerial" parameterType="java.util.HashMap" resultType="hashmap">
         <![CDATA[
             SELECT
