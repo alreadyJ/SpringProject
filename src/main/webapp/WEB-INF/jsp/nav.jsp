@@ -1,6 +1,6 @@
 <%@ page import="com.split.first.dto.User" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%User user = (User)session.getAttribute("User");%>
+<% User user = (User)session.getAttribute("User");%>
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-white bg-white fixed-top">
     <div class="container" >
@@ -40,7 +40,7 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <p id="profile_nickname" style="display: inline-block;margin: 0;vertical-align: middle;" class="" >
                                 <%=user.getNickName()%></p>
-                                <%request.setAttribute("image", (user.getProfileImg().equals("") ? "user.png" : user.getProfileImg()));%>
+                                <%request.setAttribute("image", (user.getProfileImage().equals("") ? "user.png" : user.getProfileImage()));%>
                             <img class="img img-circle" style="height: 45px;" src="<c:url value="/resources/images/${image}"/> "/>
                             </a>
                             <div class="dropdown-menu">

@@ -227,10 +227,10 @@
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.16.8</version>
-      <scope>provided</scope>
+      <version>1.16.19</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/lombok-edge.jar</systemPath>
     </dependency>
-
 
     <dependency>
       <groupId>joda-time</groupId>

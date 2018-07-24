@@ -3,7 +3,6 @@ package com.split.first.dto;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import org.joda.time.DateTime;
 
 import java.util.List;
 
@@ -16,10 +15,11 @@ public class Sale {
     String category;
     String detail;
     String location;
-    DateTime registeredDate;
-    DateTime expiration;
-    int remain_quantity;
+    String registeredDate;
+    String expiration;
     int quantity;
+    int remainQuantity;
+    int maxPurchase;
     int price;
     int status;
     List<SaleImage> saleImage;

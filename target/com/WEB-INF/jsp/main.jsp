@@ -207,17 +207,17 @@
     <h3 class="h3-responsive font-bold black-text mx-3">Sales</h3>
 </div>
 <jsp:include page="saleCard.jsp"/>
-<%--<div class="divider-new">--%>
-    <%--<h3 class="h3-responsive font-bold black-text mx-3">Trips</h3>--%>
-<%--</div>--%>
+<div class="divider-new">
+    <h3 class="h3-responsive font-bold black-text mx-3">Trips</h3>
+</div>
 <%--<jsp:include page="tripCard.jsp"/>--%>
-<%--<div class="divider-new">--%>
-    <%--<h3 class="h3-responsive font-bold black-text mx-3">Requests</h3>--%>
-<%--</div>--%>
-<%--<jsp:include page="requestCard.jsp"/>--%>
+<div class="divider-new">
+    <h3 class="h3-responsive font-bold black-text mx-3">Requests</h3>
+</div>
+<jsp:include page="requestCard.jsp"/>
 
 
-<%--<jsp:include page="footer.jsp"/>--%>
+<jsp:include page="footer.jsp"/>
 
 
     <script>

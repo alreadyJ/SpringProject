@@ -4,7 +4,7 @@
 <mapper namespace="com.split.first.repository.ListRepository">
 
 
-    <resultMap id="saleResultMap" type="java.util.HashMap">
+    <resultMap id="saleResultMap" type="com.split.first.dto.Sale">
         <id property="serial" column="serial" />
         <result property="user" column="user"/>
         <result property="title" column="title"/>
@@ -15,10 +15,12 @@
         <result property="quantity" column="quantity"/>
         <result property="remainQuantity" column="remain_quantity"/>
         <result property="maxPurchase" column="max_purchase"/>
-        <collection property="saleImageList" javaType="java.util.ArrayList" resultMap="saleImageResultMap"/>
+        <result property="price" column="price"/>
+        <result property="status" column="status"/>
+        <collection property="saleImage" javaType="java.util.ArrayList" resultMap="saleImageResultMap"/>
     </resultMap>
 
-    <resultMap id="saleImageResultMap" type="java.util.HashMap">
+    <resultMap id="saleImageResultMap" type="com.split.first.dto.SaleImage">
         <id property="serial" column="serial"/>
         <result property="uri" column="uri"/>
     </resultMap>
@@ -26,7 +28,7 @@
     <select id="selectSales" resultMap="saleResultMap">
             SELECT S.serial, S.user, S.title, S.category, S.detail, S.detail, S.location,
             S.registered_date, S.expiration, S.quantity, S.remain_quantity, S.max_purchase,
-            S.price, S.status, sale_image.serial FROM (select * from sale limit 12) S
+            S.price, S.status, sale_image.serial, sale_image.uri FROM (select * from sale limit 12) S
             LEFT JOIN sale_image ON S.serial = sale_image.serial and S.status = '0' ORDER BY S.serial desc;
     </select>
     
@@ -122,21 +124,22 @@
     </select>
 
 
-    <resultMap id="requestResultMap" type="java.util.HashMap">
+    <resultMap id="requestResultMap" type="com.split.first.dto.Request">
         <id property="serial" column="serial" />
         <result property="user" column="user"/>
         <result property="title" column="title"/>
         <result property="category" column="category"/>
         <result property="detail" column="detail"/>
+        <result property="location" column="location"/>
         <result property="registeredDate" column="registered_date"/>
         <result property="expiration" column="expiration"/>
         <result property="quantity" column="quantity"/>
-        <result property="remainQuantity" column="remain_quantity"/>
-        <result property="maxPurchase" column="max_purchase"/>
-        <collection property="saleImageList" javaType="java.util.ArrayList" resultMap="requestImageResultMap"/>
+        <result property="price" column="price"/>
+        <result property="serviceFee" column="service_fee"/>
+        <collection property="requestImage" javaType="java.util.ArrayList" resultMap="requestImageResultMap"/>
     </resultMap>
 
-    <resultMap id="requestImageResultMap" type="java.util.HashMap">
+    <resultMap id="requestImageResultMap" type="com.split.first.dto.RequestImage">
         <id property="serial" column="serial"/>
         <result property="uri" column="uri"/>
     </resultMap>

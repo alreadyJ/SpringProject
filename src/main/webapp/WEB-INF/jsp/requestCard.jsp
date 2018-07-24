@@ -35,7 +35,7 @@
                             </div>
                         </div>
                     </div>
-                    <%request.setAttribute("image", requests.get(i).getRequestImage().get(0));%>
+                    <%request.setAttribute("image", requests.get(i).getRequestImage().get(0).getUri());%>
                     <img class="card-image" src="<c:url value="/resources/images/${image}"/>" class="img-fluid" alt="">
                     <a href="/item/request/<%=requests.get(i).getSerial()%>" style="color: #040404;">
                         <div class="mask"></div>
@@ -145,7 +145,7 @@
                             </div>
                         </div>
                     </div>
-                    <%request.setAttribute("image", requests.get(i).getRequestImage().get(0));%>
+                    <%request.setAttribute("image", requests.get(i).getRequestImage().get(0).getUri());%>
                     <img class="card-image" src="<c:url value="/resources/images/${image}"/>" class="img-fluid" alt="">
                     <a href="/item/request/<%=requests.get(i).getSerial()%>" style="color: #040404;">
                         <div class="mask"></div>

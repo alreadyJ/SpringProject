@@ -69,13 +69,13 @@
                         <!--Slides-->
                         <div class="carousel-inner center-on-small-only" role="listbox">
                             <div class="carousel-item active">
-                                <%request.setAttribute("image", sale.getImage(0));%>
+                                <%request.setAttribute("image", sale.getSaleImage().get(0).getUri());%>
                                 <img src="<c:url value="/resources/images/${image}"/>" alt="First slide" class="img-fluid">
                             </div>
                             <%
-                                for (int i = 1; i < sale.imageSize(); i++) {%>
+                                for (int i = 1; i < sale.getSaleImage().size(); i++) {%>
                             <div class="carousel-item">
-                                <%request.setAttribute("image", sale.getImage(i));%>
+                                <%request.setAttribute("image", sale.getSaleImage().get(i));%>
                                 <img src="<c:url value="/resources/images/${image}"/>" alt="Second slide" class="img-fluid">
                             </div>
                             <%}%>
@@ -307,7 +307,7 @@
                         <div class="card-data">
                             <ul class="list-unstyled mb-1">
                                 <li class="comment-date font-small grey-text">
-                                    <i class="fa fa-clock-o"></i> <%=cl.get(i).getRegisterDate()%></li>
+                                    <i class="fa fa-clock-o"></i> <%=cl.get(i).getRegisteredDate()%></li>
                             </ul>
                         </div>
                         <p class="dark-grey-text article"><%=cl.get(i).getText()%></p>

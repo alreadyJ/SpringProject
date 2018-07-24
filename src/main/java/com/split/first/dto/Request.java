@@ -3,7 +3,6 @@ package com.split.first.dto;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import org.joda.time.DateTime;
 
 import java.util.List;
 
@@ -16,8 +15,8 @@ public class Request {
     String category;
     String detail;
     String location;
-    DateTime registeredDate;
-    DateTime expiration;
+    String registeredDate;
+    String expiration;
     int quantity;
     int price;
     int serviceFee;

@@ -1,7 +1,6 @@
 package com.split.first.dto;
 
 import lombok.Data;
-import org.joda.time.DateTime;
 
 @Data
 public class User {
@@ -11,7 +10,7 @@ public class User {
     String nickName;
     String phone;
     String profileImage;
-    DateTime signUpDate;
+    String signUpDate;
     String address;
     String country;
     String description;

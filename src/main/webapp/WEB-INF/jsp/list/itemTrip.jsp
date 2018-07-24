@@ -299,7 +299,7 @@
                     <div class="card-data">
                         <ul class="list-unstyled mb-1">
                             <li class="comment-date font-small grey-text">
-                                <i class="fa fa-clock-o"></i> <%=cl.get(i).getRegisterDate()%></li>
+                                <i class="fa fa-clock-o"></i> <%=cl.get(i).getRegisteredDate()%></li>
                         </ul>
                     </div>
                     <p class="dark-grey-text article"><%=cl.get(i).getText()%></p>

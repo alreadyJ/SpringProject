@@ -1,7 +1,6 @@
 package com.split.first.dto;
 
 import lombok.Data;
-import org.joda.time.DateTime;
 
 @Data
 public class Trip {
@@ -12,9 +11,9 @@ public class Trip {
     String destination;
     int isRound;
     String purpose;
-    DateTime departureDate;
-    DateTime arrivalDate;
-    DateTime registeredDate;
+    String departureDate;
+    String arrivalDate;
+    String registeredDate;
     String schedule;
     String location;
     int status;
