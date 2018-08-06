@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Map;
 
-@Repository("ListRepository")
+@Repository
 public class ListRepository {
     @Autowired
     private SqlSession sqlSession;

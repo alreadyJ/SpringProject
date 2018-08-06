@@ -12,7 +12,7 @@ import java.util.Map;
 
 @Service
 public class ListService {
-    @Resource(name="ListRepository")
+    @Resource
     private ListRepository listRepository;
     public List<Sale> selectSale() throws Exception {
         return listRepository.selectSale();

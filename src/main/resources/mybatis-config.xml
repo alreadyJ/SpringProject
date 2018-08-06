@@ -4,6 +4,10 @@
         <settings>
                 <setting name="callSettersOnNulls" value="true"/>
         </settings>
+
+        <typeHandlers>
+                <typeHandler handler="your.package.LocalDateTypeHandler"/>
+        </typeHandlers>
 </configuration>
 
 

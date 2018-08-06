@@ -2,6 +2,8 @@ package com.split.first.dto;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class User {
     int serial;
@@ -10,7 +12,7 @@ public class User {
     String nickName;
     String phone;
     String profileImage;
-    String signUpDate;
+    LocalDateTime signUpDate;
     String address;
     String country;
     String description;
