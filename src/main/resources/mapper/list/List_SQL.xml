@@ -5,7 +5,6 @@
 
     <resultMap id="saleResultMap" type="com.split.first.dto.Sale">
         <id property="serial" column="serial" />
-        <collection property="user" resultMap="userResultMap"/>
         <result property="title" column="title"/>
         <result property="category" column="category"/>
         <result property="detail" column="detail"/>
@@ -17,7 +16,8 @@
         <result property="maxPurchase" column="max_purchase"/>
         <result property="price" column="price"/>
         <result property="status" column="status"/>
-        <collection property="saleImage" javaType="java.util.ArrayList" resultMap="imageResultMap"/>
+        <association property="user" resultMap="userResultMap"/>
+        <collection property="imageURIList" javaType="java.util.ArrayList" />
     </resultMap>
 
     <resultMap id="userResultMap" type="com.split.first.dto.User">
@@ -29,16 +29,12 @@
         <result property="profileImage" column="profile_image"/>
         <result property="signUpDate" column="sign_up_date"/>
         <result property="address" column="address"/>
+        <result property="country" column="country"/>
+        <result property="description" column="description"/>
     </resultMap>
 
-    <resultMap id="imageResultMap" type="com.split.first.dto.Image">
-        <id property="serial" column="serial"/>
-        <result property="uri" column="uri"/>
-    </resultMap>
-
-
-    <select id="selectSalesAndUser" resultMap="salesAndUser">
-        SELECT S.*, I.serial as image_serial, I.uri
+    <select id="selectSalesAndUser" resultMap="saleResultMap">
+        SELECT S.*, I.uri
         FROM
         (SELECT S.serial, U.serial as user_serial, U.email, U.password, U.nick_name,
             U.phone, U.profile_image, U.sign_up_date, U.address,

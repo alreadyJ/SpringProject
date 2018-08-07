@@ -3,13 +3,12 @@
 
 <mapper namespace="com.split.first.repository.ListRepository">
 
-
     <resultMap id="saleResultMap" type="com.split.first.dto.Sale">
         <id property="serial" column="serial" />
-        <result property="user" column="user"/>
         <result property="title" column="title"/>
         <result property="category" column="category"/>
         <result property="detail" column="detail"/>
+        <result property="location" column="location"/>
         <result property="registeredDate" column="registered_date"/>
         <result property="expiration" column="expiration"/>
         <result property="quantity" column="quantity"/>
@@ -17,110 +16,71 @@
         <result property="maxPurchase" column="max_purchase"/>
         <result property="price" column="price"/>
         <result property="status" column="status"/>
-        <collection property="saleImage" javaType="java.util.ArrayList" resultMap="saleImageResultMap"/>
+        <association property="user" resultMap="userResultMap"/>
+        <collection property="imageURIList" javaType="java.util.ArrayList" />
     </resultMap>
 
-    <resultMap id="saleImageResultMap" type="com.split.first.dto.SaleImage">
-        <id property="serial" column="serial"/>
-        <result property="uri" column="uri"/>
+    <resultMap id="userResultMap" type="com.split.first.dto.User">
+        <id property="serial" column="user_serial" />
+        <result property="email" column="password"/>
+        <result property="password" column="password"/>
+        <result property="nickName" column="nick_name"/>
+        <result property="phone" column="phone"/>
+        <result property="profileImage" column="profile_image"/>
+        <result property="signUpDate" column="sign_up_date"/>
+        <result property="address" column="address"/>
+        <result property="country" column="country"/>
+        <result property="description" column="description"/>
     </resultMap>
 
-    <select id="selectSales" resultMap="saleResultMap">
-            SELECT S.serial, S.user, S.title, S.category, S.detail, S.detail, S.location,
-            S.registered_date, S.expiration, S.quantity, S.remain_quantity, S.max_purchase,
-            S.price, S.status, sale_image.serial, sale_image.uri FROM (select * from sale limit 12) S
-            LEFT JOIN sale_image ON S.serial = sale_image.serial and S.status = '0' ORDER BY S.serial desc;
-    </select>
-    
-
-
-    <select id="selectSaleCategory" parameterType="java.util.HashMap" resultType="hashmap">
-        <![CDATA[
-            SELECT
-                *
-            FROM
-                sale
-            WHERE
-                status = '0'
-            AND
-                category = #{category}
-            ORDER BY
-                serial
-            desc
-        ]]>
+    <select id="selectSalesAndUser" resultMap="saleResultMap">
+        SELECT S.*, I.uri
+        FROM
+        (SELECT S.serial, U.serial as user_serial, U.email, U.password, U.nick_name,
+            U.phone, U.profile_image, U.sign_up_date, U.address,
+            U.country, U.description, S.title, S.category, S.detail,
+            S.location, S.registered_date, S.expiration, S.quantity,
+            S.remain_quantity, S.max_purchase,S.price, S.status
+        FROM sale S
+        INNER JOIN user U
+        ON S.user_serial = U.serial
+        ORDER BY S.serial DESC
+        LIMIT 12) S
+        LEFT JOIN sale_image I
+        ON S.serial = sale_image.serial AND S.status = '0'
+        ORDER BY S.serial DESC
     </select>
 
-
-    <select id="selectOneSale" parameterType="java.util.HashMap" resultType="hashmap">
-        <![CDATA[
-            SELECT
-                *
-            FROM
-                sale
-            WHERE
-                status = '0'
-            AND
-                serial = #{serial}
-        ]]>
+    <select id="selectSaleCategory" parameterType="java.util.HashMap" resultType="com.split.first.dto.Sale">
+            SELECT *
+            FROM sale
+            WHERE status = '0' AND category = #{category}
+            ORDER BY serial DESC
     </select>
 
-    <select id="selectSaleImage" parameterType="java.util.HashMap" resultType="hashmap">
-        <![CDATA[
-            SELECT
-                saleImg
-            FROM
-                saleImage
-            WHERE
-                serial = #{serial}
-            ORDER BY
-                serial
-            desc
-        ]]>
+    <select id="selectOneSale" parameterType="java.util.HashMap" resultType="com.split.first.dto.Sale">
+            SELECT *
+            FROM sale
+            WHERE status = '0' AND serial = #{serial}
     </select>
 
-
-    <select id="selectTrips" parameterType="java.util.HashMap" resultType="hashmap">
-        <![CDATA[
-            SELECT
-                *
-            FROM
-                trip
-            WHERE
-                status = '0'
-            ORDER BY
-                serial
-            desc
-        ]]>
+    <select id="selectTrips" parameterType="java.util.HashMap" resultType="com.split.first.dto.Trip">
+            SELECT *
+            FROM trip
+            WHERE status = '0'
+            ORDER BY serial DESC
     </select>
 
-
-    <select id="selectTripCategory" parameterType="java.util.HashMap" resultType="hashmap">
-        <![CDATA[
-            SELECT
-                *
-            FROM
-                trip
-            WHERE
-                status = '0'
-            AND
-                category = #{category}
-            ORDER BY
-                serial
-            desc
-        ]]>
+    <select id="selectTripCategory" parameterType="java.util.HashMap" resultType="com.split.first.dto.Trip">
+            SELECT * FROM trip
+            WHERE status = '0' AND category = #{category}
+            ORDER BY serial DESC
     </select>
 
     <select id="selectOneTrip" parameterType="java.util.HashMap" resultType="hashmap">
-        <![CDATA[
-            SELECT
-                *
-            FROM
-                trip
-            WHERE
-                status = '0'
-            AND
-                serial = #{serial}
-        ]]>
+            SELECT *
+            FROM trip
+            WHERE status = '0' AND serial = #{serial}
     </select>
 
 
@@ -139,262 +99,101 @@
         <collection property="requestImage" javaType="java.util.ArrayList" resultMap="requestImageResultMap"/>
     </resultMap>
 
-    <resultMap id="requestImageResultMap" type="com.split.first.dto.RequestImage">
+    <resultMap id="ImageResultMap" type="com.split.first.dto.Image">
         <id property="serial" column="serial"/>
         <result property="uri" column="uri"/>
     </resultMap>
 
 
     <select id="selectRequests" parameterType="java.util.HashMap" resultMap="requestResultMap">
-        <![CDATA[
-            SELECT
-                *
-            FROM
-                request
-            WHERE
-                status = '0'
-            ORDER BY
-                serial
-            desc
-        ]]>
+            SELECT *
+            FROM request
+            WHERE status = '0'
+            ORDER BY serial DESC
     </select>
 
     <select id="selectRequestCategory" parameterType="java.util.HashMap" resultType="hashmap">
-        <![CDATA[
-            SELECT
-                *
-            FROM
-                request
-            WHERE
-                status = '0'
-            AND
-                category = #{category}
-            ORDER BY
-                serial
-            desc
-        ]]>
+            SELECT *
+            FROM request
+            WHERE status = '0' AND category = #{category}
+            ORDER BY serial DESC
     </select>
 
     <select id="selectOneRequest" parameterType="java.util.HashMap" resultType="hashmap">
-        <![CDATA[
-            SELECT
-                *
-            FROM
-                request
-            WHERE
-                status = '0'
-            AND
-                serial = #{serial}
-        ]]>
+            SELECT *
+            FROM request
+            WHERE status = '0' AND serial = #{serial}
     </select>
-
-
-    <select id="selectRequestImage" parameterType="java.util.HashMap" resultType="hashmap">
-        <![CDATA[
-            SELECT
-                requestImg
-            FROM
-                requestImage
-            WHERE
-                serial = #{serial}
-            ORDER BY
-                serial
-            desc
-        ]]>
-    </select>
-
 
     <insert id="insertComment" parameterType="java.util.HashMap">
-        <![CDATA[
-        INSERT INTO comments
-        (
-            userSerial,
-            itemSerial,
-            text,
-            registerDate,
-            type
-        )
-        VALUES
-        (
-            #{userSerial},
-            #{itemSerial},
-            #{text},
-            #{registerDate},
-            #{type}
-        )
-    ]]>
+        INSERT INTO comments (userSerial, itemSerial, text, registeredDate, type)
+        VALUES (#{userSerial}, #{itemSerial}, #{text}, #{registerDate}, #{type})
     </insert>
 
-
     <delete id="deleteComment" parameterType="java.util.HashMap">
-        <![CDATA[
         DELETE FROM comments
-        WHERE
-            type = #{type}
-        AND
-            itemSerial = #{itemSerial}
-        AND
-            userSerial = #{userSerial}
-        AND
-            serial = #{serial}
-    ]]>
+        WHERE type = #{type} AND itemSerial = #{itemSerial} AND
+        userSerial = #{userSerial} AND serial = #{serial}
     </delete>
 
-
     <select id="selectComment" parameterType="java.util.HashMap" resultType="hashmap">
-        SELECT
-            *
-        FROM
-            comments
-        WHERE
-            type = #{type}
-        AND
-            itemSerial = #{itemSerial}
-        ORDER BY
-            serial
+        SELECT *
+        FROM comments
+        WHERE type = #{type} AND itemSerial = #{itemSerial}
+        ORDER BY serial
     </select>
-
-
 
     <!--게시글 업로드 관련-->
     <insert id="insertSale" parameterType="java.util.HashMap">
-        <![CDATA[
-        INSERT INTO sale
-        (
-            user,
-            title,
-            category,
-            detail,
-            location,
-            registerDate,
-            expiration,
-            quantity,
-            remainQuantity,
-            maxPurchase,
-            price,
-            status
-        )
-        VALUES
-        (
-            #{user},
-            #{title},
-            #{category},
-            #{detail},
-            #{location},
-            #{registerDate},
-            #{expiration},
-            #{quantity},
-            #{remainQuantity},
-            #{maxPurchase},
-            #{price},
-            '0'
-        )
-    ]]>
+        INSERT INTO sale (user, title, category, detail, location,
+                          registered_date,expiration, quantity, remain_quantity,
+            max_purchase, price, status)
+        VALUES (#{user}, #{title}, #{category}, #{detail}, #{location},
+            #{registerDate}, #{expiration}, #{quantity}, #{remainQuantity},
+            #{maxPurchase}, #{price}, '0')
     </insert>
 
     <insert id="insertSaleImage" parameterType="java.util.HashMap">
-        <![CDATA[
-        INSERT INTO saleImage
-        (
-            serial,
-            saleImg
-        )
-        VALUES
-        (
-            (SELECT serial
-            FROM sale
-            WHERE registerDate = #{registerDate}
+        INSERT INTO sale_image ( serial, uri)
+        VALUES ( (SELECT serial FROM sale
+            WHERE registered_date = #{registerDate}
             AND title = #{title}
-            LIMIT 1),
-            #{imagePath}
+            LIMIT 1), #{imagePath}
         )
-    ]]>
     </insert>
 
 
 
     <insert id="insertRequest" parameterType="java.util.HashMap">
-        <![CDATA[
-        INSERT INTO request
-        (
-            user,
-            title,
-            category,
-            detail,
-            location,
-            registerDate,
-            expiration,
-            quantity,
-            price,
-            serviceFee,
-            status
-        )
-        VALUES
-        (
-            #{user},
-            #{title},
-            #{category},
-            #{detail},
-            #{location},
-            #{registerDate},
-            #{expiration},
-            #{quantity},
-            #{price},
-            #{serviceFee},
-            '0'
-        )
-    ]]>
+        INSERT INTO request (user, title, category, detail,
+            location, registered_date, expiration, quantity, price,
+            service_fee, status)
+        VALUES ( #{user}, #{title}, #{category}, #{detail}, #{location},
+            #{registerDate}, #{expiration}, #{quantity}, #{price}, #{serviceFee}, '0')
     </insert>
 
     <insert id="insertRequestImage" parameterType="java.util.HashMap">
-        <![CDATA[
-        INSERT INTO requestImage
-        (
-            serial,
-            requestImg
-        )
-        VALUES
-        (
-            (SELECT serial
+        INSERT INTO request_image (serial, uri)
+        VALUES ( (SELECT serial
             FROM request
             WHERE registerDate = #{registerDate}
             AND title = #{title}
-            LIMIT 1),
-            #{imagePath}
+            LIMIT 1), #{imagePath}
         )
-    ]]>
     </insert>
 
     <insert id="insertTrip" parameterType="java.util.HashMap">
-        <![CDATA[
-        INSERT INTO trip
-        (
-            user,
-            source,
-            destination,
-            isRound,
-            purpose,
-            departureDate,
-            arrivalDate,
-            registerDate,
-            schedule,
-            location,
-            status
+        INSERT INTO trip (user, source, destination, is_round,
+            purpose, departure_date, arrival_date,
+            registered_date, schedule, location, status
         )
-        VALUES
-        (
-            #{user},
-            #{source},
-            #{destination},
-            #{isRound},
-            #{purpose},
-            #{departureDate},
-            #{arrivalDate},
-            #{registerDate},
-            #{schedule},
-            #{location},
-            '0'
+        VALUES (#{user}, #{source}, #{destination}, #{isRound},
+            #{purpose}, #{departureDate}, #{arrivalDate},
+            #{registerDate}, #{schedule}, #{location}, '0'
         )
-    ]]>
     </insert>
+
+
+
+
 </mapper>

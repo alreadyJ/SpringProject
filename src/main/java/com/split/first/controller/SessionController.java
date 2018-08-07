@@ -76,7 +76,7 @@ public class SessionController {
             user.setEmail(list.get(0).get("email").toString());
             user.setNickName(list.get(0).get("nickName").toString());
             user.setProfileImage(list.get(0).get("profileImg").toString());
-            user.setSignUpDate(list.get(0).get("signUpDate").toString());
+            //user.setSignUpDate(list.get(0).get("signUpDate"));
             user.setCountry((list.get(0).get("country") == null ? null : list.get(0).get("country").toString()));
             user.setAddress((list.get(0).get("address") == null ? null : list.get(0).get("address").toString()));
             user.setDescription((list.get(0).get("description") == null ? null : list.get(0).get("description").toString()));

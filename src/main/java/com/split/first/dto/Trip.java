@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 
 @Data
 public class Trip {
+
     int serial;
     User user;
     String source;
@@ -19,4 +20,5 @@ public class Trip {
     String schedule;
     String location;
     int status;
+
 }

@@ -1,15 +1,13 @@
 package com.split.first.dto;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
-@Getter @Setter
 public class Sale {
+
     int serial;
     User user;
     String title;
@@ -23,5 +21,5 @@ public class Sale {
     int maxPurchase;
     int price;
     int status;
-    List<Image> saleImage;
+    List<String> imageURIList;
 }
