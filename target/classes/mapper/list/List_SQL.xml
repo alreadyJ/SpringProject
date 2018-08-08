@@ -17,7 +17,9 @@
         <result property="price" column="price"/>
         <result property="status" column="status"/>
         <association property="user" resultMap="userResultMap"/>
-        <collection property="imageURIList" javaType="java.util.ArrayList" />
+        <collection property="imageURIList" javaType="java.util.List" ofType="java.lang.String" >
+            <result column="uri"/>
+        </collection>
     </resultMap>
 
     <resultMap id="userResultMap" type="com.split.first.dto.User">
@@ -83,29 +85,7 @@
             WHERE status = '0' AND serial = #{serial}
     </select>
 
-
-    <resultMap id="requestResultMap" type="com.split.first.dto.Request">
-        <id property="serial" column="serial" />
-        <result property="user" column="user"/>
-        <result property="title" column="title"/>
-        <result property="category" column="category"/>
-        <result property="detail" column="detail"/>
-        <result property="location" column="location"/>
-        <result property="registeredDate" column="registered_date"/>
-        <result property="expiration" column="expiration"/>
-        <result property="quantity" column="quantity"/>
-        <result property="price" column="price"/>
-        <result property="serviceFee" column="service_fee"/>
-        <collection property="requestImage" javaType="java.util.ArrayList" resultMap="requestImageResultMap"/>
-    </resultMap>
-
-    <resultMap id="ImageResultMap" type="com.split.first.dto.Image">
-        <id property="serial" column="serial"/>
-        <result property="uri" column="uri"/>
-    </resultMap>
-
-
-    <select id="selectRequests" parameterType="java.util.HashMap" resultMap="requestResultMap">
+    <select id="selectRequests" parameterType="java.util.HashMap" >
             SELECT *
             FROM request
             WHERE status = '0'
