@@ -38,7 +38,7 @@
                             </div>
                         </div>
                     </div>
-                    <%request.setAttribute("image", sales.get(i).getSaleImage().get(0).getUri());%>
+                    <%request.setAttribute("image", sales.get(i).getImageURIList().get(0));%>
                     <img class="card-image" style="display: none;" src="<c:url value="/resources/images/${image}"/>" class="img-fluid" alt="">
                     <a href="/item/sale/<%=sales.get(i).getSerial()%>" style="color: #040404;">
                         <div class="mask"></div>
@@ -91,7 +91,7 @@
                             </div>
                         </div>
                     </div>
-                    <%request.setAttribute("image", sales.get(i).getSaleImage().get(0));%>
+                    <%request.setAttribute("image", sales.get(i).getImageURIList().get(0));%>
                     <img class="card-image" style="display: none;" src="<c:url value="/resources/images/${image}"/>" class="img-fluid" alt="">
                     <a href="/item/sale/<%=sales.get(i).getSerial()%>" style="color: #040404;">
                         <div class="mask"></div>
@@ -145,7 +145,7 @@
                             </div>
                         </div>
                     </div>
-                    <%request.setAttribute("image", sales.get(i).getSaleImage().get(0).getUri());%>
+                    <%request.setAttribute("image", sales.get(i).getImageURIList().get(0));%>
                     <img class="card-image" style="display: none;" src="<c:url value="/resources/images/${image}"/>" class="img-fluid" alt="">
                     <a href="/item/sale/<%=sales.get(i).getSerial()%>" style="color: #040404;">
                         <div class="mask"></div>

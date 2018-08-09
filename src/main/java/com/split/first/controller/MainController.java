@@ -22,7 +22,7 @@ public class MainController {
     public ModelAndView Main() throws Exception {
         ModelAndView mv = new ModelAndView("main");
         mv.addObject("sales", listService.selectSale());
-        //mv.addObject("trips", listService.selectTrip());
+        mv.addObject("trips", listService.selectTrip());
         mv.addObject("requests", listService.selectRequest());
         return mv;
     }

@@ -3,39 +3,7 @@
 
 <mapper namespace="com.split.first.repository.ListRepository">
 
-    <resultMap id="saleResultMap" type="com.split.first.dto.Sale">
-        <id property="serial" column="serial" />
-        <result property="title" column="title"/>
-        <result property="category" column="category"/>
-        <result property="detail" column="detail"/>
-        <result property="location" column="location"/>
-        <result property="registeredDate" column="registered_date"/>
-        <result property="expiration" column="expiration"/>
-        <result property="quantity" column="quantity"/>
-        <result property="remainQuantity" column="remain_quantity"/>
-        <result property="maxPurchase" column="max_purchase"/>
-        <result property="price" column="price"/>
-        <result property="status" column="status"/>
-        <association property="user" resultMap="userResultMap"/>
-        <collection property="imageURIList" javaType="java.util.List" ofType="java.lang.String" >
-            <result column="uri"/>
-        </collection>
-    </resultMap>
-
-    <resultMap id="userResultMap" type="com.split.first.dto.User">
-        <id property="serial" column="user_serial" />
-        <result property="email" column="password"/>
-        <result property="password" column="password"/>
-        <result property="nickName" column="nick_name"/>
-        <result property="phone" column="phone"/>
-        <result property="profileImage" column="profile_image"/>
-        <result property="signUpDate" column="sign_up_date"/>
-        <result property="address" column="address"/>
-        <result property="country" column="country"/>
-        <result property="description" column="description"/>
-    </resultMap>
-
-    <select id="selectSalesAndUser" resultMap="saleResultMap">
+    <select id="selectSalesAndUser" resultMap="com.split.first.list.resultMap.saleResultMap">
         SELECT S.*, I.uri
         FROM
         (SELECT S.serial, U.serial as user_serial, U.email, U.password, U.nick_name,
@@ -49,78 +17,71 @@
         ORDER BY S.serial DESC
         LIMIT 12) S
         LEFT JOIN sale_image I
-        ON S.serial = sale_image.serial AND S.status = '0'
+        ON S.serial = I.serial AND S.status = '0'
         ORDER BY S.serial DESC
     </select>
 
-    <select id="selectSaleCategory" parameterType="java.util.HashMap" resultType="com.split.first.dto.Sale">
+    <select id="selectSaleCategory" parameterType="java.lang.String" resultType="com.split.first.dto.Sale">
             SELECT *
             FROM sale
             WHERE status = '0' AND category = #{category}
             ORDER BY serial DESC
     </select>
 
-    <select id="selectOneSale" parameterType="java.util.HashMap" resultType="com.split.first.dto.Sale">
+    <select id="selectOneSale" parameterType="java.lang.Integer" resultType="com.split.first.dto.Sale">
             SELECT *
             FROM sale
             WHERE status = '0' AND serial = #{serial}
     </select>
 
-    <select id="selectTrips" parameterType="java.util.HashMap" resultType="com.split.first.dto.Trip">
-            SELECT *
-            FROM trip
-            WHERE status = '0'
-            ORDER BY serial DESC
+    <select id="selectTripAndUser" resultMap="com.split.first.list.resultMap.tripResultMap">
+        SELECT T.serial, U.serial as user_serial, U.email, U.password, U.nick_name,
+            U.phone, U.profile_image, U.sign_up_date, U.address,
+            U.country, U.description, T.source, T.destination,
+            T.is_round, T.departure_date, T.arrival_date, T.registered_date,
+            T.schedule, T.location, T.status
+        FROM trip T
+            INNER JOIN user U
+                ON T.user_serial = U.serial
+        ORDER BY T.serial DESC
+        LIMIT 12
     </select>
 
-    <select id="selectTripCategory" parameterType="java.util.HashMap" resultType="com.split.first.dto.Trip">
-            SELECT * FROM trip
-            WHERE status = '0' AND category = #{category}
-            ORDER BY serial DESC
-    </select>
-
-    <select id="selectOneTrip" parameterType="java.util.HashMap" resultType="hashmap">
+    <select id="selectOneTrip" parameterType="java.lang.Integer" resultType="com.split.first.dto.Trip">
             SELECT *
             FROM trip
             WHERE status = '0' AND serial = #{serial}
     </select>
 
-    <select id="selectRequests" parameterType="java.util.HashMap" >
-            SELECT *
-            FROM request
-            WHERE status = '0'
-            ORDER BY serial DESC
+    <select id="selectRequestsAndUser" resultMap="com.split.first.list.resultMap.requestResultMap" >
+        SELECT R.*, I.uri
+        FROM
+            (SELECT R.serial, U.serial as user_serial, U.email, U.password, U.nick_name,
+                 U.phone, U.profile_image, U.sign_up_date, U.address,
+                 U.country, U.description, R.title, R.category, R.detail,
+                 R.location, R.registered_date, R.expiration, R.quantity,
+                 R.price, R.service_fee, R.status
+             FROM request R
+                 INNER JOIN user U
+                     ON R.user_serial = U.serial
+             ORDER BY R.serial DESC
+             LIMIT 12) R
+            LEFT JOIN sale_image I
+                ON R.serial = I.serial AND R.status = '0'
+        ORDER BY R.serial DESC
     </select>
 
-    <select id="selectRequestCategory" parameterType="java.util.HashMap" resultType="hashmap">
+    <select id="selectRequestCategory" parameterType="java.lang.String" resultType="com.split.first.dto.Request">
             SELECT *
             FROM request
             WHERE status = '0' AND category = #{category}
             ORDER BY serial DESC
     </select>
 
-    <select id="selectOneRequest" parameterType="java.util.HashMap" resultType="hashmap">
+    <select id="selectOneRequest" parameterType="java.lang.Integer" resultType="com.split.first.dto.Request">
             SELECT *
             FROM request
             WHERE status = '0' AND serial = #{serial}
-    </select>
-
-    <insert id="insertComment" parameterType="java.util.HashMap">
-        INSERT INTO comments (userSerial, itemSerial, text, registeredDate, type)
-        VALUES (#{userSerial}, #{itemSerial}, #{text}, #{registerDate}, #{type})
-    </insert>
-
-    <delete id="deleteComment" parameterType="java.util.HashMap">
-        DELETE FROM comments
-        WHERE type = #{type} AND itemSerial = #{itemSerial} AND
-        userSerial = #{userSerial} AND serial = #{serial}
-    </delete>
-
-    <select id="selectComment" parameterType="java.util.HashMap" resultType="hashmap">
-        SELECT *
-        FROM comments
-        WHERE type = #{type} AND itemSerial = #{itemSerial}
-        ORDER BY serial
     </select>
 
     <!--게시글 업로드 관련-->
@@ -172,8 +133,4 @@
             #{registerDate}, #{schedule}, #{location}, '0'
         )
     </insert>
-
-
-
-
 </mapper>

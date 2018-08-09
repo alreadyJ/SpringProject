@@ -1,6 +1,8 @@
 package com.split.first;
 
+import com.split.first.dto.Request;
 import com.split.first.dto.Sale;
+import com.split.first.dto.Trip;
 import com.split.first.repository.ListRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,6 +27,8 @@ public class ListRepositoryTest {
     @Test
     public void listTest() {
         List<Sale> saleList = listRepository.selectSale();
+        List<Request> requestList = listRepository.selectRequest();
+        List<Trip> tripList = listRepository.selectTrip();
         System.out.println();
     }
 

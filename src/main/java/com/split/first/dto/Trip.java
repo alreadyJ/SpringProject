@@ -10,7 +10,6 @@ public class Trip {
     int serial;
     User user;
     String source;
-    String category;
     String destination;
     int isRound;
     String purpose;

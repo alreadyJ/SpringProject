@@ -22,4 +22,5 @@ public class Sale {
     int price;
     int status;
     List<String> imageURIList;
+
 }

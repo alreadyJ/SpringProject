@@ -16,7 +16,7 @@ public class ListRepository {
     private SqlSession sqlSession;
     
     public List<Sale> selectSale() {
-        return sqlSession.selectList("selectSales");
+        return sqlSession.selectList("selectSalesAndUser");
     }
 
     public List<Map<String, Object>> selectSaleCategory() {
@@ -24,7 +24,7 @@ public class ListRepository {
     }
 
     public List<Trip> selectTrip() {
-        return sqlSession.selectList("selectTrips");
+        return sqlSession.selectList("selectTripAndUser");
     }
 
     public List<Map<String, Object>> selectTripCategory() {
@@ -32,7 +32,7 @@ public class ListRepository {
     }
 
     public List<Request> selectRequest() {
-        return sqlSession.selectList("selectRequests");
+        return sqlSession.selectList("selectRequestsAndUser");
     }
 
     public List<Map<String, Object>> selectRequestCategory() {
