@@ -1,4 +1,4 @@
-<%@ page import="com.split.first.dto.User" %>
+<%@ page import="com.split.first.session.dto.User" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- Bootstrap core CSS -->

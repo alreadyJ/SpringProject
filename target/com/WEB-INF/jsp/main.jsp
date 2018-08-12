@@ -1,4 +1,4 @@
-<%@ page import="com.split.first.dto.Sale" %>
+<%@ page import="com.split.first.Item.dto.Sale" %>
 <%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%request.setCharacterEncoding("utf-8");%>

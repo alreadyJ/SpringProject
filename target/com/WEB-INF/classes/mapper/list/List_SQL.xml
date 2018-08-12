@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.split.first.repository.ListRepository">
+<mapper namespace="com.split.first.Item.repository.ItemRepository">
 
     <select id="selectSalesAndUser" resultMap="com.split.first.list.resultMap.saleResultMap">
         SELECT S.*, I.uri
@@ -21,14 +21,14 @@
         ORDER BY S.serial DESC
     </select>
 
-    <select id="selectSaleCategory" parameterType="java.lang.String" resultType="com.split.first.dto.Sale">
+    <select id="selectSaleCategory" parameterType="java.lang.String" resultType="com.split.first.Item.dto.Sale">
             SELECT *
             FROM sale
             WHERE status = '0' AND category = #{category}
             ORDER BY serial DESC
     </select>
 
-    <select id="selectOneSale" parameterType="java.lang.Integer" resultType="com.split.first.dto.Sale">
+    <select id="selectOneSale" parameterType="java.lang.Integer" resultType="com.split.first.Item.dto.Sale">
             SELECT *
             FROM sale
             WHERE status = '0' AND serial = #{serial}
@@ -47,7 +47,7 @@
         LIMIT 12
     </select>
 
-    <select id="selectOneTrip" parameterType="java.lang.Integer" resultType="com.split.first.dto.Trip">
+    <select id="selectOneTrip" parameterType="java.lang.Integer" resultType="com.split.first.Item.dto.Trip">
             SELECT *
             FROM trip
             WHERE status = '0' AND serial = #{serial}
@@ -71,14 +71,14 @@
         ORDER BY R.serial DESC
     </select>
 
-    <select id="selectRequestCategory" parameterType="java.lang.String" resultType="com.split.first.dto.Request">
+    <select id="selectRequestCategory" parameterType="java.lang.String" resultType="com.split.first.Item.dto.Request">
             SELECT *
             FROM request
             WHERE status = '0' AND category = #{category}
             ORDER BY serial DESC
     </select>
 
-    <select id="selectOneRequest" parameterType="java.lang.Integer" resultType="com.split.first.dto.Request">
+    <select id="selectOneRequest" parameterType="java.lang.Integer" resultType="com.split.first.Item.dto.Request">
             SELECT *
             FROM request
             WHERE status = '0' AND serial = #{serial}

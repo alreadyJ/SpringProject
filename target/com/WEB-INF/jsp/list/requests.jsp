@@ -1,6 +1,6 @@
 
 <%@ page import="java.util.List" %>
-<%@ page import="com.split.first.dto.Request" %>
+<%@ page import="com.split.first.Item.dto.Request" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- Page Content -->

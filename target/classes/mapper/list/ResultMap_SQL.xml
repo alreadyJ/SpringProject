@@ -3,7 +3,7 @@
 
 <mapper namespace="com.split.first.list.resultMap">
 
-    <resultMap id="saleResultMap" type="com.split.first.dto.Sale">
+    <resultMap id="saleResultMap" type="com.split.first.Item.dto.Sale">
         <id property="serial" column="serial" />
         <result property="title" column="title"/>
         <result property="category" column="category"/>
@@ -20,7 +20,7 @@
         <collection property="imageURIList" javaType="java.util.List" ofType="java.lang.String" />
     </resultMap>
     
-    <resultMap id="tripResultMap" type="com.split.first.dto.Trip">
+    <resultMap id="tripResultMap" type="com.split.first.Item.dto.Trip">
         <id property="serial" column="serial"/>
         <result property="source" column="source"/>
         <result property="destination" column="destination"/>
@@ -35,7 +35,7 @@
         <association property="user" resultMap="userResultMap"/>
     </resultMap>
 
-    <resultMap id="requestResultMap" type="com.split.first.dto.Request">
+    <resultMap id="requestResultMap" type="com.split.first.Item.dto.Request">
         <id property="serial" column="serial" />
         <result property="title" column="title"/>
         <result property="category" column="category"/>
@@ -51,7 +51,7 @@
         <collection property="imageURIList" javaType="java.util.List" ofType="java.lang.String" />
     </resultMap>
 
-    <resultMap id="userResultMap" type="com.split.first.dto.User">
+    <resultMap id="userResultMap" type="com.split.first.session.dto.User">
         <id property="serial" column="user_serial" />
         <result property="email" column="email"/>
         <result property="password" column="password"/>

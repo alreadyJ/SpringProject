@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="com.split.first.dto.Sale" %>
+<%@ page import="com.split.first.Item.dto.Sale" %>
 <%@ page import="java.util.List" %>
 <%List<Sale> sales = (List<Sale>)request.getAttribute("sales");%>
 

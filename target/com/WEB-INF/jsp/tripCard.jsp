@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.split.first.dto.Trip" %>
+<%@ page import="com.split.first.Item.dto.Trip" %>
 <%List<Trip> trips = (List<Trip>) request.getAttribute("trips");%>
 
 <!--Carousel Wrapper-->

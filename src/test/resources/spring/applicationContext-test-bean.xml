@@ -11,6 +11,6 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-    <bean id="listRepository" class="com.split.first.repository.ListRepository"/>
+    <bean id="listRepository" class="com.split.first.Item.repository.ItemRepository"/>
     <bean id="listService" class="com.split.first.service.ListService"/>
 </beans>

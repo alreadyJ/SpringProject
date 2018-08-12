@@ -1,4 +1,4 @@
-<%@ page import="com.split.first.dto.Sale" %>
+<%@ page import="com.split.first.Item.dto.Sale" %>
 <%@ page import="javafx.scene.control.Pagination" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>

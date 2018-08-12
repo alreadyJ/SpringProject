@@ -1,4 +1,4 @@
-<%@ page import="com.split.first.dto.User" %>
+<%@ page import="com.split.first.session.dto.User" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%User user = (User)session.getAttribute("User");%>
 <%--

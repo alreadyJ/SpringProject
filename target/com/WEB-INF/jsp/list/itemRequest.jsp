@@ -1,6 +1,6 @@
-<%@ page import="com.split.first.dto.Comment" %>
-<%@ page import="com.split.first.dto.Request" %>
-<%@ page import="com.split.first.dto.User" %>
+<%@ page import="com.split.first.Item.dto.Comment" %>
+<%@ page import="com.split.first.Item.dto.Request" %>
+<%@ page import="com.split.first.session.dto.User" %>
 <%@ page import="java.util.List" %>
 <%--
   Created by IntelliJ IDEA.

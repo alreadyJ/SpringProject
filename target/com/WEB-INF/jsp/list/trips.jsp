@@ -1,4 +1,4 @@
-<%@ page import="com.split.first.dto.Trip" %>
+<%@ page import="com.split.first.Item.dto.Trip" %>
 <%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
